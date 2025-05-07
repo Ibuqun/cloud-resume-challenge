@@ -42,11 +42,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const count = document.querySelector(".page-views");
 async function updateViewerCount() {
-    let resp = await fetch("https://vdozaflmfqf7t5bs5ez2lthoqm0qkivc.lambda-url.ap-south-1.on.aws/");
-    let views = await resp.json();
-    count.innerHTML = `Total Views👀: ${views}`;
+    try {
+        // Replace with your API Gateway URL
+        const response = await fetch('YOUR_API_GATEWAY_URL');
+        const data = await response.json();
+        
+        // Update the counter with animation
+        const counterElement = document.getElementById('visitor-count');
+        const currentCount = parseInt(counterElement.textContent);
+        const newCount = data.count;
+        
+        // Animate the counter
+        if (currentCount !== newCount) {
+            animateCounter(currentCount, newCount, counterElement);
+        }
+    } catch (error) {
+        console.error('Error updating visitor count:', error);
+    }
 }
-updateViewerCount();
+
+function animateCounter(start, end, element) {
+    let current = start;
+    const increment = end > start ? 1 : -1;
+    const duration = 1000; // 1 second
+    const steps = 20;
+    const timePerStep = duration / steps;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        element.textContent = current;
+        
+        if ((increment > 0 && current >= end) || 
+            (increment < 0 && current <= end)) {
+            clearInterval(timer);
+            element.textContent = end;
+        }
+    }, timePerStep);
+}
+
+// Call this when the page loads
+document.addEventListener('DOMContentLoaded', updateViewerCount);
 
 document.getElementById('hamburger').addEventListener('click', function() {
     document.getElementById('sidebar').classList.toggle('active');

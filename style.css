@@ -51,17 +51,17 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 2.5rem 1rem;
+    padding: 1.5rem 1rem; /* Reduced from 2.5rem */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .side-head {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Reduced from 2.5rem */
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     text-align: center;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem; /* Reduced from 0.8rem */
     text-decoration: none;
     color: var(--neon-accent);
     transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease; /* Added text-shadow transition */
@@ -124,7 +124,7 @@ nav ul li {
     transition: all 0.3s ease;
     display: block;
     width: 100%;
-    padding: 1.2rem 1.5rem;
+    padding: 0.8rem 1.5rem; /* Reduced from 1.2rem */
     position: relative;
     z-index: 1;
 }
@@ -176,14 +176,14 @@ hr {
     height: 1px;
     background: rgba(255, 255, 255, 0.1);
     width: 80%;
-    margin: 1.5rem auto;
+    margin: 1rem auto; /* Reduced from 1.5rem */
 }
 
 .socials {
     display: flex;
     justify-content: center;
-    gap: 1.8rem;
-    padding: 2rem 0;
+    gap: 1.2rem; /* Reduced from 1.8rem */
+    padding: 1rem 0; /* Reduced from 2rem */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -191,12 +191,12 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 35px; /* Reduced from 40px */
+    height: 35px; /* Reduced from 40px */
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.08);
     color: var(--neon-accent);
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* Reduced from 1.4rem */
     position: relative;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2040,5 +2040,70 @@ section:not(:last-child) {
     .certification-card {
         padding: 0.8rem;
 }
+}
+
+/* Visitor Counter Styles */
+.visitor-counter {
+    margin: auto 0;
+    padding: 1rem 0; /* Reduced from 1.5rem */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem; /* Reduced from 1rem 1.5rem */
+    background: var(--card-bg);
+    border-radius: 12px;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+}
+
+.counter-container:hover {
+    background: var(--hover-bg);
+    transform: translateY(-2px);
+}
+
+.counter-icon {
+    color: var(--neon-accent);
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 8px var(--text-glow));
+}
+
+.counter-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.counter-label {
+    font-size: 0.7rem; /* Reduced from 0.8rem */
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.counter-value {
+    font-size: 1rem; /* Reduced from 1.2rem */
+    font-weight: 600;
+    color: var(--neon-accent);
+    text-shadow: 0 0 10px var(--text-glow);
+}
+
+/* Add this to your existing media queries */
+@media (max-width: 768px) {
+    .counter-container {
+        padding: 0.8rem 1rem;
+    }
+    
+    .counter-icon {
+        font-size: 1rem;
+    }
+    
+    .counter-value {
+        font-size: 1rem;
+    }
 }
 
