@@ -308,8 +308,8 @@ hr {
 
 
 .content {
-    margin-left: 22.7%;
-    width: calc(100% - 22.7%);
+    margin-left: 240px; /* Match sidebar width */
+    width: calc(100% - 240px); /* Calculate content width */
 }
 
 @media (max-width: 768px) {
@@ -354,6 +354,182 @@ section p {
     position: relative;
     overflow: hidden;
     background: var(--gradient-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animated Background */
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/bg-pattern.svg'); /* Replace with your pattern */
+    opacity: 0.1;
+    animation: pan 60s linear infinite;
+    z-index: 1;
+}
+
+@keyframes pan {
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+/* Layered Content Container */
+.home-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Welcome Text */
+.welcome-text {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 20px var(--text-glow);
+    animation: pulseGlow 2s infinite, fadeIn 1s ease-out;
+    margin: 0;
+    padding: 0;
+}
+
+/* Subtitle */
+.home-subtitle {
+    font-size: 1.5rem;
+    color: var(--neon-accent);
+    margin-top: 1rem;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+/* Interactive Buttons */
+.home-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.home-button {
+    padding: 1rem 2rem;
+    border: 2px solid var(--neon-accent);
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.home-button:hover {
+    background: var(--neon-accent);
+    color: #1E293B;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+/* Floating Icons */
+.floating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.floating-icons i {
+    position: absolute;
+    color: var(--neon-accent);
+    opacity: 0.4;
+    animation: float 8s infinite;
+    filter: drop-shadow(0 0 8px var(--text-glow));
+    transition: all 0.3s ease;
+}
+
+/* Keyframes */
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translate(20px, -30px) rotate(5deg) scale(1.1);
+    }
+    50% {
+        transform: translate(-20px, -50px) rotate(-5deg) scale(1);
+    }
+    75% {
+        transform: translate(30px, -20px) rotate(8deg) scale(1.1);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px var(--text-glow);
+    }
+    50% {
+        text-shadow: 0 0 40px var(--text-glow),
+                     0 0 60px var(--text-glow);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .welcome-text {
+        font-size: 3rem;
+    }
+
+    .home-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .home-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home-button {
+        width: 80%;
+    }
+
+    .floating-icons i {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-text {
+        font-size: 2.5rem;
+    }
+
+    .home-subtitle {
+        font-size: 1rem;
+    }
+
+    .home-button {
+        font-size: 1rem;
+        width: 100%;
+    }
 }
 
 .welcome-container {
@@ -364,26 +540,6 @@ section p {
     border-radius: 15px;
     backdrop-filter: blur(8px);
     box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
-}
-
-.welcome-text {
-    font-size: 5rem;
-    font-weight: 700;
-    color: #ffffff;
-    text-shadow: 0 0 20px var(--text-glow);
-    animation: pulseGlow 2s infinite;
-    margin: 0;
-    padding: 0;
-}
-
-.floating-icons {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 1;
 }
 
 .floating-icons i {
@@ -681,7 +837,8 @@ section p {
     font-size: 2.8rem; /* Larger for better visibility */
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--neon-accent);
+    /* color: var(--neon-accent); */
+    color: #ffffff;
     text-align: center;
     margin-bottom: 1rem; /* Add spacing below */
     letter-spacing: 1.5px; /* Improve spacing between letters */
@@ -1629,13 +1786,13 @@ section {
 }
 
 .section-header h2 {
-    font-size: 2.8rem; /* Larger for better visibility */
+    font-size: 2.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--neon-accent);
+    color: #ffffff; /* Use neon accent color for all section headers */
     text-align: center;
-    margin-bottom: 1rem; /* Add spacing below */
-    letter-spacing: 1.5px; /* Improve spacing between letters */
+    margin-bottom: 1rem;
+    letter-spacing: 1.5px;
 }
 
 .header-underline {
@@ -1785,5 +1942,5 @@ section:not(:last-child) {
 
     .certification-card {
         padding: 0.8rem;
-    }
+}
 }
