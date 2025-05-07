@@ -113,6 +113,7 @@ nav ul li {
     width: 100%;
 }
 
+/* Base nav link styles */
 .sidebar nav ul li a {
     text-decoration: none;
     color: #ffffff;
@@ -128,32 +129,46 @@ nav ul li {
     z-index: 1;
 }
 
-/* Active state - this needs to be more specific than hover */
+/* Active state - more subtle */
 .sidebar nav ul li a.active {
     color: var(--neon-accent);
-    transform: translateX(2px);
-    background: rgba(56, 189, 248, 0.1);
+    background: rgba(56, 189, 248, 0.02);
     font-weight: 600;
+    letter-spacing: 0.5px;
+    border-right: 3px solid var(--neon-accent);
+    transform: none;
 }
 
 /* Hover state */
 .sidebar nav ul li a:hover {
     color: var(--neon-accent);
-    transform: translateX(2px);
-    background: rgba(56, 189, 248, 0.1);
+    transform: translateX(5px);
+    background: rgba(56, 189, 248, 0.05);
 }
 
-/* Indicator for both hover and active states */
-.sidebar nav ul li a:hover::before,
+
+/* Indicator for hover state */
+.sidebar nav ul li a:hover::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--neon-accent);
+}
+
+/* Indicator for active state - subtle line */
 .sidebar nav ul li a.active::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
-    width: 4px;
+    width: 3px;
     background: var(--neon-accent);
-    box-shadow: 0 0 8px var(--neon-accent);
+    opacity: 0.5;
+    box-shadow: none;
 }
 
 hr {
