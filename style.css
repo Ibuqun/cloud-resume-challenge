@@ -173,22 +173,106 @@ hr {
 }
 
 .socials a {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.08);
     color: var(--neon-accent);
     font-size: 1.4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-socials a:hover {
+/* Hover Effect */
+.socials a:hover {
     background-color: var(--neon-accent);
     color: #1E293B;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+    animation: iconPulse 0.4s ease-out;
+}
+
+/* Ripple Effect on Hover */
+.socials a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--neon-accent);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.4s ease-out;
+}
+
+socials a:hover::before {
+    transform: scale(1.5);
+    opacity: 0;
+    animation: ripple 0.6s ease-out;
+}
+
+/* Icon Float Animation */
+.socials a i {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+socials a:hover i {
+    animation: iconFloat 0.4s ease-out;
+}
+
+/* Keyframes for animations */
+@keyframes iconPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1.1); }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes iconFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .socials {
+        gap: 1.5rem;
+    }
+    
+    .socials a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .socials {
+        gap: 1.2rem;
+    }
+    
+    .socials a {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
 }
 
 .hamburger {
