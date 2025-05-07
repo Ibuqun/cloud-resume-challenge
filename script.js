@@ -51,3 +51,42 @@ updateViewerCount();
 document.getElementById('hamburger').addEventListener('click', function() {
     document.getElementById('sidebar').classList.toggle('active');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.sidebar nav ul li a');
+    
+    function updateActiveNavLink() {
+        let currentSection = '';
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Find which section is currently in view
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSection = section.id;
+            }
+        });
+        
+        // Update active state on nav links
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href').substring(1);
+            if (href === currentSection) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+    
+    // Initial check on page load
+    updateActiveNavLink();
+    
+    // Update on scroll
+    window.addEventListener('scroll', updateActiveNavLink);
+    
+    // Update on resize
+    window.addEventListener('resize', updateActiveNavLink);
+});

@@ -113,49 +113,47 @@ nav ul li {
     width: 100%;
 }
 
-nav ul li a {
+.sidebar nav ul li a {
     text-decoration: none;
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: 500;
     text-transform: uppercase;
-    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    transition: all 0.3s ease;
     display: block;
     width: 100%;
     padding: 1.2rem 1.5rem;
-    text-align: left;
     position: relative;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    overflow: hidden; /* Clip the pseudo-element */
+    z-index: 1;
 }
 
-nav ul li a::before {
+/* Active state - this needs to be more specific than hover */
+.sidebar nav ul li a.active {
+    color: var(--neon-accent);
+    transform: translateX(2px);
+    background: rgba(56, 189, 248, 0.1);
+    font-weight: 600;
+}
+
+/* Hover state */
+.sidebar nav ul li a:hover {
+    color: var(--neon-accent);
+    transform: translateX(2px);
+    background: rgba(56, 189, 248, 0.1);
+}
+
+/* Indicator for both hover and active states */
+.sidebar nav ul li a:hover::before,
+.sidebar nav ul li a.active::before {
     content: '';
     position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
+    top: 0;
     height: 100%;
-    background: linear-gradient(90deg, rgba(56, 189, 248, 0.1), transparent); /* Subtle gradient */
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: -1; /* Place behind the text */
-}
-
-nav ul li a:hover {
-    color: var(--neon-accent);
-    transform: translateX(2px); /* Slight movement */
-    box-shadow: 0 2px 10px rgba(56, 189, 248, 0.2); /* Subtle shadow */
-}
-
-nav ul li a:hover::before {
-    transform: translateX(0); /* Slide in the gradient */
-}
-
-nav ul li a:hover {
-    color: var(--neon-accent); /* Ensure navigation links use the same color */
-    transform: scale(1.05);
+    width: 4px;
+    background: var(--neon-accent);
+    box-shadow: 0 0 8px var(--neon-accent);
 }
 
 hr {
@@ -188,7 +186,7 @@ hr {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.socials a:hover {
+socials a:hover {
     background-color: var(--neon-accent);
     color: #1E293B;
 }
@@ -1944,3 +1942,4 @@ section:not(:last-child) {
         padding: 0.8rem;
 }
 }
+
