@@ -125,3 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update on resize
     window.addEventListener('resize', updateActiveNavLink);
 });
+
+// Add this to your script.js file if you prefer in-page expansion
+document.querySelectorAll('.experience-card').forEach(card => {
+    card.addEventListener('click', function() {
+        // Remove active class from all cards
+        document.querySelectorAll('.experience-card').forEach(c => 
+            c.classList.remove('active'));
+        
+        // Add active class to clicked card
+        this.classList.add('active');
+    });
+});

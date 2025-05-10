@@ -26,16 +26,12 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#home">HOME</a></li>
-                <hr>
-                <li><a href="#about">ABOUT</a></li>
-                <hr> 
-                <li><a href="#skills">SKILLS</a></li>
-                <hr>
-                <li><a href="#achievements">CERTIFICATIONS</a></li>
-                <hr>               
-                <li><a href="#portfolio">PORTFOLIO</a></li>
-                <hr>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
             </ul>
         </nav>
         <div class="visitor-counter">
@@ -236,6 +232,52 @@
     </div>
 </section>
 
+<section id="experience">
+    <div class="experience-container">
+        <div class="section-header">
+            <h2>Experience</h2>
+            <div class="header-underline"></div>
+        </div>
+        <div class="experience-grid">
+            <div class="experience-card" onclick="window.location.href='#experience-1'">
+                <div class="exp-header">
+                    <div class="exp-company">
+                        <h3>Company Name 1</h3>
+                        <span class="exp-date">Jan 2023 - Present</span>
+                    </div>
+                    <h4 class="exp-title">Senior DevOps Engineer</h4>
+                </div>
+                <p class="exp-brief">Led cloud infrastructure and automation initiatives, improving deployment efficiency by 60%...</p>
+                <span class="read-more">Click to read more →</span>
+            </div>
+
+            <div class="experience-card" onclick="window.location.href='#experience-2'">
+                <div class="exp-header">
+                    <div class="exp-company">
+                        <h3>Company Name 2</h3>
+                        <span class="exp-date">Mar 2021 - Dec 2022</span>
+                    </div>
+                    <h4 class="exp-title">Cloud Infrastructure Engineer</h4>
+                </div>
+                <p class="exp-brief">Architected and maintained AWS cloud infrastructure, reducing costs by 40%...</p>
+                <span class="read-more">Click to read more →</span>
+            </div>
+
+            <div class="experience-card" onclick="window.location.href='#experience-3'">
+                <div class="exp-header">
+                    <div class="exp-company">
+                        <h3>Company Name 3</h3>
+                        <span class="exp-date">Jun 2019 - Feb 2021</span>
+                    </div>
+                    <h4 class="exp-title">Systems Engineer</h4>
+                </div>
+                <p class="exp-brief">Implemented CI/CD pipelines and automated deployment processes...</p>
+                <span class="read-more">Click to read more →</span>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="achievements">
     <div class="certifications-container">
         <div class="section-header">
@@ -264,6 +306,8 @@
         </div>
     </div>
 </section>
+
+
 <script src="script.js"></script> 
 </body>
 </html>
