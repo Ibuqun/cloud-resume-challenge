@@ -1,0 +1,17 @@
+{
+  "name": "aws-api-project",
+  "version": "1.0.0",
+  "description": "A serverless API project using AWS Lambda and API Gateway to manage visitor counts.",
+  "main": "src/lambda/getVisitorCount.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1000.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

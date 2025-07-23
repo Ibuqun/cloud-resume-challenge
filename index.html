@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ibukunoluwa Taiwo A</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="manifest" href="icons/site.webmanifest">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
     <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
@@ -23,6 +19,9 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h1><a href="https://ibukuntaiwo.com/" target="_blank" class="side-head">IBK☁️</a></h1>
+            <button class="mobile-close" id="mobile-close">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
         <nav>
             <ul>
@@ -34,26 +33,27 @@
                 <li><a href="#portfolio">Portfolio</a></li>
             </ul>
         </nav>
-        <div class="visitor-counter">
-            <div class="counter-container">
-                <i class="fas fa-eye counter-icon"></i>
-                <div class="counter-content">
-                    <span class="counter-label">Visitors</span>
-                    <span class="counter-value" id="visitor-count">0</span>
+        <div class="sidebar-bottom">
+            <div class="visitor-counter">
+                <div class="counter-container">
+                    <i class="fas fa-eye counter-icon"></i>
+                    <div class="counter-content">
+                        <span class="counter-label">Visitors</span>
+                        <span class="counter-value" id="visitor-count">0</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="socials">
-            <a href="https://github.com/ibuqun" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/ibukuntaiwoa" target="_blank">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:hello@ibukuntaiwoa.com" target="_blank">
-                <i class="fa-solid fa-envelope"></i>
-                <!--<i class="fa-brands fa-square-letterboxd"></i> -->
-            </a>
+            <div class="socials">
+                <a href="https://github.com/ibuqun" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ibukuntaiwoa" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:hello@ibukuntaiwoa.com" target="_blank">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -260,7 +260,19 @@
                     <h4 class="exp-title">Devops Engineer</h4>
                 </div>
                 <p class="exp-brief">Architected and maintained AWS cloud infrastructure, reducing costs by 40%...</p>
-                <span class="read-more">Click to read more →</span>
+                <button class="read-more" onclick="toggleContent('experience-2-details')">
+        <span class="read-more-text">Click to read more →</span>
+    </button>
+    
+    <div id="experience-2-details" class="experience-details">
+        <ul>
+            <li>Led the migration of 50+ applications to AWS, resulting in 40% cost reduction</li>
+            <li>Implemented Infrastructure as Code using Terraform, reducing deployment time by 70%</li>
+            <li>Established automated CI/CD pipelines with GitHub Actions</li>
+            <li>Set up monitoring and alerting using Prometheus and Grafana</li>
+            <li>Mentored junior engineers on cloud best practices and DevOps methodologies</li>
+        </ul>
+    </div>
             </div>
 
             <div class="experience-card" onclick="window.location.href='#experience-3'">
@@ -272,7 +284,9 @@
                     <h4 class="exp-title">Systems Engineer</h4>
                 </div>
                 <p class="exp-brief">Implemented CI/CD pipelines and automated deployment processes...</p>
-                <span class="read-more">Click to read more →</span>
+                <button class="read-more" onclick="toggleContent('experience-3-details')">
+                <span class="read-more-text">Click to read more →</span>
+                </button>
             </div>
         </div>
     </div>
@@ -287,7 +301,7 @@
         <div class="certifications-grid">
             <div class="certification-card">
                 <div class="cert-icon">
-                    <img src="images/terraform-colour.png" alt="HashiCorp">
+                    <!--<img src="images/terraform-colour.png" alt="HashiCorp">-->
                 </div>
                 <div class="cert-details">
                     <h3>HashiCorp Certified: Terraform Associate</h3>
@@ -305,7 +319,7 @@
             <div class="certifications-grid">
             <div class="certification-card">
                 <div class="cert-icon">
-                    <img src="images/terraform-colour.png" alt="HashiCorp">
+                   <!-- <img src="images/terraform-colour.png" alt="HashiCorp">-->
                 </div>
                 <div class="cert-details">
                     <h3>KCNA: Kubernetes and Cloud Native Associate</h3>
