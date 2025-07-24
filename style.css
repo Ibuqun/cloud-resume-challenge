@@ -2278,8 +2278,9 @@ section {
 
 .cert-meta {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 1rem;
 }
 
 .cert-meta span {
