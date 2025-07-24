@@ -118,6 +118,9 @@ resource "aws_api_gateway_stage" "api_stage" {
   deployment_id = aws_api_gateway_deployment.api_deployment.id
   rest_api_id  = aws_api_gateway_rest_api.visitor_api.id
   stage_name   = "prod"
+  
+  # Cost optimization: disable expensive features
+  xray_tracing_enabled = false
 }
 
 # Custom domain mapping for API Gateway

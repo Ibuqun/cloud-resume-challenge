@@ -25,17 +25,11 @@ resource "aws_iam_role_policy" "lambda_policy" {
       {
         Effect = "Allow"
         Action = [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents",
           "dynamodb:GetItem",
           "dynamodb:PutItem",
           "dynamodb:UpdateItem"
         ]
-        Resource = [
-          "${aws_cloudwatch_log_group.lambda_logs.arn}",
-          "${aws_dynamodb_table.visitor_counter.arn}"
-        ]
+        Resource = aws_dynamodb_table.visitor_counter.arn
       }
     ]
   })

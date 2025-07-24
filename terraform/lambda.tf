@@ -1,4 +1,4 @@
-# Lambda function for get count
+# Lambda function for get count - optimized for cost
 resource "aws_lambda_function" "get_count" {
   filename         = "../aws-api-project/src/lambda/getVisitorCount.zip"
   function_name    = "getVisitorCount"
@@ -6,7 +6,11 @@ resource "aws_lambda_function" "get_count" {
   handler         = "getVisitorCount.handler"
   runtime         = "nodejs18.x"
   source_code_hash = filebase64sha256("../aws-api-project/src/lambda/getVisitorCount.zip")
-
+  
+  # Cost optimizations
+  memory_size = 128  # Minimum memory
+  timeout     = 3    # Reduced timeout
+  
   environment {
     variables = {
       TABLE_NAME = aws_dynamodb_table.visitor_counter.name
@@ -14,7 +18,7 @@ resource "aws_lambda_function" "get_count" {
   }
 }
 
-# Lambda function for update count
+# Lambda function for update count - optimized for cost
 resource "aws_lambda_function" "update_count" {
   filename         = "../aws-api-project/src/lambda/updateVisitorCount.zip"
   function_name    = "updateVisitorCount"
@@ -22,6 +26,10 @@ resource "aws_lambda_function" "update_count" {
   handler         = "updateVisitorCount.handler"
   runtime         = "nodejs18.x"
   source_code_hash = filebase64sha256("../aws-api-project/src/lambda/updateVisitorCount.zip")
+  
+  # Cost optimizations
+  memory_size = 128  # Minimum memory
+  timeout     = 3    # Reduced timeout
 
   environment {
     variables = {
@@ -30,11 +38,8 @@ resource "aws_lambda_function" "update_count" {
   }
 }
 
-# CloudWatch Log Group for Lambda
-resource "aws_cloudwatch_log_group" "lambda_logs" {
-  name              = "/aws/lambda/${aws_lambda_function.get_count.function_name}"
-  retention_in_days = 14
-}
+# CloudWatch logs removed to reduce costs
+# Lambda functions will use default log groups with automatic cleanup
 
 # Lambda permission for API Gateway GET
 resource "aws_lambda_permission" "api_gateway_get" {

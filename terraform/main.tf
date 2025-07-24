@@ -2,7 +2,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-# DynamoDB Table
+# DynamoDB Table - cost optimized
 resource "aws_dynamodb_table" "visitor_counter" {
   name           = "visitor-counter"
   billing_mode   = "PAY_PER_REQUEST"
@@ -11,6 +11,11 @@ resource "aws_dynamodb_table" "visitor_counter" {
   attribute {
     name = "id"
     type = "S"
+  }
+
+  # Cost optimization: disable point-in-time recovery
+  point_in_time_recovery {
+    enabled = false
   }
 
   tags = {
