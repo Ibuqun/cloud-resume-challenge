@@ -26,6 +26,29 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install and Test Lambda Dependencies
+      working-directory: ./aws-api-project
+      run: |
+        npm install
+        npm test
+
+    - name: Package Lambda Functions
+      working-directory: ./aws-api-project/src/lambda
+      run: |
+        # Install dependencies in lambda directory
+        npm install
+        
+        # Package getVisitorCount function
+        zip -r getVisitorCount.zip getVisitorCount.js node_modules/
+        
+        # Package updateVisitorCount function  
+        zip -r updateVisitorCount.zip updateVisitorCount.js node_modules/
+
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
       with:
@@ -60,21 +83,6 @@ jobs:
           --distribution-id ${{ steps.cloudfront.outputs.distribution_id }} \
           --paths "/*"
 
-    - name: Build and Test Lambda Functions
-      working-directory: ./aws-api-project
-      run: |
-        npm install
-        npm test
-
-    - name: Package Lambda Functions
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      working-directory: ./aws-api-project/src/lambda
-      run: |
-        # Package getVisitorCount function
-        zip -r getVisitorCount.zip getVisitorCount.js node_modules/
-        
-        # Package updateVisitorCount function  
-        zip -r updateVisitorCount.zip updateVisitorCount.js node_modules/
 
     - name: Deploy Lambda Functions
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
