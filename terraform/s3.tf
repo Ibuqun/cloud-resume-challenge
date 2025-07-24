@@ -28,6 +28,15 @@ resource "aws_s3_object" "style_css" {
   etag         = filemd5("../style.css")
 }
 
+# Upload resume PDF
+resource "aws_s3_object" "resume_pdf" {
+  bucket       = data.aws_s3_bucket.frontend_bucket.id
+  key          = "Ibukunoluwa_Taiwo.pdf"
+  source       = "../Ibukunoluwa_Taiwo.pdf"
+  content_type = "application/pdf"
+  etag         = filemd5("../Ibukunoluwa_Taiwo.pdf")
+}
+
 # Upload images directory
 resource "aws_s3_object" "images" {
   for_each = fileset("../images", "**/*")
