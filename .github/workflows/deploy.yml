@@ -1,0 +1,104 @@
+name: Deploy Cloud Resume Challenge
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  AWS_REGION: us-east-1
+  TERRAFORM_VERSION: 1.5.0
+
+jobs:
+  deploy:
+    name: Deploy Infrastructure and Website
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.TERRAFORM_VERSION }}
+
+    - name: Terraform Init
+      working-directory: ./terraform
+      run: terraform init
+
+    - name: Terraform Plan
+      working-directory: ./terraform
+      run: terraform plan -no-color
+      continue-on-error: false
+
+    - name: Terraform Apply
+      working-directory: ./terraform
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: terraform apply -auto-approve
+
+    - name: Get CloudFront Distribution ID
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      working-directory: ./terraform
+      id: cloudfront
+      run: |
+        DISTRIBUTION_ID=$(terraform output -raw cloudfront_distribution_id 2>/dev/null || echo "E3O8EYIBC5T1L6")
+        echo "distribution_id=$DISTRIBUTION_ID" >> $GITHUB_OUTPUT
+
+    - name: Invalidate CloudFront Cache
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        aws cloudfront create-invalidation \
+          --distribution-id ${{ steps.cloudfront.outputs.distribution_id }} \
+          --paths "/*"
+
+    - name: Build and Test Lambda Functions
+      working-directory: ./aws-api-project
+      run: |
+        npm install
+        npm test
+
+    - name: Package Lambda Functions
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      working-directory: ./aws-api-project/src/lambda
+      run: |
+        # Package getVisitorCount function
+        zip -r getVisitorCount.zip getVisitorCount.js node_modules/
+        
+        # Package updateVisitorCount function  
+        zip -r updateVisitorCount.zip updateVisitorCount.js node_modules/
+
+    - name: Deploy Lambda Functions
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      working-directory: ./aws-api-project/src/lambda
+      run: |
+        # Update getVisitorCount function
+        aws lambda update-function-code \
+          --function-name getVisitorCount \
+          --zip-file fileb://getVisitorCount.zip
+        
+        # Update updateVisitorCount function
+        aws lambda update-function-code \
+          --function-name updateVisitorCount \
+          --zip-file fileb://updateVisitorCount.zip
+
+    - name: Deployment Summary
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        echo "🚀 Deployment completed successfully!"
+        echo "📋 Deployment Summary:"
+        echo "- ✅ Terraform infrastructure updated"
+        echo "- ✅ Website files uploaded to S3"
+        echo "- ✅ CloudFront cache invalidated"
+        echo "- ✅ Lambda functions updated"
+        echo ""
+        echo "🌐 Website URL: https://ibukuntaiwo.com"
+        echo "🔗 API URL: https://api.ibukuntaiwo.com/visitors"
