@@ -46,11 +46,11 @@ jobs:
         # Install dependencies in lambda directory
         npm install
         
-        # Package getVisitorCount function
-        zip -r getVisitorCount.zip getVisitorCount.js node_modules/
+        # Package getVisitorCount function with utils folder
+        zip -r getVisitorCount.zip getVisitorCount.js ../utils/ node_modules/
         
-        # Package updateVisitorCount function  
-        zip -r updateVisitorCount.zip updateVisitorCount.js node_modules/
+        # Package updateVisitorCount function with utils folder
+        zip -r updateVisitorCount.zip updateVisitorCount.js ../utils/ node_modules/
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
