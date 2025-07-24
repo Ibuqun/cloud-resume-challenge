@@ -1417,7 +1417,7 @@ section p {
 .floating-icons .newrelic-icon { color: #1CE783; }
 .floating-icons .grafana-icon { color: #F46800; }
 .floating-icons .jenkins-icon { color: #D24939; }
-.floating-icons .ansible-icon { color: #EE0000; }
+.floating-icons .argocd-icon { color: #EE0000; }
 .floating-icons .cloud-icon { color: #4285F4; }
 
 /* Update animation for smoother movement */
@@ -2344,7 +2344,7 @@ section {
 @media (max-width: 768px) {
     .certification-card {
         flex-direction: column;
-        text-align: center;
+        text-align: left;
         gap: 1rem;
     }
     
@@ -2357,10 +2357,10 @@ section {
     .verify-btn i {
         font-size: 0.65rem;
     }
-}
     
     .cert-meta {
         flex-direction: column;
+        align-items: flex-start;
         gap: 1rem;
     }
     

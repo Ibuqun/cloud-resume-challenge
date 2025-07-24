@@ -73,7 +73,7 @@
                     
                     <!-- Infrastructure as Code -->
                     <i class="cib-terraform terraform-icon" title="Terraform"></i>
-                    <i class="fab fa-ansible ansible-icon" title="Ansible"></i>
+                    <i class="fas fa-sync-alt argocd-icon" title="ArgoCD"></i>
                     
                     <!-- Programming & Databases -->
                     <i class="fab fa-python"></i>
@@ -179,8 +179,8 @@
                 <span>Github Actions</span>
             </div>
             <div class="skill-item">
-                <img src="images/ansible.png" alt="Ansible">
-                <span>Ansible</span>
+                <img src="images/ArgoCD.png" alt="ArgoCD">
+                <span>ArgoCD</span>
             </div>
         </div>
     </div>
@@ -239,7 +239,7 @@
             <div class="header-underline"></div>
         </div>
         <div class="experience-grid">
-            <div class="experience-card" onclick="window.location.href='#experience-1'">
+            <div class="experience-card">
                 <div class="exp-header">
                     <div class="exp-company">
                         <h3>Moniepoint Group</h3>
@@ -247,11 +247,23 @@
                     </div>
                     <h4 class="exp-title">Site Reliability Engineer</h4>
                 </div>
-                <p class="exp-brief">Led cloud infrastructure and automation initiatives, improving deployment efficiency by 60%...</p>
-                <span class="read-more">Click to read more →</span>
+                <p class="exp-brief">Led incident response efforts, managed war rooms, and documented...</p>
+                <button class="read-more" onclick="toggleContent('experience-1-details')">
+                    <span class="read-more-text">Click to read more →</span>
+                </button>
+                
+                <div id="experience-1-details" class="experience-details">
+                    <ul>
+                        <li>Led incident response efforts, managed war rooms, and documented Root Cause Analyses (RCAs) for high-impact issuess</li>
+                        <li>Defined and tracked SLOs/SLIs for key VAS functions in collaboration with product and development teams</li>
+                        <li>Ensured the stability and performance of airtime, data, and bill payment vending services across all customer channels</li>
+                        <li>Built and maintained dashboards and alerting systems for real-time visibility into service health and transaction success rates</li>
+                        <li>Collaborated with the development team to bake observability and reliability into new VAS product features and deployments</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="experience-card" onclick="window.location.href='#experience-2'">
+            <div class="experience-card">
                 <div class="exp-header">
                     <div class="exp-company">
                         <h3>Stanbic IBTC</h3>
@@ -259,34 +271,43 @@
                     </div>
                     <h4 class="exp-title">Devops Engineer</h4>
                 </div>
-                <p class="exp-brief">Architected and maintained AWS cloud infrastructure, reducing costs by 40%...</p>
+                <p class="exp-brief">Orchestrated the seamless deployment of applications on IIS, Docker, Kubernetes...</p>
                 <button class="read-more" onclick="toggleContent('experience-2-details')">
         <span class="read-more-text">Click to read more →</span>
     </button>
     
     <div id="experience-2-details" class="experience-details">
         <ul>
-            <li>Led the migration of 50+ applications to AWS, resulting in 40% cost reduction</li>
-            <li>Implemented Infrastructure as Code using Terraform, reducing deployment time by 70%</li>
-            <li>Established automated CI/CD pipelines with GitHub Actions</li>
-            <li>Set up monitoring and alerting using Prometheus and Grafana</li>
-            <li>Mentored junior engineers on cloud best practices and DevOps methodologies</li>
+            <li>Orchestrated the seamless deployment of applications on IIS, Docker, Kubernetes and Openshift across five environments</li>
+            <li>Responsible for pushing and deploying updates of the Stanbic mobile application to both the Google Play Store and Apple iOS stores</li>
+            <li>Provided visibility into activities of applications and infrastructure as well as centralised logging using AppDynamics, Grafanaaand other tootls</li>
+            <li>Provided technical support for in-house built applications and APIs running on both Linux and Windows machines </li>
         </ul>
     </div>
             </div>
 
-            <div class="experience-card" onclick="window.location.href='#experience-3'">
+            <div class="experience-card">
                 <div class="exp-header">
                     <div class="exp-company">
-                        <h3>Company Name 3</h3>
-                        <span class="exp-date">Jun 2019 - Feb 2021</span>
+                        <h3>Zenith Bank</h3>
+                        <span class="exp-date">Jun 2019 - Aug 2022</span>
                     </div>
-                    <h4 class="exp-title">Systems Engineer</h4>
+                    <h4 class="exp-title">Payments Processing Officer</h4>
                 </div>
-                <p class="exp-brief">Implemented CI/CD pipelines and automated deployment processes...</p>
+                <p class="exp-brief">Responsible for payments processing and customer cash withdrawals</p>
                 <button class="read-more" onclick="toggleContent('experience-3-details')">
-                <span class="read-more-text">Click to read more →</span>
+                    <span class="read-more-text">Click to read more →</span>
                 </button>
+                
+                <div id="experience-3-details" class="experience-details">
+                    <ul>
+                        <li>Processed high-volume customer payments and cash withdrawal transactions with 99.8% accuracy</li>
+                        <li>Managed customer inquiries and resolved payment-related issues in compliance with banking regulations</li>
+                        <li>Collaborated with IT teams to troubleshoot payment system technical issues</li>
+                        <li>Maintained detailed transaction records and conducted daily reconciliation processes</li>
+                        <li>Trained new staff on payment processing procedures and banking compliance requirements</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -316,7 +337,7 @@
                     </div>
                 </div>
             </div>
-            <div class="certifications-grid">
+            
             <div class="certification-card">
                 <div class="cert-icon">
                    <!-- <img src="images/terraform-colour.png" alt="HashiCorp">-->
@@ -331,6 +352,9 @@
                            class="verify-btn">
                             <i class="fas fa-external-link-alt"></i> Verify
                         </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
