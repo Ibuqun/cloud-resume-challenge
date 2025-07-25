@@ -1,4 +1,4 @@
-const { getVisitorCount, updateVisitorCount } = require('../utils/dynamodb');
+const { getVisitorCount, updateVisitorCount } = require('./utils/dynamodb');
 
 exports.handler = async (event) => {
     try {
