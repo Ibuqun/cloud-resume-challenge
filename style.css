@@ -3056,6 +3056,9 @@ section:not(:last-child) {
 .tech-tag.typescript { background: rgba(49, 120, 198, 0.15); color: #3178C6; border: 1px solid rgba(49, 120, 198, 0.3); }
 .tech-tag.tailwind { background: rgba(56, 178, 172, 0.15); color: #38B2AC; border: 1px solid rgba(56, 178, 172, 0.3); }
 .tech-tag.vercel { background: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); }
+.tech-tag.claude-code { background: rgba(216, 126, 68, 0.15); color: #D87E44; border: 1px solid rgba(216, 126, 68, 0.3); }
+.tech-tag.vite { background: rgba(100, 108, 255, 0.15); color: #646CFF; border: 1px solid rgba(100, 108, 255, 0.3); }
+.tech-tag.shadcn { background: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); }
 
 .tech-tag:hover {
     transform: translateY(-2px);
