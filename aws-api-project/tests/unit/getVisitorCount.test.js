@@ -1,7 +1,7 @@
-const { handler } = require('../../src/lambda/getVisitorCount');
-const dynamodb = require('../../src/lambda/utils/dynamodb');
+const { handler } = require('./src/lambda/getVisitorCount');
+const dynamodb = require('./src/lambda/utils/dynamodb');
 
-jest.mock('../../src/lambda/utils/dynamodb');
+jest.mock('./src/lambda/utils/dynamodb');
 
 describe('getVisitorCount', () => {
     it('should return the visitor count successfully', async () => {
