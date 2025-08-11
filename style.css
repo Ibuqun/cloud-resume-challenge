@@ -2827,10 +2827,21 @@ section:not(:last-child) {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
     margin-top: 3rem;
     padding: 1rem;
+    justify-items: center;
+}
+
+/* Ensure consistent card sizing for 3 projects */
+@media (min-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /* Enhanced Project Cards */
@@ -2877,6 +2888,10 @@ section:not(:last-child) {
 
 .showcase-project {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+}
+
+.development-project {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
 }
 
 /* Project Icon */
@@ -2950,6 +2965,12 @@ section:not(:last-child) {
     background: rgba(59, 130, 246, 0.2);
     color: var(--accent-primary);
     border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.status-badge.in-progress {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--accent-orange);
+    border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 /* Project Description */
@@ -3030,6 +3051,11 @@ section:not(:last-child) {
 .tech-tag.data { background: rgba(16, 185, 129, 0.15); color: var(--accent-secondary); border: 1px solid rgba(16, 185, 129, 0.3); }
 .tech-tag.monitoring { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3); }
 .tech-tag.logs { background: rgba(236, 72, 153, 0.15); color: var(--accent-pink); border: 1px solid rgba(236, 72, 153, 0.3); }
+.tech-tag.react { background: rgba(97, 218, 251, 0.15); color: #61DAFB; border: 1px solid rgba(97, 218, 251, 0.3); }
+.tech-tag.nextjs { background: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); }
+.tech-tag.typescript { background: rgba(49, 120, 198, 0.15); color: #3178C6; border: 1px solid rgba(49, 120, 198, 0.3); }
+.tech-tag.tailwind { background: rgba(56, 178, 172, 0.15); color: #38B2AC; border: 1px solid rgba(56, 178, 172, 0.3); }
+.tech-tag.vercel { background: rgba(255, 255, 255, 0.15); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); }
 
 .tech-tag:hover {
     transform: translateY(-2px);
