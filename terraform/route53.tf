@@ -41,3 +41,16 @@ resource "aws_route53_record" "www" {
     evaluate_target_health = false
   }
 }
+
+# Resume subdomain record for CloudFront
+resource "aws_route53_record" "resume" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "resume.ibukuntaiwo.com"
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.website.domain_name
+    zone_id                = aws_cloudfront_distribution.website.hosted_zone_id
+    evaluate_target_health = false
+  }
+}

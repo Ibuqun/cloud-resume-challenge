@@ -3243,3 +3243,37 @@ section:not(:last-child) {
     }
 }
 
+/* Site Footer */
+.site-footer {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-name {
+    font-weight: 500;
+}
+
+.footer-year {
+    opacity: 0.7;
+}
+
+.footer-year::before {
+    content: "© ";
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 1.5rem 1rem;
+    }
+}
+

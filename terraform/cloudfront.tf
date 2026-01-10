@@ -46,5 +46,5 @@ resource "aws_cloudfront_distribution" "website" {
     minimum_protocol_version = "TLSv1.2_2021"
   }
 
-  aliases = ["ibukuntaiwo.com", "www.ibukuntaiwo.com"]
+  aliases = ["ibukuntaiwo.com", "www.ibukuntaiwo.com", "resume.ibukuntaiwo.com"]
 }
