@@ -1,9 +1,29 @@
 /**
- * Ibukun Taiwo Portfolio
- * Terminal Luxe Design
+ * IBUKUN TAIWO — MISSION CONTROL
+ * Portfolio JavaScript
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ===== Particle System =====
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 30;
+
+    function createParticles() {
+        if (!particlesContainer) return;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    createParticles();
+
     // ===== Custom Cursor =====
     const cursor = document.getElementById('cursor');
     const cursorDot = document.getElementById('cursor-dot');
@@ -20,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.1;
-            cursorY += (mouseY - cursorY) * 0.1;
+            cursorX += (mouseX - cursorX) * 0.12;
+            cursorY += (mouseY - cursorY) * 0.12;
             cursor.style.left = cursorX + 'px';
             cursor.style.top = cursorY + 'px';
             requestAnimationFrame(animateCursor);
@@ -29,14 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCursor();
 
         // Hover effects
-        const hoverables = document.querySelectorAll('a, button, .skill-item, .project, .cert-badge, .about-card');
+        const hoverables = document.querySelectorAll(
+            'a, button, .skill-node, .project-card, .cert-card, .module-card, .timeline-entry'
+        );
+
         hoverables.forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
         });
     }
 
-    // ===== Header Scroll =====
+    // ===== Header Scroll Effect =====
     const header = document.getElementById('header');
 
     function updateHeader() {
@@ -53,12 +76,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== Mobile Menu =====
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const menuClose = document.getElementById('menu-close');
+    const menuItems = document.querySelectorAll('.menu-item');
 
-    function toggleMenu() {
-        menuBtn.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    function openMenu() {
+        menuBtn.classList.add('active');
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
@@ -67,10 +91,22 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
-    menuBtn.addEventListener('click', toggleMenu);
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    }
 
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
+    if (menuClose) {
+        menuClose.addEventListener('click', closeMenu);
+    }
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', closeMenu);
     });
 
     document.addEventListener('keydown', (e) => {
@@ -95,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== Active Nav Link =====
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navNodes = document.querySelectorAll('.nav-node');
 
     function updateActiveNav() {
         const scrollPos = window.scrollY + 200;
@@ -106,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = section.getAttribute('id');
 
             if (scrollPos >= top && scrollPos < top + height) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
+                navNodes.forEach(node => {
+                    node.classList.remove('active');
+                    if (node.getAttribute('href') === `#${id}`) {
+                        node.classList.add('active');
                     }
                 });
             }
@@ -119,15 +155,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateActiveNav, { passive: true });
     updateActiveNav();
 
-    // ===== Skills Color on Hover =====
-    const skillItems = document.querySelectorAll('.skill-item');
+    // ===== Skill Node Colors =====
+    const skillNodes = document.querySelectorAll('.skill-node');
 
-    skillItems.forEach(item => {
-        const color = item.dataset.color;
-
-        item.addEventListener('mouseenter', () => {
-            item.style.setProperty('--skill-color', color);
-        });
+    skillNodes.forEach(node => {
+        const color = node.dataset.color;
+        if (color) {
+            node.addEventListener('mouseenter', () => {
+                node.style.setProperty('--node-color', color);
+                node.style.setProperty('--node-glow', color + '40');
+            });
+        }
     });
 
     // ===== Dynamic Footer Year =====
@@ -150,18 +188,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.section').forEach(section => {
-        observer.observe(section);
+    document.querySelectorAll('.module-section, .module-card, .timeline-entry, .project-card').forEach(el => {
+        observer.observe(el);
     });
+
+    // ===== Metric Bar Animation =====
+    const metricObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.metric-bar').forEach(bar => {
+        metricObserver.observe(bar);
+    });
+
+    // ===== Parallax Effect for Grid Background =====
+    const gridGlow = document.querySelector('.grid-glow');
+
+    if (gridGlow) {
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.scrollY;
+                    gridGlow.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.1}px))`;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    // ===== Mouse Move Effect on Hero Dashboard =====
+    const dashboardFrame = document.querySelector('.dashboard-frame');
+
+    if (dashboardFrame && window.matchMedia('(pointer: fine)').matches) {
+        const heroSection = document.querySelector('.hero-command');
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            dashboardFrame.style.transform = `
+                perspective(1000px)
+                rotateY(${x * 5}deg)
+                rotateX(${-y * 5}deg)
+            `;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            dashboardFrame.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)';
+        });
+    }
+
 });
 
-// ===== Experience Toggle =====
+// ===== Experience Toggle (Outside DOMContentLoaded for onclick) =====
 function toggleExp(button) {
     const details = button.nextElementSibling;
     const isOpen = details.classList.contains('show');
 
     // Close all others
-    document.querySelectorAll('.exp-details.show').forEach(el => {
+    document.querySelectorAll('.entry-details.show').forEach(el => {
         el.classList.remove('show');
         el.previousElementSibling.classList.remove('active');
     });
@@ -215,7 +308,7 @@ async function updateVisitorCount() {
 }
 
 function animateCount(element, start, end) {
-    const duration = 1000;
+    const duration = 1500;
     const startTime = performance.now();
 
     function update(currentTime) {
@@ -236,5 +329,5 @@ function animateCount(element, start, end) {
 
 // Initialize visitor counter after delay
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(updateVisitorCount, 1500);
+    setTimeout(updateVisitorCount, 1000);
 });

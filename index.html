@@ -11,264 +11,540 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Grain overlay -->
-    <div class="grain"></div>
+    <!-- Animated Background Grid -->
+    <div class="grid-bg" aria-hidden="true">
+        <div class="grid-lines"></div>
+        <div class="grid-glow"></div>
+    </div>
 
-    <!-- Cursor follower -->
+    <!-- Floating Particles -->
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <!-- Scanline Effect -->
+    <div class="scanline" aria-hidden="true"></div>
+
+    <!-- Grain Texture -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Custom Cursor -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-dot" id="cursor-dot"></div>
 
-    <!-- Navigation -->
-    <header class="header" id="header">
-        <a href="#hero" class="logo">
-            <span class="logo-text">IBK</span>
-            <span class="logo-dot"></span>
-        </a>
+    <!-- Navigation HUD -->
+    <header class="hud-nav" id="header">
+        <div class="nav-left">
+            <a href="#hero" class="logo-mark">
+                <div class="logo-ring"></div>
+                <span class="logo-text">IBK</span>
+                <div class="logo-status"></div>
+            </a>
+            <div class="system-status">
+                <span class="status-indicator"></span>
+                <span class="status-text">SYSTEMS ONLINE</span>
+            </div>
+        </div>
 
-        <nav class="nav" id="nav">
-            <a href="#about" class="nav-link" data-index="01">About</a>
-            <a href="#skills" class="nav-link" data-index="02">Skills</a>
-            <a href="#experience" class="nav-link" data-index="03">Experience</a>
-            <a href="#work" class="nav-link" data-index="04">Work</a>
+        <nav class="nav-center" id="nav">
+            <a href="#about" class="nav-node" data-section="01">
+                <span class="node-line"></span>
+                <span class="node-text">About</span>
+            </a>
+            <a href="#skills" class="nav-node" data-section="02">
+                <span class="node-line"></span>
+                <span class="node-text">Skills</span>
+            </a>
+            <a href="#experience" class="nav-node" data-section="03">
+                <span class="node-line"></span>
+                <span class="node-text">Experience</span>
+            </a>
+            <a href="#work" class="nav-node" data-section="04">
+                <span class="node-line"></span>
+                <span class="node-text">Projects</span>
+            </a>
         </nav>
 
-        <div class="header-right">
-            <div class="visitor-badge">
-                <span class="visitor-label">Views</span>
-                <span class="visitor-count" id="visitor-count">—</span>
+        <div class="nav-right">
+            <div class="visitor-module">
+                <div class="module-frame">
+                    <span class="module-label">VISITORS</span>
+                    <span class="module-value" id="visitor-count">---</span>
+                </div>
             </div>
-            <button class="menu-btn" id="menu-btn" aria-label="Menu">
-                <span></span>
-                <span></span>
+            <button class="menu-trigger" id="menu-btn" aria-label="Menu">
+                <span class="trigger-bar"></span>
+                <span class="trigger-bar"></span>
+                <span class="trigger-bar"></span>
             </button>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <nav class="mobile-nav">
-            <a href="#about" class="mobile-link">About</a>
-            <a href="#skills" class="mobile-link">Skills</a>
-            <a href="#experience" class="mobile-link">Experience</a>
-            <a href="#work" class="mobile-link">Work</a>
+    <!-- Mobile Command Menu -->
+    <div class="command-menu" id="mobile-menu">
+        <div class="menu-backdrop"></div>
+        <nav class="menu-content">
+            <div class="menu-header">
+                <span class="menu-title">// NAVIGATION</span>
+                <div class="menu-close" id="menu-close">&times;</div>
+            </div>
+            <a href="#about" class="menu-item">
+                <span class="item-num">01</span>
+                <span class="item-text">About</span>
+                <span class="item-arrow">&rarr;</span>
+            </a>
+            <a href="#skills" class="menu-item">
+                <span class="item-num">02</span>
+                <span class="item-text">Skills</span>
+                <span class="item-arrow">&rarr;</span>
+            </a>
+            <a href="#experience" class="menu-item">
+                <span class="item-num">03</span>
+                <span class="item-text">Experience</span>
+                <span class="item-arrow">&rarr;</span>
+            </a>
+            <a href="#work" class="menu-item">
+                <span class="item-num">04</span>
+                <span class="item-text">Projects</span>
+                <span class="item-arrow">&rarr;</span>
+            </a>
+            <div class="menu-footer">
+                <a href="https://github.com/ibuqun" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/ibukuntaiwoa" target="_blank">LinkedIn</a>
+                <a href="mailto:hello@ibukuntaiwo.com">Email</a>
+            </div>
         </nav>
-        <div class="mobile-footer">
-            <a href="https://github.com/ibuqun" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/ibukuntaiwoa" target="_blank">LinkedIn</a>
-            <a href="mailto:hello@ibukuntaiwo.com">Email</a>
-        </div>
     </div>
 
     <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero">
-            <div class="hero-content">
-                <div class="hero-tag">
-                    <span class="tag-dot"></span>
-                    <span>Available for opportunities</span>
+        <!-- Hero Command Center -->
+        <section id="hero" class="hero-command">
+            <div class="hero-grid">
+                <!-- Left Panel: Identity -->
+                <div class="hero-identity">
+                    <div class="identity-tag">
+                        <span class="tag-bracket">[</span>
+                        <span class="tag-status"></span>
+                        <span class="tag-text">AVAILABLE FOR HIRE</span>
+                        <span class="tag-bracket">]</span>
+                    </div>
+
+                    <h1 class="hero-name" data-text="IBUKUN TAIWO">
+                        <span class="name-line">
+                            <span class="char" style="--i:0">I</span><span class="char" style="--i:1">B</span><span class="char" style="--i:2">U</span><span class="char" style="--i:3">K</span><span class="char" style="--i:4">U</span><span class="char" style="--i:5">N</span>
+                        </span>
+                        <span class="name-line">
+                            <span class="char" style="--i:6">T</span><span class="char" style="--i:7">A</span><span class="char" style="--i:8">I</span><span class="char" style="--i:9">W</span><span class="char" style="--i:10">O</span><span class="char accent" style="--i:11">.</span>
+                        </span>
+                    </h1>
+
+                    <div class="hero-role">
+                        <span class="role-prefix">&gt;</span>
+                        <span class="role-text">Site Reliability Engineer</span>
+                        <span class="role-cursor">_</span>
+                    </div>
+
+                    <p class="hero-mission">
+                        Building resilient systems. Automating everything.<br>
+                        <span class="mission-highlight">Keeping production stable at scale.</span>
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#work" class="action-primary">
+                            <span class="action-bg"></span>
+                            <span class="action-text">View Projects</span>
+                            <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="Ibukunoluwa_Taiwo.pdf" download class="action-secondary">
+                            <span class="action-frame"></span>
+                            <span class="action-text">Download CV</span>
+                        </a>
+                    </div>
                 </div>
 
-                <h1 class="hero-name">
-                    <span class="name-line">Ibukun</span>
-                    <span class="name-line">Taiwo<span class="accent">.</span></span>
-                </h1>
+                <!-- Right Panel: Metrics Dashboard -->
+                <div class="hero-dashboard">
+                    <div class="dashboard-frame">
+                        <div class="frame-corner tl"></div>
+                        <div class="frame-corner tr"></div>
+                        <div class="frame-corner bl"></div>
+                        <div class="frame-corner br"></div>
 
-                <p class="hero-title">Site Reliability Engineer</p>
+                        <div class="dashboard-header">
+                            <span class="dash-title">// SYSTEM METRICS</span>
+                            <span class="dash-status">LIVE</span>
+                        </div>
 
-                <p class="hero-desc">
-                    Building resilient systems. Automating everything.<br>
-                    Keeping production stable at scale.
-                </p>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                                    </svg>
+                                </div>
+                                <div class="metric-data">
+                                    <span class="metric-value">99.99<span class="metric-unit">%</span></span>
+                                    <span class="metric-label">Uptime</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="bar-fill" style="--fill: 99%"></div>
+                                </div>
+                            </div>
 
-                <div class="hero-actions">
-                    <a href="#work" class="btn-primary">
-                        <span>View Projects</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <a href="Ibukunoluwa_Taiwo.pdf" download class="btn-outline">
-                        Download CV
-                    </a>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                                <div class="metric-data">
+                                    <span class="metric-value">500<span class="metric-unit">+</span></span>
+                                    <span class="metric-label">Deployments</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="bar-fill" style="--fill: 85%"></div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="metric-data">
+                                    <span class="metric-value">150<span class="metric-unit">+</span></span>
+                                    <span class="metric-label">Incidents Resolved</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="bar-fill" style="--fill: 75%"></div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="metric-data">
+                                    <span class="metric-value">&lt;15<span class="metric-unit">min</span></span>
+                                    <span class="metric-label">Avg Response Time</span>
+                                </div>
+                                <div class="metric-bar">
+                                    <div class="bar-fill" style="--fill: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-terminal">
+                            <code class="terminal-line"><span class="t-prompt">$</span> whoami</code>
+                            <code class="terminal-line output">ibukun.taiwo</code>
+                            <code class="terminal-line"><span class="t-prompt">$</span> cat mission.txt</code>
+                            <code class="terminal-line output">Building reliable infrastructure at scale</code>
+                            <code class="terminal-line"><span class="t-prompt">$</span> <span class="t-cursor">_</span></code>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="hero-visual">
-                <div class="terminal">
-                    <div class="terminal-header">
-                        <span class="terminal-dot"></span>
-                        <span class="terminal-dot"></span>
-                        <span class="terminal-dot"></span>
-                    </div>
-                    <div class="terminal-body">
-                        <code><span class="t-prompt">$</span> whoami</code>
-                        <code class="t-output">ibukun.taiwo</code>
-                        <code><span class="t-prompt">$</span> cat role.txt</code>
-                        <code class="t-output">Site Reliability Engineer</code>
-                        <code><span class="t-prompt">$</span> uptime</code>
-                        <code class="t-output">99.99% availability</code>
-                        <code><span class="t-prompt">$</span> <span class="t-cursor">_</span></code>
-                    </div>
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
                 </div>
-            </div>
-
-            <div class="scroll-hint">
-                <span>Scroll</span>
-                <div class="scroll-line"></div>
+                <span class="scroll-text">SCROLL TO EXPLORE</span>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="section-label">
-                <span class="label-num">01</span>
-                <span class="label-line"></span>
-                <span class="label-text">About</span>
+        <!-- About Module -->
+        <section id="about" class="module-section">
+            <div class="section-header">
+                <div class="header-line"></div>
+                <span class="header-num">01</span>
+                <span class="header-title">ABOUT</span>
+                <div class="header-line"></div>
             </div>
 
-            <div class="about-grid">
-                <div class="about-main">
-                    <h2 class="about-heading">
-                        I'm a <span class="accent">DevOps & SRE</span> professional passionate about building reliable, scalable infrastructure.
+            <div class="about-layout">
+                <div class="about-statement">
+                    <h2 class="statement-text">
+                        I'm a <span class="highlight">DevOps & SRE</span> professional passionate about building <span class="highlight">reliable, scalable</span> infrastructure that powers critical systems.
                     </h2>
                 </div>
 
-                <div class="about-cards">
-                    <div class="about-card">
-                        <div class="card-num">01</div>
-                        <h3>Incident Response</h3>
-                        <p>Managing war rooms and driving RCAs for high-impact production issues</p>
+                <div class="about-modules">
+                    <div class="module-card" data-module="01">
+                        <div class="card-glow"></div>
+                        <div class="card-border"></div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <span class="card-num">01</span>
+                                <div class="card-indicator"></div>
+                            </div>
+                            <h3 class="card-title">Incident Response</h3>
+                            <p class="card-desc">Managing war rooms and driving RCAs for high-impact production issues</p>
+                        </div>
                     </div>
-                    <div class="about-card">
-                        <div class="card-num">02</div>
-                        <h3>Observability</h3>
-                        <p>Building dashboards and alerting systems for real-time visibility</p>
+
+                    <div class="module-card" data-module="02">
+                        <div class="card-glow"></div>
+                        <div class="card-border"></div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <span class="card-num">02</span>
+                                <div class="card-indicator"></div>
+                            </div>
+                            <h3 class="card-title">Observability</h3>
+                            <p class="card-desc">Building dashboards and alerting systems for real-time visibility</p>
+                        </div>
                     </div>
-                    <div class="about-card">
-                        <div class="card-num">03</div>
-                        <h3>Infrastructure as Code</h3>
-                        <p>Terraform, Kubernetes, and containerized deployments at scale</p>
+
+                    <div class="module-card" data-module="03">
+                        <div class="card-glow"></div>
+                        <div class="card-border"></div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <span class="card-num">03</span>
+                                <div class="card-indicator"></div>
+                            </div>
+                            <h3 class="card-title">Infrastructure as Code</h3>
+                            <p class="card-desc">Terraform, Kubernetes, and containerized deployments at scale</p>
+                        </div>
                     </div>
-                    <div class="about-card">
-                        <div class="card-num">04</div>
-                        <h3>CI/CD Pipelines</h3>
-                        <p>Automating deployments across multiple environments</p>
+
+                    <div class="module-card" data-module="04">
+                        <div class="card-glow"></div>
+                        <div class="card-border"></div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <span class="card-num">04</span>
+                                <div class="card-indicator"></div>
+                            </div>
+                            <h3 class="card-title">CI/CD Pipelines</h3>
+                            <p class="card-desc">Automating deployments across multiple environments</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <div class="section-label">
-                <span class="label-num">02</span>
-                <span class="label-line"></span>
-                <span class="label-text">Skills</span>
+        <!-- Skills Arsenal -->
+        <section id="skills" class="module-section">
+            <div class="section-header">
+                <div class="header-line"></div>
+                <span class="header-num">02</span>
+                <span class="header-title">TECH ARSENAL</span>
+                <div class="header-line"></div>
             </div>
 
-            <div class="skills-container">
-                <h2 class="skills-heading">Tech Stack</h2>
-
+            <div class="skills-arsenal">
                 <!-- Cloud & Infrastructure -->
-                <div class="skill-category">
-                    <h3 class="category-title">Cloud & Infrastructure</h3>
-                    <div class="category-skills">
-                        <div class="skill-item" data-color="#FF9900" data-name="AWS">
-                            <svg viewBox="0 0 256 153" class="skill-icon"><path d="M72.392 55.438c0 3.137.34 5.68.933 7.545a45.373 45.373 0 0 0 2.712 6.103c.424.678.593 1.356.593 1.95 0 .847-.508 1.695-1.61 2.543l-5.34 3.56c-.763.508-1.526.763-2.205.763-.848 0-1.695-.424-2.543-1.187a26.224 26.224 0 0 1-3.051-3.984c-.848-1.44-1.696-3.052-2.628-5.001-6.612 7.798-14.921 11.698-24.927 11.698-7.12 0-12.8-2.035-16.954-6.103-4.153-4.07-6.272-9.495-6.272-16.276 0-7.205 2.543-13.054 7.714-17.462 5.17-4.408 12.037-6.612 20.768-6.612 2.882 0 5.849.254 8.985.678 3.137.424 6.358 1.102 9.749 1.865V29.33c0-6.443-1.356-10.935-3.984-13.562-2.712-2.628-7.29-3.9-13.817-3.9-2.967 0-6.018.34-9.155 1.103-3.136.762-6.188 1.695-9.155 2.882-.762.339-1.44.593-1.95.762-.508.17-.848.254-1.187.254-1.017 0-1.525-.762-1.525-2.374v-4.153c0-1.187.169-2.12.593-2.628.424-.508 1.187-1.017 2.374-1.525 2.967-1.525 6.527-2.798 10.68-3.815C33.908.763 38.317.254 42.98.254c9.918 0 17.208 2.289 21.868 6.782 4.577 4.493 6.867 11.359 6.867 20.598v27.126l.677-.322Z" fill="currentColor"/><path d="M230.993 120.964c-27.889 20.598-68.408 31.533-103.247 31.533-48.827 0-92.821-18.056-126.05-48.063-2.628-2.373-.254-5.594 2.881-3.73 35.942 20.853 80.276 33.482 126.136 33.482 30.94 0 64.932-6.442 96.212-19.665 4.662-2.035 8.646 3.052 4.068 6.443Z" fill="currentColor"/></svg>
+                <div class="arsenal-category" data-category="cloud">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
                         </div>
-                        <div class="skill-item" data-color="#4285F4" data-name="GCP">
-                            <svg viewBox="0 0 256 206" class="skill-icon"><path d="m170.252 56.819 22.253-22.253 1.483-9.37C153.437-11.677 88.976-7.496 52.42 33.92 42.267 45.423 34.734 59.764 30.717 74.573l7.97-1.123 44.505-7.34 3.436-3.513c19.797-21.742 53.27-24.667 76.128-6.168l7.496.39Z" fill="currentColor"/><path d="M224.205 73.918a100.249 100.249 0 0 0-30.217-48.722l-31.232 31.232a55.515 55.515 0 0 1 20.379 44.037v5.544c15.351 0 27.8 12.449 27.8 27.8 0 15.352-12.449 27.801-27.8 27.801h-55.678l-5.545 5.622v33.345l5.545 5.467h55.678c39.93.078 72.463-32.143 72.54-72.074a72.135 72.135 0 0 0-31.47-60.052Z" fill="currentColor"/><path d="m72.008 206.091 55.678-.078v-44.505l-55.678.078c-3.944-.001-7.851-.836-11.446-2.46l-7.886 2.46-22.409 22.253-1.952 7.574a71.747 71.747 0 0 0 43.693 14.678Z" fill="currentColor"/><path d="M72.008 61.428C32.078 61.35-.378 93.508.001 133.438a72.135 72.135 0 0 0 28.136 56.787l32.247-32.247c-12.856-5.779-18.574-20.81-12.795-33.665 5.779-12.856 20.81-18.574 33.665-12.795a27.8 27.8 0 0 1 12.795 12.795l32.247-32.247A71.978 71.978 0 0 0 72.008 61.428Z" fill="currentColor"/></svg>
+                        <h3 class="category-name">Cloud & Infrastructure</h3>
+                        <div class="category-line"></div>
+                    </div>
+                    <div class="category-grid">
+                        <div class="skill-node" data-color="#FF9900" data-name="AWS">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 153" class="skill-icon"><path d="M72.392 55.438c0 3.137.34 5.68.933 7.545a45.373 45.373 0 0 0 2.712 6.103c.424.678.593 1.356.593 1.95 0 .847-.508 1.695-1.61 2.543l-5.34 3.56c-.763.508-1.526.763-2.205.763-.848 0-1.695-.424-2.543-1.187a26.224 26.224 0 0 1-3.051-3.984c-.848-1.44-1.696-3.052-2.628-5.001-6.612 7.798-14.921 11.698-24.927 11.698-7.12 0-12.8-2.035-16.954-6.103-4.153-4.07-6.272-9.495-6.272-16.276 0-7.205 2.543-13.054 7.714-17.462 5.17-4.408 12.037-6.612 20.768-6.612 2.882 0 5.849.254 8.985.678 3.137.424 6.358 1.102 9.749 1.865V29.33c0-6.443-1.356-10.935-3.984-13.562-2.712-2.628-7.29-3.9-13.817-3.9-2.967 0-6.018.34-9.155 1.103-3.136.762-6.188 1.695-9.155 2.882-.762.339-1.44.593-1.95.762-.508.17-.848.254-1.187.254-1.017 0-1.525-.762-1.525-2.374v-4.153c0-1.187.169-2.12.593-2.628.424-.508 1.187-1.017 2.374-1.525 2.967-1.525 6.527-2.798 10.68-3.815C33.908.763 38.317.254 42.98.254c9.918 0 17.208 2.289 21.868 6.782 4.577 4.493 6.867 11.359 6.867 20.598v27.126l.677-.322Z" fill="currentColor"/><path d="M230.993 120.964c-27.889 20.598-68.408 31.533-103.247 31.533-48.827 0-92.821-18.056-126.05-48.063-2.628-2.373-.254-5.594 2.881-3.73 35.942 20.853 80.276 33.482 126.136 33.482 30.94 0 64.932-6.442 96.212-19.665 4.662-2.035 8.646 3.052 4.068 6.443Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">AWS</span>
                         </div>
-                        <div class="skill-item" data-color="#326CE5" data-name="Kubernetes">
-                            <svg viewBox="0 0 256 249" class="skill-icon"><path d="M127.327.011c-5.37-.006-10.556 2.077-14.635 6.15L15.666 103.186c-8.153 8.154-8.153 21.396 0 29.549l97.026 97.026c8.154 8.153 21.396 8.153 29.55 0l97.025-97.026c8.154-8.153 8.154-21.395 0-29.549L142.241 6.16C138.162 2.088 132.976.017 127.327.011Z" fill="currentColor"/></svg>
+                        <div class="skill-node" data-color="#4285F4" data-name="GCP">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 206" class="skill-icon"><path d="m170.252 56.819 22.253-22.253 1.483-9.37C153.437-11.677 88.976-7.496 52.42 33.92 42.267 45.423 34.734 59.764 30.717 74.573l7.97-1.123 44.505-7.34 3.436-3.513c19.797-21.742 53.27-24.667 76.128-6.168l7.496.39Z" fill="currentColor"/><path d="M224.205 73.918a100.249 100.249 0 0 0-30.217-48.722l-31.232 31.232a55.515 55.515 0 0 1 20.379 44.037v5.544c15.351 0 27.8 12.449 27.8 27.8 0 15.352-12.449 27.801-27.8 27.801h-55.678l-5.545 5.622v33.345l5.545 5.467h55.678c39.93.078 72.463-32.143 72.54-72.074a72.135 72.135 0 0 0-31.47-60.052Z" fill="currentColor"/><path d="m72.008 206.091 55.678-.078v-44.505l-55.678.078c-3.944-.001-7.851-.836-11.446-2.46l-7.886 2.46-22.409 22.253-1.952 7.574a71.747 71.747 0 0 0 43.693 14.678Z" fill="currentColor"/><path d="M72.008 61.428C32.078 61.35-.378 93.508.001 133.438a72.135 72.135 0 0 0 28.136 56.787l32.247-32.247c-12.856-5.779-18.574-20.81-12.795-33.665 5.779-12.856 20.81-18.574 33.665-12.795a27.8 27.8 0 0 1 12.795 12.795l32.247-32.247A71.978 71.978 0 0 0 72.008 61.428Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">GCP</span>
                         </div>
-                        <div class="skill-item" data-color="#EE0000" data-name="OpenShift">
-                            <svg viewBox="0 0 256 237" class="skill-icon"><path d="M73.482 117.239c-.812 2.824-1.563 5.678-2.208 8.577l-34.674 12.603c.535-3.247 1.213-6.441 2.018-9.587l34.864-11.593Z" fill="currentColor"/><path d="M256 102.816c0 6.915-.54 13.704-1.583 20.337l-41.111 14.947c.607-3.422 1.07-6.892 1.376-10.406.377-4.305.523-8.665.418-13.072l40.9-11.806Z" fill="currentColor"/><path d="M213.19 53.448a109.706 109.706 0 0 1 15.213 24.083l-40.33 11.641c-3.47-6.233-7.622-12.008-12.354-17.238l37.47-18.486Z" fill="currentColor"/></svg>
+                        <div class="skill-node" data-color="#326CE5" data-name="Kubernetes">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 249" class="skill-icon"><path d="M127.327.011c-5.37-.006-10.556 2.077-14.635 6.15L15.666 103.186c-8.153 8.154-8.153 21.396 0 29.549l97.026 97.026c8.154 8.153 21.396 8.153 29.55 0l97.025-97.026c8.154-8.153 8.154-21.395 0-29.549L142.241 6.16C138.162 2.088 132.976.017 127.327.011Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">Kubernetes</span>
+                        </div>
+                        <div class="skill-node" data-color="#EE0000" data-name="OpenShift">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 237" class="skill-icon"><path d="M73.482 117.239c-.812 2.824-1.563 5.678-2.208 8.577l-34.674 12.603c.535-3.247 1.213-6.441 2.018-9.587l34.864-11.593Z" fill="currentColor"/><path d="M256 102.816c0 6.915-.54 13.704-1.583 20.337l-41.111 14.947c.607-3.422 1.07-6.892 1.376-10.406.377-4.305.523-8.665.418-13.072l40.9-11.806Z" fill="currentColor"/><path d="M213.19 53.448a109.706 109.706 0 0 1 15.213 24.083l-40.33 11.641c-3.47-6.233-7.622-12.008-12.354-17.238l37.47-18.486Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">OpenShift</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- DevOps Tools -->
-                <div class="skill-category">
-                    <h3 class="category-title">DevOps Tools</h3>
-                    <div class="category-skills">
-                        <div class="skill-item" data-color="#2496ED" data-name="Docker">
-                            <svg viewBox="0 0 256 185" class="skill-icon"><path d="M250.716 70.497c-5.465-3.726-17.986-5.063-27.702-3.19-1.227-9.075-6.292-16.918-15.508-24.023l-5.298-3.591-3.66 5.236c-4.661 7.003-6.96 16.721-6.226 26.037.366 3.458 1.564 9.609 5.032 14.98-3.525 1.963-10.52 4.661-19.73 4.487H.004l-.336 1.897c-1.097 6.36-1.097 26.238 11.52 41.487 9.609 11.654 23.92 17.555 42.575 17.555 40.475 0 70.428-18.45 84.478-51.974 5.532.1 17.453.067 23.614-11.455.166-.266.498-.898 1.564-3.124l.632-1.363-5.465-3.66Z" fill="currentColor"/></svg>
+                <div class="arsenal-category" data-category="devops">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
                         </div>
-                        <div class="skill-item" data-color="#7B42BC" data-name="Terraform">
-                            <svg viewBox="0 0 256 289" class="skill-icon"><path d="m89.03 0 78.97 45.61v91.22L89.03 91.22V0Z" fill="currentColor"/><path d="M177.63 50.22v91.22l78.97-45.61V4.61l-78.97 45.61Z" fill="currentColor"/><path d="m0 45.17 78.97 45.61v91.22L0 136.4V45.17Z" fill="currentColor"/><path d="m89.03 192.29 78.97 45.61v-91.22l-78.97-45.61v91.22Z" fill="currentColor"/></svg>
+                        <h3 class="category-name">DevOps Tools</h3>
+                        <div class="category-line"></div>
+                    </div>
+                    <div class="category-grid">
+                        <div class="skill-node" data-color="#2496ED" data-name="Docker">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 185" class="skill-icon"><path d="M250.716 70.497c-5.465-3.726-17.986-5.063-27.702-3.19-1.227-9.075-6.292-16.918-15.508-24.023l-5.298-3.591-3.66 5.236c-4.661 7.003-6.96 16.721-6.226 26.037.366 3.458 1.564 9.609 5.032 14.98-3.525 1.963-10.52 4.661-19.73 4.487H.004l-.336 1.897c-1.097 6.36-1.097 26.238 11.52 41.487 9.609 11.654 23.92 17.555 42.575 17.555 40.475 0 70.428-18.45 84.478-51.974 5.532.1 17.453.067 23.614-11.455.166-.266.498-.898 1.564-3.124l.632-1.363-5.465-3.66Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">Docker</span>
                         </div>
-                        <div class="skill-item" data-color="#181717" data-name="GitHub Actions">
-                            <svg viewBox="0 0 256 250" class="skill-icon"><path d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Z" fill="currentColor"/></svg>
+                        <div class="skill-node" data-color="#7B42BC" data-name="Terraform">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 289" class="skill-icon"><path d="m89.03 0 78.97 45.61v91.22L89.03 91.22V0Z" fill="currentColor"/><path d="M177.63 50.22v91.22l78.97-45.61V4.61l-78.97 45.61Z" fill="currentColor"/><path d="m0 45.17 78.97 45.61v91.22L0 136.4V45.17Z" fill="currentColor"/><path d="m89.03 192.29 78.97 45.61v-91.22l-78.97-45.61v91.22Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">Terraform</span>
                         </div>
-                        <div class="skill-item" data-color="#EF7B4D" data-name="ArgoCD">
-                            <svg viewBox="0 0 256 256" class="skill-icon"><circle cx="128" cy="128" r="100" fill="none" stroke="currentColor" stroke-width="16"/><path d="M128 68 L168 148 L128 128 L88 148 Z" fill="currentColor"/><circle cx="128" cy="168" r="20" fill="currentColor"/></svg>
+                        <div class="skill-node" data-color="#ffffff" data-name="GitHub Actions">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 250" class="skill-icon"><path d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">GitHub Actions</span>
+                        </div>
+                        <div class="skill-node" data-color="#EF7B4D" data-name="ArgoCD">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 256" class="skill-icon"><circle cx="128" cy="128" r="100" fill="none" stroke="currentColor" stroke-width="16"/><path d="M128 68 L168 148 L128 128 L88 148 Z" fill="currentColor"/><circle cx="128" cy="168" r="20" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">ArgoCD</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Programming -->
-                <div class="skill-category">
-                    <h3 class="category-title">Programming</h3>
-                    <div class="category-skills">
-                        <div class="skill-item" data-color="#3776AB" data-name="Python">
-                            <svg viewBox="0 0 256 255" class="skill-icon"><path d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072ZM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13Z" fill="currentColor"/><path d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897Z" fill="currentColor"/></svg>
+                <div class="arsenal-category" data-category="programming">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
                         </div>
-                        <div class="skill-item" data-color="#4EAA25" data-name="Bash">
-                            <svg viewBox="0 0 256 256" class="skill-icon"><path d="M238.997 142.561c-6.987-3.208-14.613-5.07-22.686-5.07h-36.875c-3.208 0-6.28.893-8.998 2.5l-33.63 19.413c-6.45 3.744-8.64 12.02-4.897 18.47a13.33 13.33 0 0 0 4.897 4.897l33.63 19.414c2.717 1.607 5.79 2.5 8.998 2.5h36.875c8.073 0 15.7-1.863 22.686-5.07v25.03c0 7.293-5.96 13.253-13.253 13.253H30.256c-7.293 0-13.253-5.96-13.253-13.253V30.895c0-7.293 5.96-13.253 13.253-13.253h195.488c7.293 0 13.253 5.96 13.253 13.253v111.666Z" fill="currentColor"/></svg>
+                        <h3 class="category-name">Programming</h3>
+                        <div class="category-line"></div>
+                    </div>
+                    <div class="category-grid">
+                        <div class="skill-node" data-color="#3776AB" data-name="Python">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 255" class="skill-icon"><path d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072ZM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13Z" fill="currentColor"/><path d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">Python</span>
                         </div>
-                        <div class="skill-item" data-color="#336791" data-name="SQL">
-                            <svg viewBox="0 0 256 264" class="skill-icon"><path d="M255.008 158.086c-1.535-4.649-5.556-7.887-10.756-8.664-2.452-.366-5.26-.21-8.583.475-5.792 1.195-10.089 1.65-13.225 1.738 11.837-19.985 21.462-42.775 27.003-64.228 8.96-34.689 4.172-50.492-1.423-57.64C233.217 10.847 211.614.683 185.552.372c-13.903-.17-26.108 2.575-32.475 4.549-5.928-1.046-12.302-1.63-18.99-1.738-12.537-.2-23.614 2.533-33.079 8.15-5.24-1.772-13.65-4.27-23.362-5.864-22.842-3.752-41.252-.828-54.718 8.685C6.622 25.672-.937 45.684.461 73.634c.444 8.874 5.408 35.874 13.224 61.48 4.492 14.718 9.282 26.94 14.237 36.33 7.027 13.315 14.546 21.156 22.987 23.972 4.731 1.576 13.327 2.68 22.368-4.85Z" fill="currentColor"/></svg>
+                        <div class="skill-node" data-color="#4EAA25" data-name="Bash">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 256" class="skill-icon"><path d="M238.997 142.561c-6.987-3.208-14.613-5.07-22.686-5.07h-36.875c-3.208 0-6.28.893-8.998 2.5l-33.63 19.413c-6.45 3.744-8.64 12.02-4.897 18.47a13.33 13.33 0 0 0 4.897 4.897l33.63 19.414c2.717 1.607 5.79 2.5 8.998 2.5h36.875c8.073 0 15.7-1.863 22.686-5.07v25.03c0 7.293-5.96 13.253-13.253 13.253H30.256c-7.293 0-13.253-5.96-13.253-13.253V30.895c0-7.293 5.96-13.253 13.253-13.253h195.488c7.293 0 13.253 5.96 13.253 13.253v111.666Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">Bash</span>
                         </div>
-                        <div class="skill-item" data-color="#CB171E" data-name="YAML">
-                            <svg viewBox="0 0 256 256" class="skill-icon"><rect width="256" height="256" rx="20" fill="currentColor"/><text x="128" y="160" font-size="100" font-weight="bold" text-anchor="middle" fill="#0a0a0a">Y</text></svg>
+                        <div class="skill-node" data-color="#336791" data-name="SQL">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 264" class="skill-icon"><path d="M255.008 158.086c-1.535-4.649-5.556-7.887-10.756-8.664-2.452-.366-5.26-.21-8.583.475-5.792 1.195-10.089 1.65-13.225 1.738 11.837-19.985 21.462-42.775 27.003-64.228 8.96-34.689 4.172-50.492-1.423-57.64C233.217 10.847 211.614.683 185.552.372c-13.903-.17-26.108 2.575-32.475 4.549-5.928-1.046-12.302-1.63-18.99-1.738-12.537-.2-23.614 2.533-33.079 8.15-5.24-1.772-13.65-4.27-23.362-5.864-22.842-3.752-41.252-.828-54.718 8.685C6.622 25.672-.937 45.684.461 73.634c.444 8.874 5.408 35.874 13.224 61.48 4.492 14.718 9.282 26.94 14.237 36.33 7.027 13.315 14.546 21.156 22.987 23.972 4.731 1.576 13.327 2.68 22.368-4.85Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">SQL</span>
+                        </div>
+                        <div class="skill-node" data-color="#CB171E" data-name="YAML">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 256" class="skill-icon"><rect width="256" height="256" rx="20" fill="currentColor"/><text x="128" y="160" font-size="100" font-weight="bold" text-anchor="middle" fill="#0a0a0a">Y</text></svg>
+                            </div>
+                            <span class="node-label">YAML</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Monitoring -->
-                <div class="skill-category">
-                    <h3 class="category-title">Monitoring & Observability</h3>
-                    <div class="category-skills">
-                        <div class="skill-item" data-color="#E6522C" data-name="Prometheus">
-                            <svg viewBox="0 0 256 257" class="skill-icon"><path d="M128.001.667C57.311.667 0 57.971 0 128.66c0 70.69 57.311 127.994 128.001 127.994S256 199.35 256 128.66C256 57.97 198.689.667 128.001.667Zm0 239.56c-20.112 0-36.419-13.435-36.419-30.004h72.838c0 16.566-16.306 30.004-36.419 30.004Zm60.153-39.94H67.842V178.47h120.314v21.816h-.002Zm-.432-33.045H68.185c-.398-.458-.804-.91-1.188-1.375-12.315-14.954-15.216-22.76-18.032-30.716-.048-.262 14.933 3.06 25.556 5.45 0 0 5.466 1.265 13.458 2.722-7.673-8.994-12.23-20.428-12.23-32.116 0-25.658 19.68-48.079 12.58-66.201 6.91.562 14.3 14.583 14.8 36.505 7.346-10.152 10.42-28.69 10.42-40.056 0-11.769 7.755-25.44 15.512-25.907-6.915 11.396 1.79 21.165 9.53 45.4 2.902 9.103 2.532 24.423 4.772 34.138.744-20.178 4.213-49.62 17.014-59.784-5.647 12.8.836 28.818 5.27 36.518 7.154 12.424 11.49 21.836 11.49 39.638 0 11.936-4.407 23.173-11.847 31.658Z" fill="currentColor"/></svg>
+                <div class="arsenal-category" data-category="monitoring">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
                         </div>
-                        <div class="skill-item" data-color="#F46800" data-name="Grafana">
-                            <svg viewBox="0 0 256 264" class="skill-icon"><path d="M254.481 103.093c-.771-5.725-4.571-11.063-10.028-13.923a17.953 17.953 0 0 0-2.443-1.085c-1.593-7.31-5.393-14.005-10.622-18.958a35.022 35.022 0 0 0-8.558-6.034c-1.929-12.926-9.486-24.456-20.392-30.881-7.135-4.197-15.362-5.996-23.493-5.203a31.47 31.47 0 0 0-7.374-6.738C163.266 15.103 152.024 12.31 141.26 13.93c-4.476.671-8.768 2.104-12.697 4.23C121.187 6.832 108.8.217 95.626.003c-8.754-.139-17.351 2.888-24.259 8.537a38.465 38.465 0 0 0-4.91 4.768 46.73 46.73 0 0 0-16.397 2.055c-10.84 3.585-19.864 11.24-25.3 21.475a45.106 45.106 0 0 0-3.665 10.105c-.27-.006-.54-.02-.81-.02-12.186.1-23.698 6.22-30.132 16.12-4.17 6.409-5.838 14.097-4.714 21.597Z" fill="currentColor"/></svg>
+                        <h3 class="category-name">Monitoring & Observability</h3>
+                        <div class="category-line"></div>
+                    </div>
+                    <div class="category-grid">
+                        <div class="skill-node" data-color="#E6522C" data-name="Prometheus">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 257" class="skill-icon"><path d="M128.001.667C57.311.667 0 57.971 0 128.66c0 70.69 57.311 127.994 128.001 127.994S256 199.35 256 128.66C256 57.97 198.689.667 128.001.667Zm0 239.56c-20.112 0-36.419-13.435-36.419-30.004h72.838c0 16.566-16.306 30.004-36.419 30.004Zm60.153-39.94H67.842V178.47h120.314v21.816h-.002Zm-.432-33.045H68.185c-.398-.458-.804-.91-1.188-1.375-12.315-14.954-15.216-22.76-18.032-30.716-.048-.262 14.933 3.06 25.556 5.45 0 0 5.466 1.265 13.458 2.722-7.673-8.994-12.23-20.428-12.23-32.116 0-25.658 19.68-48.079 12.58-66.201 6.91.562 14.3 14.583 14.8 36.505 7.346-10.152 10.42-28.69 10.42-40.056 0-11.769 7.755-25.44 15.512-25.907-6.915 11.396 1.79 21.165 9.53 45.4 2.902 9.103 2.532 24.423 4.772 34.138.744-20.178 4.213-49.62 17.014-59.784-5.647 12.8.836 28.818 5.27 36.518 7.154 12.424 11.49 21.836 11.49 39.638 0 11.936-4.407 23.173-11.847 31.658Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">Prometheus</span>
                         </div>
-                        <div class="skill-item" data-color="#00BCD4" data-name="AppDynamics">
-                            <svg viewBox="0 0 256 256" class="skill-icon"><circle cx="128" cy="128" r="100" fill="currentColor"/><path d="M128 60 L160 128 L128 196 L96 128 Z" fill="#0a0a0a"/></svg>
+                        <div class="skill-node" data-color="#F46800" data-name="Grafana">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 264" class="skill-icon"><path d="M254.481 103.093c-.771-5.725-4.571-11.063-10.028-13.923a17.953 17.953 0 0 0-2.443-1.085c-1.593-7.31-5.393-14.005-10.622-18.958a35.022 35.022 0 0 0-8.558-6.034c-1.929-12.926-9.486-24.456-20.392-30.881-7.135-4.197-15.362-5.996-23.493-5.203a31.47 31.47 0 0 0-7.374-6.738C163.266 15.103 152.024 12.31 141.26 13.93c-4.476.671-8.768 2.104-12.697 4.23C121.187 6.832 108.8.217 95.626.003c-8.754-.139-17.351 2.888-24.259 8.537a38.465 38.465 0 0 0-4.91 4.768 46.73 46.73 0 0 0-16.397 2.055c-10.84 3.585-19.864 11.24-25.3 21.475a45.106 45.106 0 0 0-3.665 10.105c-.27-.006-.54-.02-.81-.02-12.186.1-23.698 6.22-30.132 16.12-4.17 6.409-5.838 14.097-4.714 21.597Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">Grafana</span>
                         </div>
-                        <div class="skill-item" data-color="#005571" data-name="ELK Stack">
-                            <svg viewBox="0 0 256 256" class="skill-icon"><path d="M128 0C57.308 0 0 57.308 0 128s57.308 128 128 128 128-57.308 128-128S198.692 0 128 0Zm0 234.667c-58.88 0-106.667-47.787-106.667-106.667S69.12 21.333 128 21.333 234.667 69.12 234.667 128 186.88 234.667 128 234.667Z" fill="currentColor"/><path d="M170.667 85.333H85.333v85.334h85.334V85.333Zm-21.334 64H106.667v-42.666h42.666v42.666Z" fill="currentColor"/></svg>
+                        <div class="skill-node" data-color="#00BCD4" data-name="AppDynamics">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 256" class="skill-icon"><circle cx="128" cy="128" r="100" fill="currentColor"/><path d="M128 60 L160 128 L128 196 L96 128 Z" fill="#0a0a0a"/></svg>
+                            </div>
+                            <span class="node-label">AppDynamics</span>
+                        </div>
+                        <div class="skill-node" data-color="#005571" data-name="ELK Stack">
+                            <div class="node-ring"></div>
+                            <div class="node-core">
+                                <svg viewBox="0 0 256 256" class="skill-icon"><path d="M128 0C57.308 0 0 57.308 0 128s57.308 128 128 128 128-57.308 128-128S198.692 0 128 0Zm0 234.667c-58.88 0-106.667-47.787-106.667-106.667S69.12 21.333 128 21.333 234.667 69.12 234.667 128 186.88 234.667 128 234.667Z" fill="currentColor"/><path d="M170.667 85.333H85.333v85.334h85.334V85.333Zm-21.334 64H106.667v-42.666h42.666v42.666Z" fill="currentColor"/></svg>
+                            </div>
+                            <span class="node-label">ELK Stack</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="section">
-            <div class="section-label">
-                <span class="label-num">03</span>
-                <span class="label-line"></span>
-                <span class="label-text">Experience</span>
+        <!-- Experience Timeline -->
+        <section id="experience" class="module-section">
+            <div class="section-header">
+                <div class="header-line"></div>
+                <span class="header-num">03</span>
+                <span class="header-title">EXPERIENCE</span>
+                <div class="header-line"></div>
             </div>
 
-            <div class="exp-list">
-                <article class="exp-item">
-                    <div class="exp-date">2024 — Present</div>
-                    <div class="exp-info">
-                        <h3 class="exp-company">Moniepoint Group</h3>
-                        <p class="exp-role">Site Reliability Engineer</p>
-                        <p class="exp-desc">Leading incident response and ensuring reliability of critical payment services.</p>
-                        <button class="exp-toggle" onclick="toggleExp(this)">
-                            <span>View details</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M6 9l6 6 6-6"/>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <article class="timeline-entry" data-year="2024">
+                    <div class="entry-marker">
+                        <div class="marker-ring"></div>
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="entry-content">
+                        <div class="entry-header">
+                            <span class="entry-date">2024 — Present</span>
+                            <span class="entry-status active">ACTIVE</span>
+                        </div>
+                        <h3 class="entry-company">Moniepoint Group</h3>
+                        <p class="entry-role">Site Reliability Engineer</p>
+                        <p class="entry-desc">Leading incident response and ensuring reliability of critical payment services.</p>
+                        <button class="entry-toggle" onclick="toggleExp(this)">
+                            <span class="toggle-text">View Details</span>
+                            <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <ul class="exp-details">
+                        <ul class="entry-details">
                             <li>Led incident response efforts, managed war rooms, and documented Root Cause Analyses (RCAs)</li>
                             <li>Defined and tracked SLOs/SLIs for key VAS functions with product teams</li>
                             <li>Ensured stability of airtime, data, and bill payment services</li>
@@ -277,19 +553,26 @@
                     </div>
                 </article>
 
-                <article class="exp-item">
-                    <div class="exp-date">2022 — 2024</div>
-                    <div class="exp-info">
-                        <h3 class="exp-company">Stanbic IBTC</h3>
-                        <p class="exp-role">DevOps Support Engineer</p>
-                        <p class="exp-desc">Orchestrating deployments across containerized environments and managing app releases.</p>
-                        <button class="exp-toggle" onclick="toggleExp(this)">
-                            <span>View details</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M6 9l6 6 6-6"/>
+                <article class="timeline-entry" data-year="2022">
+                    <div class="entry-marker">
+                        <div class="marker-ring"></div>
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="entry-content">
+                        <div class="entry-header">
+                            <span class="entry-date">2022 — 2024</span>
+                            <span class="entry-status">COMPLETED</span>
+                        </div>
+                        <h3 class="entry-company">Stanbic IBTC</h3>
+                        <p class="entry-role">DevOps Support Engineer</p>
+                        <p class="entry-desc">Orchestrating deployments across containerized environments and managing app releases.</p>
+                        <button class="entry-toggle" onclick="toggleExp(this)">
+                            <span class="toggle-text">View Details</span>
+                            <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <ul class="exp-details">
+                        <ul class="entry-details">
                             <li>Deployed applications on IIS, Docker, Kubernetes and OpenShift</li>
                             <li>Managed mobile app releases to Google Play and Apple App Store</li>
                             <li>Implemented centralized logging with AppDynamics and Grafana</li>
@@ -298,19 +581,26 @@
                     </div>
                 </article>
 
-                <article class="exp-item">
-                    <div class="exp-date">2020 — 2021</div>
-                    <div class="exp-info">
-                        <h3 class="exp-company">Zenith Bank</h3>
-                        <p class="exp-role">Payments Processing Officer</p>
-                        <p class="exp-desc">Processing high-volume transactions with 99.8% accuracy.</p>
-                        <button class="exp-toggle" onclick="toggleExp(this)">
-                            <span>View details</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M6 9l6 6 6-6"/>
+                <article class="timeline-entry" data-year="2020">
+                    <div class="entry-marker">
+                        <div class="marker-ring"></div>
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="entry-content">
+                        <div class="entry-header">
+                            <span class="entry-date">2020 — 2021</span>
+                            <span class="entry-status">COMPLETED</span>
+                        </div>
+                        <h3 class="entry-company">Zenith Bank</h3>
+                        <p class="entry-role">Payments Processing Officer</p>
+                        <p class="entry-desc">Processing high-volume transactions with 99.8% accuracy.</p>
+                        <button class="entry-toggle" onclick="toggleExp(this)">
+                            <span class="toggle-text">View Details</span>
+                            <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <ul class="exp-details">
+                        <ul class="entry-details">
                             <li>Processed high-volume customer payments with 99.8% accuracy</li>
                             <li>Resolved payment-related issues in compliance with regulations</li>
                             <li>Collaborated with IT to troubleshoot payment system issues</li>
@@ -320,112 +610,222 @@
                 </article>
             </div>
 
-            <!-- Certifications inline -->
-            <div class="certs-row">
-                <h3 class="certs-title">Certifications</h3>
-                <div class="certs-list">
-                    <a href="https://www.credly.com/badges/995ba724-9e35-4d6e-b23c-da04463d8d72/public_url" target="_blank" class="cert-badge">
-                        <span class="cert-name">Terraform Associate</span>
-                        <span class="cert-org">HashiCorp</span>
+            <!-- Certifications -->
+            <div class="certs-panel">
+                <div class="panel-header">
+                    <span class="panel-title">// CERTIFICATIONS</span>
+                </div>
+                <div class="certs-grid">
+                    <a href="https://www.credly.com/badges/995ba724-9e35-4d6e-b23c-da04463d8d72/public_url" target="_blank" class="cert-card">
+                        <div class="cert-glow"></div>
+                        <div class="cert-content">
+                            <div class="cert-badge-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                </svg>
+                            </div>
+                            <div class="cert-info">
+                                <span class="cert-name">Terraform Associate</span>
+                                <span class="cert-issuer">HashiCorp</span>
+                            </div>
+                            <div class="cert-arrow">&rarr;</div>
+                        </div>
                     </a>
-                    <a href="https://www.credly.com/badges/7d3c07ee-dd93-48af-be14-94404ff2138b/public_url" target="_blank" class="cert-badge">
-                        <span class="cert-name">KCNA</span>
-                        <span class="cert-org">CNCF</span>
+                    <a href="https://www.credly.com/badges/7d3c07ee-dd93-48af-be14-94404ff2138b/public_url" target="_blank" class="cert-card">
+                        <div class="cert-glow"></div>
+                        <div class="cert-content">
+                            <div class="cert-badge-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                                </svg>
+                            </div>
+                            <div class="cert-info">
+                                <span class="cert-name">KCNA</span>
+                                <span class="cert-issuer">CNCF</span>
+                            </div>
+                            <div class="cert-arrow">&rarr;</div>
+                        </div>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Work Section -->
-        <section id="work" class="section">
-            <div class="section-label">
-                <span class="label-num">04</span>
-                <span class="label-line"></span>
-                <span class="label-text">Work</span>
+        <!-- Projects Showcase -->
+        <section id="work" class="module-section">
+            <div class="section-header">
+                <div class="header-line"></div>
+                <span class="header-num">04</span>
+                <span class="header-title">PROJECTS</span>
+                <div class="header-line"></div>
             </div>
 
-            <div class="projects-bento">
-                <article class="project featured">
-                    <span class="project-num">01</span>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <span class="status live">Live</span>
-                            <span class="year">2024</span>
-                        </div>
-                        <h3>Cloud Resume Challenge</h3>
-                        <p>Full-stack cloud-native resume with visitor counter, serverless backend, IaC, and CI/CD pipeline on AWS.</p>
-                        <div class="project-stack">
-                            <span>AWS</span>
-                            <span>Terraform</span>
-                            <span>Lambda</span>
-                            <span>DynamoDB</span>
-                            <span>CloudFront</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://ibukuntaiwo.com" target="_blank">Visit</a>
-                            <a href="https://github.com/ibuqun/cloud-resume-challenge" target="_blank">Source</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project">
-                    <span class="project-num">02</span>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <span class="status wip">In Progress</span>
-                            <span class="year">2024</span>
-                        </div>
-                        <h3>Incident Log Analyzer</h3>
-                        <p>Tool for analyzing incident logs and extracting insights for troubleshooting.</p>
-                        <div class="project-stack">
-                            <span>Python</span>
-                            <span>Data Analysis</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://incident-log-analyzer.vercel.app/" target="_blank">Demo</a>
-                            <a href="https://github.com/ibuqun/incident-log-analyzer" target="_blank">Source</a>
+            <div class="projects-showcase">
+                <article class="project-card featured" data-project="01">
+                    <div class="card-perspective">
+                        <div class="card-face">
+                            <div class="project-glow"></div>
+                            <div class="project-border"></div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <span class="project-num">01</span>
+                                    <div class="project-status">
+                                        <span class="status-dot live"></span>
+                                        <span class="status-label">LIVE</span>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Cloud Resume Challenge</h3>
+                                <p class="project-desc">Full-stack cloud-native resume with visitor counter, serverless backend, IaC, and CI/CD pipeline on AWS.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">AWS</span>
+                                    <span class="tech-tag">Terraform</span>
+                                    <span class="tech-tag">Lambda</span>
+                                    <span class="tech-tag">DynamoDB</span>
+                                    <span class="tech-tag">CloudFront</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="https://ibukuntaiwo.com" target="_blank" class="project-link primary">
+                                        <span>Visit Site</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://github.com/ibuqun/cloud-resume-challenge" target="_blank" class="project-link">
+                                        <span>Source Code</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <article class="project">
-                    <span class="project-num">03</span>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <span class="status live">Live</span>
-                            <span class="year">2024</span>
+                <article class="project-card" data-project="02">
+                    <div class="card-perspective">
+                        <div class="card-face">
+                            <div class="project-glow"></div>
+                            <div class="project-border"></div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <span class="project-num">02</span>
+                                    <div class="project-status">
+                                        <span class="status-dot wip"></span>
+                                        <span class="status-label">IN PROGRESS</span>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Incident Log Analyzer</h3>
+                                <p class="project-desc">Tool for analyzing incident logs and extracting insights for troubleshooting.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Data Analysis</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="https://incident-log-analyzer.vercel.app/" target="_blank" class="project-link primary">
+                                        <span>Live Demo</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://github.com/ibuqun/incident-log-analyzer" target="_blank" class="project-link">
+                                        <span>Source</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <h3>Personal Website</h3>
-                        <p>Modern portfolio with performance optimization and exceptional UX.</p>
-                        <div class="project-stack">
-                            <span>Next.js</span>
-                            <span>TypeScript</span>
-                            <span>Tailwind</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://ibukuntaiwo.com" target="_blank">Visit</a>
-                            <a href="https://github.com/ibuqun/personal-website" target="_blank">Source</a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-project="03">
+                    <div class="card-perspective">
+                        <div class="card-face">
+                            <div class="project-glow"></div>
+                            <div class="project-border"></div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <span class="project-num">03</span>
+                                    <div class="project-status">
+                                        <span class="status-dot live"></span>
+                                        <span class="status-label">LIVE</span>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Personal Website</h3>
+                                <p class="project-desc">Modern portfolio with performance optimization and exceptional UX.</p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Next.js</span>
+                                    <span class="tech-tag">TypeScript</span>
+                                    <span class="tech-tag">Tailwind</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="https://ibukuntaiwo.com" target="_blank" class="project-link primary">
+                                        <span>Visit</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+                                        </svg>
+                                    </a>
+                                    <a href="https://github.com/ibuqun/personal-website" target="_blank" class="project-link">
+                                        <span>Source</span>
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-top">
+        <!-- Footer Command -->
+        <footer class="footer-command">
+            <div class="footer-grid">
                 <div class="footer-cta">
-                    <h2>Let's work together</h2>
-                    <a href="mailto:hello@ibukuntaiwo.com" class="footer-email">hello@ibukuntaiwo.com</a>
+                    <h2 class="cta-heading">
+                        <span class="cta-line">Let's build</span>
+                        <span class="cta-line">something <span class="highlight">reliable</span></span>
+                    </h2>
+                    <a href="mailto:hello@ibukuntaiwo.com" class="cta-email">
+                        <span class="email-text">hello@ibukuntaiwo.com</span>
+                        <span class="email-arrow">&rarr;</span>
+                    </a>
                 </div>
-                <div class="footer-social">
-                    <a href="https://github.com/ibuqun" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/ibukuntaiwoa" target="_blank">LinkedIn</a>
-                    <a href="mailto:hello@ibukuntaiwo.com">Email</a>
+
+                <div class="footer-links">
+                    <div class="links-group">
+                        <span class="group-title">// CONNECT</span>
+                        <a href="https://github.com/ibuqun" target="_blank" class="footer-link">
+                            <span class="link-text">GitHub</span>
+                            <span class="link-arrow">&nearr;</span>
+                        </a>
+                        <a href="https://linkedin.com/in/ibukuntaiwoa" target="_blank" class="footer-link">
+                            <span class="link-text">LinkedIn</span>
+                            <span class="link-arrow">&nearr;</span>
+                        </a>
+                        <a href="mailto:hello@ibukuntaiwo.com" class="footer-link">
+                            <span class="link-text">Email</span>
+                            <span class="link-arrow">&nearr;</span>
+                        </a>
+                    </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <span>&copy; <span id="footer-year">2024</span> Ibukun Taiwo. All rights reserved.</span>
+                <div class="bottom-left">
+                    <span class="copyright">&copy; <span id="footer-year">2024</span> Ibukun Taiwo</span>
+                </div>
+                <div class="bottom-center">
+                    <span class="made-with">Built with <span class="heart">&hearts;</span> and lots of coffee</span>
+                </div>
+                <div class="bottom-right">
+                    <span class="status-badge">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">All systems operational</span>
+                    </span>
+                </div>
             </div>
         </footer>
     </main>
