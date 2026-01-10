@@ -1,158 +1,142 @@
-document.querySelectorAll('.sidebar nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-
-window.addEventListener('resize', function () {
-    document.querySelectorAll('section').forEach(section => {
-        section.style.minHeight = `${window.innerHeight}px`;
-    });
-});
-
-window.dispatchEvent(new Event('resize'));
+/**
+ * Ibukun Taiwo Portfolio
+ * Terminal Luxe Design
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger');
-    const sidebar = document.getElementById('sidebar');
-    const mobileOverlay = document.getElementById('mobile-overlay');
-    const mobileClose = document.getElementById('mobile-close');
-    const scrollProgress = document.getElementById('scroll-progress');
+    // ===== Custom Cursor =====
+    const cursor = document.getElementById('cursor');
+    const cursorDot = document.getElementById('cursor-dot');
 
-    function adjustSidebarHeight() {
-        if (window.innerWidth <= 768) {
-            const headerHeight = document.querySelector('.sidebar-header').offsetHeight;
-            const socialHeight = document.querySelector('.socials').offsetHeight;
+    if (cursor && cursorDot && window.matchMedia('(pointer: fine)').matches) {
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
 
-            const availableHeight = window.innerHeight - headerHeight - socialHeight;
-            sidebar.style.height = `${availableHeight}px`;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Hover effects
+        const hoverables = document.querySelectorAll('a, button, .skill-item, .project, .cert-badge, .about-card');
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+    }
+
+    // ===== Header Scroll =====
+    const header = document.getElementById('header');
+
+    function updateHeader() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
         } else {
-            sidebar.style.height = '100vh';
+            header.classList.remove('scrolled');
         }
     }
 
-    function toggleMobileMenu() {
-        const isActive = sidebar.classList.contains('active');
-        
-        sidebar.classList.toggle('active');
-        hamburger.classList.toggle('active');
-        
-        // Only use overlay on larger mobile screens where needed
-        if (mobileOverlay && window.innerWidth > 480) {
-            mobileOverlay.classList.toggle('active');
-        }
-        
-        // Prevent body scroll when menu is open
-        if (!isActive) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+
+    // ===== Mobile Menu =====
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function toggleMenu() {
+        menuBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     }
 
-    function closeMobileMenu() {
-        sidebar.classList.remove('active');
-        hamburger.classList.remove('active');
-        if (mobileOverlay) {
-            mobileOverlay.classList.remove('active');
-        }
+    function closeMenu() {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Event listeners
-    hamburger.addEventListener('click', toggleMobileMenu);
-    mobileClose.addEventListener('click', closeMobileMenu);
-    
-    // Close menu when clicking overlay (if it exists)
-    if (mobileOverlay) {
-        mobileOverlay.addEventListener('click', closeMobileMenu);
-    }
-    
-    // Close menu when clicking nav links on mobile
-    const navLinks = document.querySelectorAll('.sidebar nav ul li a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                closeMobileMenu();
+    menuBtn.addEventListener('click', toggleMenu);
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    // ===== Smooth Scroll =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-    // Add swipe gesture support
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
+    // ===== Active Nav Link =====
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    sidebar.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
+    function updateActiveNav() {
+        const scrollPos = window.scrollY + 200;
+
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            const id = section.getAttribute('id');
+
+            if (scrollPos >= top && scrollPos < top + height) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    // ===== Skills Color on Hover =====
+    const skillItems = document.querySelectorAll('.skill-item');
+
+    skillItems.forEach(item => {
+        const color = item.dataset.color;
+
+        item.addEventListener('mouseenter', () => {
+            item.style.setProperty('--skill-color', color);
+        });
     });
 
-    sidebar.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        currentX = e.touches[0].clientX;
-        const deltaX = currentX - startX;
-        
-        // If swiping left and we've moved enough, start closing
-        if (deltaX < -50 && sidebar.classList.contains('active')) {
-            e.preventDefault();
-            const translateX = Math.max(deltaX, -window.innerWidth);
-            sidebar.style.transform = `translateX(${translateX}px)`;
-        }
-    });
-
-    sidebar.addEventListener('touchend', (e) => {
-        if (!isDragging) return;
-        isDragging = false;
-        
-        const deltaX = currentX - startX;
-        
-        // If swiped left enough, close the menu
-        if (deltaX < -100) {
-            closeMobileMenu();
-        }
-        
-        // Reset transform
-        sidebar.style.transform = '';
-    });
-
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-            closeMobileMenu();
-        }
-    });
-
-    // Handle window resize
-    window.addEventListener('resize', () => {
-        adjustSidebarHeight();
-        
-        // Close mobile menu when switching to desktop
-        if (window.innerWidth > 768) {
-            closeMobileMenu();
-        }
-    });
-
-    adjustSidebarHeight();
-
-    // Dynamic Footer Year
+    // ===== Dynamic Footer Year =====
     const footerYear = document.getElementById('footer-year');
     if (footerYear) {
         footerYear.textContent = new Date().getFullYear();
     }
 
-    // Scroll progress indicator
-    function updateScrollProgress() {
-        const scrollTop = window.pageYOffset;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        scrollProgress.style.width = scrollPercent + '%';
-    }
-
-    // Intersection Observer for animations
+    // ===== Intersection Observer for Animations =====
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -161,77 +145,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
             }
         });
     }, observerOptions);
 
-    // Observe all sections and cards
-    document.querySelectorAll('section, .card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+    document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
     });
-
-    // Enhanced scroll event
-    window.addEventListener('scroll', () => {
-        updateScrollProgress();
-        
-        // Add parallax effect to floating icons
-        const floatingIcons = document.querySelectorAll('.floating-icons i');
-        const scrolled = window.pageYOffset;
-        
-        floatingIcons.forEach((icon, index) => {
-            const rate = scrolled * -0.5 * (index % 3 + 1);
-            icon.style.transform = `translateY(${rate}px)`;
-        });
-    });
-
-    // Initialize scroll progress
-    updateScrollProgress();
 });
 
-const API_ENDPOINT = 'https://vthy0avz3m.execute-api.us-east-1.amazonaws.com/prod/visitors';
+// ===== Experience Toggle =====
+function toggleExp(button) {
+    const details = button.nextElementSibling;
+    const isOpen = details.classList.contains('show');
 
+    // Close all others
+    document.querySelectorAll('.exp-details.show').forEach(el => {
+        el.classList.remove('show');
+        el.previousElementSibling.classList.remove('active');
+    });
+
+    if (!isOpen) {
+        details.classList.add('show');
+        button.classList.add('active');
+    }
+}
+
+// ===== Visitor Counter =====
+const API_ENDPOINT = 'https://vthy0avz3m.execute-api.us-east-1.amazonaws.com/prod/visitors';
 let counterUpdated = false;
 
-async function updateViewerCount() {
+async function updateVisitorCount() {
     if (counterUpdated) return;
     counterUpdated = true;
-    
+
     const counterElement = document.getElementById('visitor-count');
     if (!counterElement) return;
-    
-    let currentCount = 0;
-    
-    // Get current count
+
     try {
+        // Get current count
         const getResponse = await fetch(API_ENDPOINT, {
             method: 'GET',
             mode: 'cors',
             headers: { 'Accept': 'application/json' }
         });
-        
+
         if (getResponse.ok) {
             const getData = await getResponse.json();
             if (getData.count !== undefined) {
-                currentCount = getData.count;
-                counterElement.textContent = currentCount;
+                animateCount(counterElement, 0, getData.count);
             }
-        } else {
-            counterElement.textContent = '--';
-            return;
         }
-    } catch (error) {
-        counterElement.textContent = '--';
-        return;
-    }
-    
-    // Increment count
-    try {
-        const postResponse = await fetch(API_ENDPOINT, {
+
+        // Increment
+        await fetch(API_ENDPOINT, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -240,88 +208,33 @@ async function updateViewerCount() {
             },
             body: JSON.stringify({})
         });
-        
-        if (postResponse.ok) {
-            const updatedData = await postResponse.json();
-            if (updatedData.count !== undefined) {
-                counterElement.textContent = updatedData.count;
-            }
-        }
-        // Silently keep current count if POST fails
+
     } catch (error) {
-        // Silently keep current count if error occurs
+        counterElement.textContent = '—';
     }
 }
 
-// Call the function when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(updateViewerCount, 1000);
-});
+function animateCount(element, start, end) {
+    const duration = 1000;
+    const startTime = performance.now();
 
-// Debug functions removed for production build
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (end - start) * easeOut);
 
+        element.textContent = current.toLocaleString();
 
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.sidebar nav ul li a');
-    
-    function updateActiveNavLink() {
-        let currentSection = '';
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Find which section is currently in view
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentSection = section.id;
-            }
-        });
-        
-        // Update active state on nav links
-        navLinks.forEach(link => {
-            const href = link.getAttribute('href').substring(1);
-            if (href === currentSection) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
     }
-    
-    // Initial check on page load
-    updateActiveNavLink();
-    
-    // Update on scroll
-    window.addEventListener('scroll', updateActiveNavLink);
-    
-    // Update on resize
-    window.addEventListener('resize', updateActiveNavLink);
-});
 
-// Add this to your script.js file if you prefer in-page expansion
-document.querySelectorAll('.experience-card').forEach(card => {
-    card.addEventListener('click', function() {
-        // Remove active class from all cards
-        document.querySelectorAll('.experience-card').forEach(c => 
-            c.classList.remove('active'));
-        
-        // Add active class to clicked card
-        this.classList.add('active');
-    });
-});
-
-function toggleContent(contentId, e) {
-    const content = document.getElementById(contentId);
-    const button = e.currentTarget;
-    const buttonText = button.querySelector('.read-more-text');
-
-    if (content.style.display === 'none' || !content.style.display) {
-        content.style.display = 'block';
-        buttonText.textContent = '← Click to collapse';
-    } else {
-        content.style.display = 'none';
-        buttonText.textContent = 'Click to read more →';
-    }
+    requestAnimationFrame(update);
 }
+
+// Initialize visitor counter after delay
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(updateVisitorCount, 1500);
+});

@@ -3,536 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibukunoluwa Taiwo A</title>
+    <title>Ibukun Taiwo — Site Reliability Engineer</title>
     <link rel="icon" type="image/png" href="images/Ice.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="scroll-progress" id="scroll-progress"></div>
-    <div class="mobile-overlay" id="mobile-overlay"></div>
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h1><a href="https://ibukuntaiwo.com/" target="_blank" class="side-head">IBK☁️</a></h1>
-            <button class="mobile-close" id="mobile-close">
-                <i class="fas fa-times"></i>
+    <!-- Grain overlay -->
+    <div class="grain"></div>
+
+    <!-- Cursor follower -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <a href="#hero" class="logo">
+            <span class="logo-text">IBK</span>
+            <span class="logo-dot"></span>
+        </a>
+
+        <nav class="nav" id="nav">
+            <a href="#about" class="nav-link" data-index="01">About</a>
+            <a href="#skills" class="nav-link" data-index="02">Skills</a>
+            <a href="#experience" class="nav-link" data-index="03">Experience</a>
+            <a href="#work" class="nav-link" data-index="04">Work</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="visitor-badge">
+                <span class="visitor-label">Views</span>
+                <span class="visitor-count" id="visitor-count">—</span>
+            </div>
+            <button class="menu-btn" id="menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
             </button>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-            </ul>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#experience" class="mobile-link">Experience</a>
+            <a href="#work" class="mobile-link">Work</a>
         </nav>
-        <div class="sidebar-bottom">
-            <div class="visitor-counter">
-                <div class="counter-container">
-                    <i class="fas fa-eye counter-icon"></i>
-                    <div class="counter-content">
-                        <span class="counter-label">Views</span>
-                        <span class="counter-value" id="visitor-count">0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="socials">
-                <a href="https://github.com/ibuqun" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/ibukuntaiwoa" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:hello@ibukuntaiwoa.com" target="_blank">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-            </div>
+        <div class="mobile-footer">
+            <a href="https://github.com/ibuqun" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/ibukuntaiwoa" target="_blank">LinkedIn</a>
+            <a href="mailto:hello@ibukuntaiwoa.com">Email</a>
         </div>
     </div>
 
-    <div class="content">
-        <section id="home">
-            <div class="welcome-container">
-                <h1 class="welcome-text">Welcome!</h1>
-                <div class="floating-icons">
-                    <!-- Cloud Platforms -->
-                    <i class="fab fa-aws"></i>
-                    <i class="fab fa-google cloud-icon" title="Google Cloud Platform"></i>
-                    <i class="fab fa-azure cloud-icon" title="Microsoft Azure"></i>
-                    
-                    <!-- Container & Orchestration -->
-                    <i class="fab fa-docker"></i>
-                    <i class="fab fa-kubernetes k8s-icon" title="Kubernetes"></i>
-                    
-                    <!-- Infrastructure as Code -->
-                    <i class="cib-terraform terraform-icon" title="Terraform"></i>
-                    <i class="fas fa-sync-alt argocd-icon" title="ArgoCD"></i>
-                    
-                    <!-- Programming & Databases -->
-                    <i class="fab fa-python"></i>
-                    <i class="fas fa-database sql-icon" title="SQL"></i>
-                    
-                    <!-- Monitoring & Observability -->
-                    <i class="fas fa-chart-line elastic-apm-icon" title="Elastic APM"></i>
-                    <i class="fas fa-tachometer-alt grafana-icon" title="Grafana"></i>
-                    <i class="fas fa-tachometer-alt newrelic-icon" title="New Relic"></i>
-                    <i class="fas fa-tachometer-alt appdynamics-icon" title="AppDynamics"></i>
-                    
-                    <!-- Version Control & CI/CD -->
-                    <i class="fab fa-github"></i>
-                    <i class="fab fa-gitlab"></i>
-                    <i class="fab fa-jenkins jenkins-icon" title="Jenkins"></i>
-                    
-                    <!-- General DevOps -->
-                    <i class="fas fa-terminal"></i>
-                    <i class="fas fa-code-branch"></i>
-                    <i class="fas fa-cogs"></i>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <span class="tag-dot"></span>
+                    <span>Available for opportunities</span>
                 </div>
-            </div>
-        </section>
-        
 
-        <section id="about">
-    <div class="about-container">
-        <div class="section-header">
-            <h2>ABOUT ME</h2>
-            <div class="header-underline"></div>
-        </div>
-        <div class="about-content">
-            <div class="about-text-container">
-                <div class="greeting">
-                    <h3>Hey, I'm Ibukun! <span class="wave">👋</span></h3>
-                </div>
-                <div class="about-description">
-                    <p>I'm a <span class="highlight">DevOps Engineer</span> with a strong background in cloud-native technologies.</p>
-                    <p>I focus on:</p>
-                    <ul class="focus-areas">
-                        <li>🔄 Automating deployment pipelines</li>
-                        <li>📊 Enhancing system observability</li>
-                        <li>🔧 Infrastructure as code practices</li>
-                        <li>🚀 Implementing CI/CD workflows</li>
-                        <li>🎯 Managing container orchestration</li>
-                        <li>🔧 Maintaining application stability</li>
-                    </ul>
-                    <p class="closing-text">I care about clean deployments, fast recovery, and working with teams to keep systems stable and efficient. 🚀</p>
-                </div>
-                <div class="download-button">
-                    <a href="Ibukunoluwa_Taiwo.pdf" download>
-                        <i class="fas fa-file-download"></i>
-                        Download Resume
+                <h1 class="hero-name">
+                    <span class="name-line">Ibukun</span>
+                    <span class="name-line">Taiwo<span class="accent">.</span></span>
+                </h1>
+
+                <p class="hero-title">Site Reliability Engineer</p>
+
+                <p class="hero-desc">
+                    Building resilient systems. Automating everything.<br>
+                    Keeping production stable at scale.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#work" class="btn-primary">
+                        <span>View Projects</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="Ibukunoluwa_Taiwo.pdf" download class="btn-outline">
+                        Download CV
                     </a>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-        
 
-        <section id="skills">
-    <div class="skills-container">
-        <div class="section-header">
-            <h2>TECHNICAL SKILLS</h2>
-            <div class="header-underline"></div>
-        </div>
-        <div class="skills-grid">
-    <div class="skill-category">
-        <h3><i class="fas fa-cloud"></i> Cloud & Infrastructure</h3>
-        <div class="skill-items">
-            <div class="skill-item">
-                <img src="images/aws.png" alt="AWS">
-                <span>AWS</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/gcp.png" alt="GCP">
-                <span>GCP</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/openshift.png" alt="Azure">
-                <span>Redhat Openshift</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/kubernetes.png" alt="Kubernetes">
-                <span>Kubernetes</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="skill-category">
-        <h3><i class="fas fa-wrench"></i> DevOps Tools</h3>
-        <div class="skill-items">
-            <div class="skill-item">
-                <img src="images/docker.png" alt="Docker">
-                <span>Docker</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/terraform-colour.png" alt="Terraform">
-                <span>Terraform</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/github.png" alt="Jenkins">
-                <span>Github Actions</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/ArgoCD.png" alt="ArgoCD">
-                <span>ArgoCD</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Programming & Scripting</h3>
-        <div class="skill-items">
-            <div class="skill-item">
-                <img src="images/python.png" alt="Python">
-                <span>Python</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/bash.png" alt="Bash">
-                <span>Bash</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/sql.png" alt="JavaScript">
-                <span>SQL</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/yaml.png" alt="YAML">
-                <span>YAML</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="skill-category">
-        <h3><i class="fas fa-database"></i> Database & Monitoring</h3>
-        <div class="skill-items">
-            <div class="skill-item">
-                <img src="images/mysql.png" alt="MySQL">
-                <span>MySQL</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/mongodb.png" alt="MongoDB">
-                <span>MongoDB</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/prometheus.png" alt="Prometheus">
-                <span>Prometheus</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/grafana.png" alt="Grafana">
-                <span>Grafana</span>
-            </div>
-        </div>
-    </div>
-</div>
-    </div>
-</section>
-
-<section id="experience">
-    <div class="experience-container">
-        <div class="section-header">
-            <h2>Experience</h2>
-            <div class="header-underline"></div>
-        </div>
-        <div class="experience-grid">
-            <div class="experience-card">
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Moniepoint Group</h3>
-                        <span class="exp-date">Nov 2024 - Present</span>
+            <div class="hero-visual">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
+                        <span class="terminal-dot"></span>
                     </div>
-                    <h4 class="exp-title">Site Reliability Engineer</h4>
-                </div>
-                <p class="exp-brief">Led incident response efforts, managed war rooms, and documented...</p>
-                <button class="read-more" onclick="toggleContent('experience-1-details', event)">
-                    <span class="read-more-text">Click to read more →</span>
-                </button>
-                
-                <div id="experience-1-details" class="experience-details">
-                    <ul>
-                        <li>Led incident response efforts, managed war rooms, and documented Root Cause Analyses (RCAs) for high-impact issuess</li>
-                        <li>Defined and tracked SLOs/SLIs for key VAS functions in collaboration with product and development teams</li>
-                        <li>Ensured the stability and performance of airtime, data, and bill payment vending services across all customer channels</li>
-                        <li>Built and maintained dashboards and alerting systems for real-time visibility into service health and transaction success rates</li>
-                        <li>Collaborated with the development team to bake observability and reliability into new VAS product features and deployments</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Stanbic IBTC</h3>
-                        <span class="exp-date">Aug 2022 - Nov 2024</span>
-                    </div>
-                    <h4 class="exp-title">Devops Support Engineer</h4>
-                </div>
-                <p class="exp-brief">Orchestrated the seamless deployment of applications on IIS, Docker, Kubernetes...</p>
-                <button class="read-more" onclick="toggleContent('experience-2-details', event)">
-        <span class="read-more-text">Click to read more →</span>
-    </button>
-    
-    <div id="experience-2-details" class="experience-details">
-        <ul>
-            <li>Orchestrated the seamless deployment of applications on IIS, Docker, Kubernetes and Openshift across five environments</li>
-            <li>Responsible for pushing and deploying updates of the Stanbic mobile application to both the Google Play Store and Apple iOS stores</li>
-            <li>Provided visibility into activities of applications and infrastructure as well as centralised logging using AppDynamics, Grafanaaand other tootls</li>
-            <li>Provided technical support for in-house built applications and APIs running on both Linux and Windows machines </li>
-        </ul>
-    </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Zenith Bank</h3>
-                        <span class="exp-date">Jul 2020 - Nov 2021</span>
-                    </div>
-                    <h4 class="exp-title">Payments Processing Officer</h4>
-                </div>
-                <p class="exp-brief">Responsible for payments processing and customer cash withdrawals</p>
-                <button class="read-more" onclick="toggleContent('experience-3-details', event)">
-                    <span class="read-more-text">Click to read more →</span>
-                </button>
-                
-                <div id="experience-3-details" class="experience-details">
-                    <ul>
-                        <li>Processed high-volume customer payments and cash withdrawal transactions with 99.8% accuracy</li>
-                        <li>Managed customer inquiries and resolved payment-related issues in compliance with banking regulations</li>
-                        <li>Collaborated with IT teams to troubleshoot payment system technical issues</li>
-                        <li>Maintained detailed transaction records and conducted daily reconciliation processes</li>
-                        <li>Trained new staff on payment processing procedures and banking compliance requirements</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="achievements">
-    <div class="certifications-container">
-        <div class="section-header">
-            <h2>Certifications</h2>
-            <div class="header-underline"></div>
-        </div>
-        <div class="certifications-grid">
-            <div class="certification-card">
-                <div class="cert-icon">
-                    <!--<img src="images/terraform-colour.png" alt="HashiCorp">-->
-                </div>
-                <div class="cert-details">
-                    <h3>HashiCorp Certified: Terraform Associate</h3>
-                    <!-- <p>Credential ID: 995ba724-9e35-4d6e</p> -->
-                    <div class="cert-meta">
-                       <!-- <span><i class="far fa-calendar-alt"></i> Mar 2025</span> -->
-                        <a href="https://www.credly.com/badges/995ba724-9e35-4d6e-b23c-da04463d8d72/public_url" 
-                           target="_blank" 
-                           class="verify-btn">
-                            <i class="fas fa-external-link-alt"></i> Verify
-                        </a>
+                    <div class="terminal-body">
+                        <code><span class="t-prompt">$</span> whoami</code>
+                        <code class="t-output">ibukun.taiwo</code>
+                        <code><span class="t-prompt">$</span> cat role.txt</code>
+                        <code class="t-output">Site Reliability Engineer</code>
+                        <code><span class="t-prompt">$</span> uptime</code>
+                        <code class="t-output">99.99% availability</code>
+                        <code><span class="t-prompt">$</span> <span class="t-cursor">_</span></code>
                     </div>
                 </div>
             </div>
-            
-            <div class="certification-card">
-                <div class="cert-icon">
-                   <!-- <img src="images/terraform-colour.png" alt="HashiCorp">-->
-                </div>
-                <div class="cert-details">
-                    <h3>KCNA: Kubernetes and Cloud Native Associate</h3>
-                    <!-- <p>Credential ID: 995ba724-9e35-4d6e</p> -->
-                    <div class="cert-meta">
-                       <!-- <span><i class="far fa-calendar-alt"></i> Mar 2025</span> -->
-                        <a href="https://www.credly.com/badges/7d3c07ee-dd93-48af-be14-94404ff2138b/public_url" 
-                           target="_blank" 
-                           class="verify-btn">
-                            <i class="fas fa-external-link-alt"></i> Verify
-                        </a>
-                    </div>
-                </div>
+
+            <div class="scroll-hint">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
             </div>
-        </div>
-    </div>
         </section>
 
-        <section id="portfolio">
-            <div class="portfolio-container">
-                <div class="section-header">
-                    <h2>PORTFOLIO</h2>
-                    <div class="header-underline"></div>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-label">
+                <span class="label-num">01</span>
+                <span class="label-line"></span>
+                <span class="label-text">About</span>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-main">
+                    <h2 class="about-heading">
+                        I'm a <span class="accent">DevOps & SRE</span> professional passionate about building reliable, scalable infrastructure.
+                    </h2>
                 </div>
-                <div class="portfolio-grid">
-                    <!-- Incident Log Analyzer -->
-                    <div class="project-card featured-project">
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3>Incident Log Analyzer</h3>
-                                <div class="project-status">
-                                    <span class="status-badge in-progress">In Progress</span>
-                                </div>
-                            </div>
-                            <div class="project-description">
-                                <p>A powerful tool for analyzing incident logs and extracting meaningful insights for troubleshooting and system monitoring. Built to help DevOps teams quickly identify patterns and root causes in large-scale systems.</p>
-                            </div>
-                            <div class="project-highlights">
-                                <div class="highlight-item">
-                                    <i class="fas fa-bolt"></i>
-                                    <span>Real-time Analysis</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-search"></i>
-                                    <span>Pattern Detection</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-chart-bar"></i>
-                                    <span>Visual Insights</span>
-                                </div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag python">Python</span>
-                                <span class="tech-tag data">Data Analysis</span>
-                                <span class="tech-tag monitoring">Monitoring</span>
-                                <span class="tech-tag logs">Log Processing</span>
-                            </div>
-                        </div>
-                        <div class="project-footer">
-                            <div class="project-links">
-                                <a href="https://incident-log-analyzer.vercel.app/" target="_blank" class="project-link primary">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    <span>Live Demo</span>
-                                </a>
-                                <a href="https://github.com/ibuqun/incident-log-analyzer" target="_blank" class="project-link secondary">
-                                    <i class="fab fa-github"></i>
-                                    <span>Source</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Cloud Resume Challenge -->
-                    <div class="project-card showcase-project">
-                        <div class="project-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3>Cloud Resume Challenge</h3>
-                                <div class="project-status">
-                                    <span class="status-badge live">Live</span>
-                                </div>
-                            </div>
-                            <div class="project-description">
-                                <p>A full-stack cloud-native resume website with visitor counter, demonstrating modern cloud architecture and DevOps practices. Features serverless backend, infrastructure as code, and CI/CD pipeline.</p>
-                            </div>
-                            <div class="project-highlights">
-                                <div class="highlight-item">
-                                    <i class="fas fa-server"></i>
-                                    <span>Serverless Architecture</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-rocket"></i>
-                                    <span>CI/CD Pipeline</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>Visitor Analytics</span>
-                                </div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag aws">AWS</span>
-                                <span class="tech-tag terraform">Terraform</span>
-                                <span class="tech-tag lambda">Lambda</span>
-                                <span class="tech-tag dynamodb">DynamoDB</span>
-                                <span class="tech-tag cloudfront">CloudFront</span>
-                                <span class="tech-tag javascript">JavaScript</span>
-                            </div>
-                        </div>
-                        <div class="project-footer">
-                            <div class="project-links">
-                                <a href="https://ibukuntaiwo.com" target="_blank" class="project-link primary">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    <span>Live Site</span>
-                                </a>
-                                <a href="https://github.com/ibuqun/cloud-resume-challenge" target="_blank" class="project-link secondary">
-                                    <i class="fab fa-github"></i>
-                                    <span>Source</span>
-                                </a>
-                            </div>
-                        </div>
+                <div class="about-cards">
+                    <div class="about-card">
+                        <div class="card-num">01</div>
+                        <h3>Incident Response</h3>
+                        <p>Managing war rooms and driving RCAs for high-impact production issues</p>
                     </div>
-
-                    <!-- Personal Website -->
-                    <div class="project-card development-project">
-                        <div class="project-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3>Personal Website</h3>
-                                <div class="project-status">
-                                    <span class="status-badge live">Live</span>
-                                </div>
-                            </div>
-                            <div class="project-description">
-                                <p>Modern, responsive personal website showcasing projects, skills, and professional experience. Building with cutting-edge technologies and focusing on performance, accessibility, and user experience.</p>
-                            </div>
-                            <div class="project-highlights">
-                                <div class="highlight-item">
-                                    <i class="fas fa-mobile-alt"></i>
-                                    <span>Mobile-First Design</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-rocket"></i>
-                                    <span>Performance Optimized</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-paint-brush"></i>
-                                    <span>Modern UI/UX</span>
-                                </div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag react">React</span>
-                                <span class="tech-tag nextjs">Next.js</span>
-                                <span class="tech-tag typescript">TypeScript</span>
-                                <span class="tech-tag tailwind">Tailwind CSS</span>
-                                <span class="tech-tag vercel">Vercel</span>
-                            </div>
-                        </div>
-                        <div class="project-footer">
-                            <div class="project-links">
-                                <a href="https://ibukuntaiwo.com" target="_blank" class="project-link primary">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    <span>Live Site</span>
-                                </a>
-                                <a href="https://github.com/ibuqun/personal-website" target="_blank" class="project-link secondary">
-                                    <i class="fab fa-github"></i>
-                                    <span>Source</span>
-                                </a>
-                            </div>
-                        </div>
+                    <div class="about-card">
+                        <div class="card-num">02</div>
+                        <h3>Observability</h3>
+                        <p>Building dashboards and alerting systems for real-time visibility</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-num">03</div>
+                        <h3>Infrastructure as Code</h3>
+                        <p>Terraform, Kubernetes, and containerized deployments at scale</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-num">04</div>
+                        <h3>CI/CD Pipelines</h3>
+                        <p>Automating deployments across multiple environments</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="site-footer">
-            <div class="footer-content">
-                <span class="footer-name">Ibukun Taiwo</span>
-                <span class="footer-year" id="footer-year">2024</span>
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-label">
+                <span class="label-num">02</span>
+                <span class="label-line"></span>
+                <span class="label-text">Skills</span>
+            </div>
+
+            <div class="skills-container">
+                <h2 class="skills-heading">Tech Stack</h2>
+
+                <div class="skills-grid">
+                    <!-- Cloud -->
+                    <div class="skill-item" data-color="#FF9900" data-name="AWS">
+                        <svg viewBox="0 0 256 153" class="skill-icon">
+                            <path d="M72.392 55.438c0 3.137.34 5.68.933 7.545a45.373 45.373 0 0 0 2.712 6.103c.424.678.593 1.356.593 1.95 0 .847-.508 1.695-1.61 2.543l-5.34 3.56c-.763.508-1.526.763-2.205.763-.848 0-1.695-.424-2.543-1.187a26.224 26.224 0 0 1-3.051-3.984c-.848-1.44-1.696-3.052-2.628-5.001-6.612 7.798-14.921 11.698-24.927 11.698-7.12 0-12.8-2.035-16.954-6.103-4.153-4.07-6.272-9.495-6.272-16.276 0-7.205 2.543-13.054 7.714-17.462 5.17-4.408 12.037-6.612 20.768-6.612 2.882 0 5.849.254 8.985.678 3.137.424 6.358 1.102 9.749 1.865V29.33c0-6.443-1.356-10.935-3.984-13.562-2.712-2.628-7.29-3.9-13.817-3.9-2.967 0-6.018.34-9.155 1.103-3.136.762-6.188 1.695-9.155 2.882-.762.339-1.44.593-1.95.762-.508.17-.848.254-1.187.254-1.017 0-1.525-.762-1.525-2.374v-4.153c0-1.187.169-2.12.593-2.628.424-.508 1.187-1.017 2.374-1.525 2.967-1.525 6.527-2.798 10.68-3.815C33.908.763 38.317.254 42.98.254c9.918 0 17.208 2.289 21.868 6.782 4.577 4.493 6.867 11.359 6.867 20.598v27.126l.677-.322Zm-34.453 12.883c2.797 0 5.68-.508 8.731-1.525 3.052-1.017 5.765-2.882 8.054-5.425 1.356-1.61 2.374-3.39 2.882-5.51.509-2.119.848-4.662.848-7.714v-3.73a70.791 70.791 0 0 0-7.799-1.441 63.874 63.874 0 0 0-7.968-.509c-5.68 0-9.833 1.102-12.63 3.391-2.798 2.289-4.154 5.51-4.154 9.748 0 3.984 1.017 6.951 3.136 8.986 2.035 2.119 5.002 3.136 8.9 3.136v.593Zm68.153 9.24c-1.356 0-2.289-.254-2.967-.848-.678-.509-1.271-1.61-1.78-3.136L81.377 7.97c-.509-1.61-.763-2.628-.763-3.137 0-1.271.678-1.95 2.035-1.95h8.308c1.44 0 2.458.254 3.051.848.678.508 1.187 1.61 1.695 3.136l14.752 58.125 13.734-58.125c.424-1.61.933-2.628 1.61-3.136.678-.509 1.78-.848 3.137-.848h6.781c1.44 0 2.459.254 3.137.848.678.508 1.271 1.61 1.61 3.136l13.904 58.887L170.2 6.952c.508-1.61 1.102-2.628 1.695-3.136.678-.509 1.695-.848 3.052-.848h7.883c1.356 0 2.12.678 2.12 1.95 0 .423-.085.847-.17 1.355-.085.509-.254 1.187-.593 2.035l-20.938 65.398c-.509 1.61-1.102 2.628-1.78 3.136-.678.509-1.695.848-2.966.848h-7.29c-1.44 0-2.458-.254-3.136-.848-.678-.593-1.271-1.61-1.61-3.221l-13.649-56.682-13.565 56.597c-.424 1.61-.933 2.628-1.61 3.221-.679.593-1.78.848-3.137.848h-7.29Zm108.99 2.289c-4.408 0-8.816-.509-13.054-1.526-4.239-1.017-7.545-2.119-9.749-3.39-1.356-.763-2.289-1.611-2.628-2.374a5.983 5.983 0 0 1-.509-2.374V65.27c0-1.61.593-2.373 1.695-2.373.424 0 .848.085 1.271.17.424.084 1.017.339 1.695.593a36.726 36.726 0 0 0 7.461 2.374c2.713.593 5.34.848 8.053.848 4.239 0 7.545-.762 9.834-2.288 2.289-1.526 3.475-3.73 3.475-6.527 0-1.95-.593-3.56-1.78-4.916-1.187-1.356-3.475-2.628-6.782-3.815l-9.749-3.052c-4.916-1.526-8.562-3.815-10.765-6.866-2.204-2.967-3.39-6.273-3.39-9.749 0-2.797.593-5.255 1.78-7.374 1.187-2.12 2.797-3.984 4.831-5.51 2.035-1.61 4.324-2.797 7.036-3.645 2.713-.847 5.51-1.27 8.478-1.27 1.44 0 2.967.084 4.408.339 1.526.254 2.882.508 4.239.847 1.271.339 2.458.678 3.56 1.017 1.102.339 1.95.678 2.543 1.017.848.424 1.44.847 1.78 1.355.339.424.508 1.102.508 2.035v4.153c0 1.61-.593 2.458-1.695 2.458-.593 0-1.525-.254-2.797-.763-4.239-1.78-8.986-2.712-14.244-2.712-3.815 0-6.866.593-9.07 1.865-2.204 1.271-3.306 3.221-3.306 5.934 0 1.95.678 3.645 2.035 5.001 1.356 1.356 3.899 2.712 7.545 3.984l9.58 3.052c4.831 1.526 8.307 3.645 10.341 6.358 2.035 2.712 2.967 5.848 2.967 9.324 0 2.882-.593 5.51-1.695 7.799-1.187 2.289-2.798 4.323-4.916 5.934-2.12 1.695-4.662 2.967-7.63 3.899-3.052.848-6.273 1.356-9.749 1.356Z" fill="currentColor"/>
+                            <path d="M230.993 120.964c-27.889 20.598-68.408 31.533-103.247 31.533-48.827 0-92.821-18.056-126.05-48.063-2.628-2.373-.254-5.594 2.881-3.73 35.942 20.853 80.276 33.482 126.136 33.482 30.94 0 64.932-6.442 96.212-19.665 4.662-2.035 8.646 3.052 4.068 6.443Z" fill="currentColor"/>
+                            <path d="M239.893 110.47c-3.56-4.577-23.566-2.204-32.636-1.102-2.713.34-3.137-2.034-.678-3.814 15.939-11.19 42.13-7.968 45.181-4.239 3.052 3.814-.848 30.008-15.77 42.554-2.288 1.95-4.492.933-3.475-1.61 3.39-8.393 10.934-27.296 7.378-31.789Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#4285F4" data-name="GCP">
+                        <svg viewBox="0 0 256 206" class="skill-icon">
+                            <path d="m170.252 56.819 22.253-22.253 1.483-9.37C153.437-11.677 88.976-7.496 52.42 33.92 42.267 45.423 34.734 59.764 30.717 74.573l7.97-1.123 44.505-7.34 3.436-3.513c19.797-21.742 53.27-24.667 76.128-6.168l7.496.39Z" fill="currentColor"/>
+                            <path d="M224.205 73.918a100.249 100.249 0 0 0-30.217-48.722l-31.232 31.232a55.515 55.515 0 0 1 20.379 44.037v5.544c15.351 0 27.8 12.449 27.8 27.8 0 15.352-12.449 27.801-27.8 27.801h-55.678l-5.545 5.622v33.345l5.545 5.467h55.678c39.93.078 72.463-32.143 72.54-72.074a72.135 72.135 0 0 0-31.47-60.052Z" fill="currentColor"/>
+                            <path d="m72.008 206.091 55.678-.078v-44.505l-55.678.078c-3.944-.001-7.851-.836-11.446-2.46l-7.886 2.46-22.409 22.253-1.952 7.574a71.747 71.747 0 0 0 43.693 14.678Z" fill="currentColor"/>
+                            <path d="M72.008 61.428C32.078 61.35-.378 93.508.001 133.438a72.135 72.135 0 0 0 28.136 56.787l32.247-32.247c-12.856-5.779-18.574-20.81-12.795-33.665 5.779-12.856 20.81-18.574 33.665-12.795a27.8 27.8 0 0 1 12.795 12.795l32.247-32.247A71.978 71.978 0 0 0 72.008 61.428Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#326CE5" data-name="Kubernetes">
+                        <svg viewBox="0 0 256 249" class="skill-icon">
+                            <path d="M127.327.011c-5.37-.006-10.556 2.077-14.635 6.15L15.666 103.186c-8.153 8.154-8.153 21.396 0 29.549l97.026 97.026c8.154 8.153 21.396 8.153 29.55 0l97.025-97.026c8.154-8.153 8.154-21.395 0-29.549L142.241 6.16C138.162 2.088 132.976.017 127.327.011Zm-.644 30.382c1.59-.01 3.2.243 4.758.686a19.464 19.464 0 0 1 13.67 17.85c.042 3.066-.465 6.005-1.545 8.745-.225.545-.252 1.08.02 1.64l.096.225c2.5 5.987 5.05 11.937 8.03 17.67.79 1.48 1.936 2.666 3.408 3.5 1.472.839 3.112 1.288 4.907 1.48 1.793.197 3.38.138 5.029-.154a12.04 12.04 0 0 0 1.478-.372c.74-.222 1.39-.173 2.02.222 3.018 2.057 6.06 4.072 9.144 6.022 8.79 5.555 16.095 12.37 21.622 21.033a52.26 52.26 0 0 1 7.096 21.306c.8 6.07.475 12.043-.83 17.944-.27 1.224-.57 2.431-.954 3.61-.268.863-.194 1.572.3 2.282 1.227 1.664 2.38 3.39 3.507 5.137.14.216.266.437.394.66.287.486.49 1.01.622 1.558.155.648.147 1.294-.028 1.917-.175.624-.503 1.186-.958 1.654-.454.467-1.012.816-1.645 1.002a3.862 3.862 0 0 1-1.934.052 3.852 3.852 0 0 1-1.757-.924c-.519-.44-.913-.988-1.152-1.606-.12-.31-.213-.629-.28-.956a21.23 21.23 0 0 0-.333-1.302c-1.2-3.867-2.423-7.732-3.715-11.568-.09-.279-.196-.55-.297-.82a2.128 2.128 0 0 0-.742-.86 2.134 2.134 0 0 0-1.08-.403c-.59-.047-1.168.014-1.721.2-1.01.332-2.03.63-3.063.898-3.635.931-7.314 1.38-11.043 1.383a53.15 53.15 0 0 1-19.618-3.632 50.823 50.823 0 0 1-17.002-10.736 51.39 51.39 0 0 1-11.565-16.04 51.556 51.556 0 0 1-4.772-17.07 52.842 52.842 0 0 1 .544-14.252c-2.32-4.44-4.69-8.857-7.175-13.209a19.43 19.43 0 0 0-.61-.995c-.434-.664-.978-.84-1.765-.579-.41.134-.824.252-1.24.36-3.11.808-6.133.637-9.002-.727a19.24 19.24 0 0 1-9.12-9.608 19.24 19.24 0 0 1-1.192-12.3 19.24 19.24 0 0 1 6.528-10.475 19.24 19.24 0 0 1 11.408-4.475c.88-.04 1.762-.017 2.645.058l-.001-.01Zm-2.118 19.82a4.87 4.87 0 0 0-3.298 1.336 4.87 4.87 0 0 0-1.527 3.196 4.87 4.87 0 0 0 1.276 3.28 4.87 4.87 0 0 0 3.113 1.585 4.87 4.87 0 0 0 3.332-1.016 4.87 4.87 0 0 0 1.79-2.994 4.87 4.87 0 0 0-.766-3.397 4.87 4.87 0 0 0-2.808-2.048c-.366-.086-.743-.117-1.112-.096v.154Zm-16.51 31.054c-.266-.006-.533.017-.796.066l.002.008a5.456 5.456 0 0 0-2.626 1.332 5.463 5.463 0 0 0-1.625 2.454 5.456 5.456 0 0 0-.1 2.936c.22.972.673 1.858 1.314 2.606a5.467 5.467 0 0 0 4.65 1.94 5.467 5.467 0 0 0 4.204-2.792 5.465 5.465 0 0 0 .396-4.92 5.457 5.457 0 0 0-1.705-2.287 5.453 5.453 0 0 0-2.52-1.176 5.427 5.427 0 0 0-1.22-.168l.026.001Zm39.19.12c-.296-.005-.594.018-.889.068a5.427 5.427 0 0 0-2.563 1.239 5.425 5.425 0 0 0-1.655 2.37 5.427 5.427 0 0 0-.168 2.87c.184.96.59 1.848 1.18 2.612a5.467 5.467 0 0 0 4.51 2.186 5.467 5.467 0 0 0 4.362-2.538 5.467 5.467 0 0 0 .552-4.876 5.47 5.47 0 0 0-1.609-2.354 5.463 5.463 0 0 0-2.452-1.302 5.427 5.427 0 0 0-1.267-.174v-.101Zm-19.52 18.356c-.374.001-.748.037-1.118.11a6.747 6.747 0 0 0-3.132 1.602 6.737 6.737 0 0 0-2.01 2.938 6.74 6.74 0 0 0-.158 3.543 6.74 6.74 0 0 0 1.492 3.155 6.746 6.746 0 0 0 2.846 2.118 6.745 6.745 0 0 0 3.528.412 6.747 6.747 0 0 0 3.211-1.422 6.748 6.748 0 0 0 2.14-2.83 6.75 6.75 0 0 0 .323-3.522 6.747 6.747 0 0 0-1.354-3.224 6.744 6.744 0 0 0-2.744-2.24 6.738 6.738 0 0 0-3.024-.64Zm-39.992 8.656c-.23.02-.46.052-.688.1-.823.17-1.604.48-2.306.931-.703.45-1.314 1.032-1.81 1.714a6.737 6.737 0 0 0-1.123 2.302 6.74 6.74 0 0 0-.133 2.556c.085.857.313 1.683.675 2.449a6.746 6.746 0 0 0 1.466 2.06 6.744 6.744 0 0 0 2.096 1.418 6.742 6.742 0 0 0 2.458.626c.855.072 1.7-.002 2.508-.226a6.747 6.747 0 0 0 2.27-1.167 6.736 6.736 0 0 0 1.778-1.92 6.736 6.736 0 0 0 .937-2.474 6.74 6.74 0 0 0-.012-2.59 6.743 6.743 0 0 0-.98-2.41 6.747 6.747 0 0 0-1.824-1.872 6.751 6.751 0 0 0-2.428-1.093 6.762 6.762 0 0 0-2.644-.144l-.24-.26Zm80.014.014c-.22.01-.44.034-.66.07a6.73 6.73 0 0 0-2.358.882 6.743 6.743 0 0 0-1.884 1.652 6.747 6.747 0 0 0-1.152 2.252 6.74 6.74 0 0 0-.178 2.572c.08.861.3 1.693.66 2.464.359.77.852 1.467 1.457 2.072a6.745 6.745 0 0 0 2.066 1.432 6.744 6.744 0 0 0 2.45.634c.856.076 1.703.003 2.512-.22a6.747 6.747 0 0 0 2.278-1.158 6.737 6.737 0 0 0 1.786-1.912 6.74 6.74 0 0 0 .948-2.468 6.742 6.742 0 0 0-.002-2.59 6.744 6.744 0 0 0-.968-2.416 6.748 6.748 0 0 0-1.814-1.88 6.752 6.752 0 0 0-2.422-1.106 6.756 6.756 0 0 0-2.72-.28Zm-40.026 19.41c-.348.008-.694.045-1.038.114a7.407 7.407 0 0 0-2.77 1.204 7.404 7.404 0 0 0-2.088 2.112 7.408 7.408 0 0 0-1.086 2.749 7.41 7.41 0 0 0 .088 2.948c.246 1.02.7 1.957 1.32 2.78a7.407 7.407 0 0 0 2.246 2.006 7.403 7.403 0 0 0 2.835 1.001 7.406 7.406 0 0 0 2.94-.228 7.41 7.41 0 0 0 2.642-1.364 7.405 7.405 0 0 0 1.942-2.184 7.405 7.405 0 0 0 .894-2.814 7.404 7.404 0 0 0-.232-2.92 7.404 7.404 0 0 0-1.28-2.626 7.41 7.41 0 0 0-2.164-1.946 7.407 7.407 0 0 0-2.792-1.008 7.4 7.4 0 0 0-1.458-.084v.26Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#2496ED" data-name="Docker">
+                        <svg viewBox="0 0 256 185" class="skill-icon">
+                            <path d="M250.716 70.497c-5.465-3.726-17.986-5.063-27.702-3.19-1.227-9.075-6.292-16.918-15.508-24.023l-5.298-3.591-3.66 5.236c-4.661 7.003-6.96 16.721-6.226 26.037.366 3.458 1.564 9.609 5.032 14.98-3.525 1.963-10.52 4.661-19.73 4.487H.004l-.336 1.897c-1.097 6.36-1.097 26.238 11.52 41.487 9.609 11.654 23.92 17.555 42.575 17.555 40.475 0 70.428-18.45 84.478-51.974 5.532.1 17.453.067 23.614-11.455.166-.266 .498-.898 1.564-3.124l.632-1.363-5.465-3.66c-5.032-3.391-11.655-4.29-17.32-2.827-.033.033-.1.033-.133.067-1.23.232-2.36.498-3.426.83l-2.295-4.59c-3.126-6.193-7.704-11.621-13.337-15.775-5.633-4.19-12.093-6.893-18.951-7.97l-1.83-.166v-3.623h-46.705v-46.24H80.95v46.24H34.712l-.033 46.974H81.35v-3.623l-1.764.166-1.764-.166c-6.858 1.077-13.318 3.78-18.951 7.97-5.633 4.154-10.211 9.582-13.337 15.775l-2.295 4.59c-1.066-.332-2.196-.598-3.426-.83-.033-.034-.1-.034-.133-.067-5.665-1.463-12.288-.564-17.32 2.827l-5.465 3.66.632 1.363c1.066 2.226 1.398 2.858 1.564 3.124 6.16 11.522 18.082 11.555 23.614 11.455 13.984 33.524 43.937 51.974 84.478 51.974 18.655 0 32.966-5.901 42.575-17.555 12.617-15.25 12.617-35.128 11.52-41.487l-.336-1.897H50.27c6.027 0 11.421 3.79 13.437 9.45l.265.764h142.976c.299-1.695.532-3.458.699-5.298l.034-.398h-43.937l-.265-.764c-2.016-5.66-7.41-9.45-13.437-9.45h-40.141v-40.275h80.55c9.21.174 16.205-2.524 19.73-4.487-3.468-5.371-4.666-11.522-5.032-14.98-.734-9.316 1.565-19.034 6.226-26.037l3.66-5.236 5.298 3.591c9.216 7.105 14.28 14.948 15.508 24.023 9.716-1.873 22.237-.536 27.702 3.19l5.465 3.66-.498 1.23c-5.199 12.451-18.453 15.443-26.57 14.281-1.032-.166-2.13-.465-3.227-.83l2.295 4.59c3.126 6.193 7.704 11.621 13.337 15.775 5.633 4.19 12.093 6.893 18.951 7.97l1.764.166v3.623h46.705v46.24h46.24v-46.24h46.638l.033-46.974H233.23V31.754h-46.706v46.24h46.605v3.623l1.764-.166 1.764.166c6.858-1.077 13.318-3.78 18.951-7.97 5.633-4.154 10.211-9.582 13.337-15.775l2.295-4.59c1.097.365 2.195.664 3.227.83 8.117 1.162 21.371-1.83 26.57-14.281l.498-1.23-5.465-3.66-5.199.233.034.398c-.167 1.84-.4 3.603-.699 5.298Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#7B42BC" data-name="Terraform">
+                        <svg viewBox="0 0 256 289" class="skill-icon">
+                            <path d="m89.03 0 78.97 45.61v91.22L89.03 91.22V0Z" fill="currentColor"/>
+                            <path d="M177.63 50.22v91.22l78.97-45.61V4.61l-78.97 45.61Z" fill="currentColor"/>
+                            <path d="m0 45.17 78.97 45.61v91.22L0 136.4V45.17Z" fill="currentColor"/>
+                            <path d="m89.03 192.29 78.97 45.61v-91.22l-78.97-45.61v91.22Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#181717" data-name="GitHub">
+                        <svg viewBox="0 0 256 250" class="skill-icon">
+                            <path d="M128.001 0C57.317 0 0 57.307 0 128.001c0 56.554 36.676 104.535 87.535 121.46 6.397 1.185 8.746-2.777 8.746-6.158 0-3.052-.12-13.135-.174-23.83-35.61 7.742-43.124-15.103-43.124-15.103-5.823-14.795-14.213-18.73-14.213-18.73-11.613-7.944.876-7.78.876-7.78 12.853.902 19.621 13.19 19.621 13.19 11.417 19.568 29.945 13.911 37.249 10.64 1.149-8.272 4.466-13.92 8.127-17.116-28.431-3.236-58.318-14.212-58.318-63.258 0-13.975 5-25.394 13.188-34.358-1.329-3.224-5.71-16.242 1.24-33.874 0 0 10.749-3.44 35.21 13.121 10.21-2.836 21.16-4.258 32.038-4.307 10.878.049 21.837 1.47 32.066 4.307 24.431-16.56 35.165-13.12 35.165-13.12 6.967 17.63 2.584 30.65 1.255 33.873 8.207 8.964 13.173 20.383 13.173 34.358 0 49.163-29.944 59.988-58.447 63.157 4.591 3.972 8.682 11.762 8.682 23.704 0 17.126-.148 30.91-.148 35.126 0 3.407 2.304 7.398 8.792 6.14C219.37 232.5 256 184.537 256 128.002 256 57.307 198.691 0 128.001 0Zm-80.06 182.34c-.282.636-1.283.827-2.194.39-.929-.417-1.45-1.284-1.15-1.922.276-.655 1.279-.838 2.205-.399.93.418 1.46 1.293 1.139 1.931Zm6.296 5.618c-.61.566-1.804.303-2.614-.591-.837-.892-.994-2.086-.375-2.66.63-.566 1.787-.301 2.626.591.838.903 1 2.088.363 2.66Zm4.32 7.188c-.785.545-2.067.034-2.86-1.104-.784-1.138-.784-2.503.017-3.05.795-.547 2.058-.055 2.861 1.075.782 1.157.782 2.522-.019 3.08Zm7.304 8.325c-.701.774-2.196.566-3.29-.49-1.119-1.032-1.43-2.496-.726-3.27.713-.776 2.213-.558 3.315.49 1.11 1.03 1.45 2.505.701 3.27Zm9.442 2.81c-.31 1.003-1.75 1.459-3.199 1.033-1.448-.439-2.395-1.613-2.103-2.626.301-1.01 1.747-1.484 3.207-1.028 1.446.436 2.396 1.602 2.095 2.622Zm10.744 1.193c.036 1.055-1.193 1.93-2.715 1.95-1.53.034-2.769-.82-2.786-1.86 0-1.065 1.202-1.932 2.733-1.958 1.522-.03 2.768.818 2.768 1.868Zm10.555-.405c.182 1.03-.875 2.088-2.387 2.37-1.485.271-2.861-.365-3.05-1.386-.184-1.056.893-2.114 2.376-2.387 1.514-.263 2.868.356 3.061 1.403Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#F05032" data-name="Git">
+                        <svg viewBox="0 0 256 256" class="skill-icon">
+                            <path d="m251.172 116.594-111.766-111.766c-6.438-6.438-16.875-6.438-23.313 0l-23.203 23.203 29.453 29.453c6.844-2.313 14.688-.875 20.156 4.594 5.5 5.516 6.938 13.406 4.563 20.266l28.375 28.375c6.859-2.375 14.75-.938 20.266 4.563 7.703 7.703 7.703 20.203 0 27.906-7.703 7.703-20.203 7.703-27.906 0-5.781-5.797-7.156-14.25-4.125-21.297l-26.453-26.453v69.594c1.875.922 3.641 2.078 5.188 3.625 7.703 7.703 7.703 20.203 0 27.906-7.703 7.703-20.203 7.703-27.906 0-7.703-7.703-7.703-20.203 0-27.906 1.922-1.922 4.156-3.328 6.516-4.297V94.906c-2.375-.969-4.594-2.375-6.516-4.297-5.828-5.828-7.172-14.375-4.047-21.469l-29-28.984-76.547 76.547c-6.438 6.438-6.438 16.875 0 23.313L116.594 251.782c6.438 6.438 16.875 6.438 23.313 0l111.266-111.266c6.438-6.438 6.438-16.875 0-23.313" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#3776AB" data-name="Python">
+                        <svg viewBox="0 0 256 255" class="skill-icon">
+                            <path d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072ZM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13Z" fill="currentColor"/>
+                            <path d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897Zm34.114-19.586a11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.131 11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#4EAA25" data-name="Bash">
+                        <svg viewBox="0 0 256 256" class="skill-icon">
+                            <path d="M238.997 142.561c-6.987-3.208-14.613-5.07-22.686-5.07h-36.875c-3.208 0-6.28.893-8.998 2.5l-33.63 19.413c-6.45 3.744-8.64 12.02-4.897 18.47a13.33 13.33 0 0 0 4.897 4.897l33.63 19.414c2.717 1.607 5.79 2.5 8.998 2.5h36.875c8.073 0 15.7-1.863 22.686-5.07v25.03c0 7.293-5.96 13.253-13.253 13.253H30.256c-7.293 0-13.253-5.96-13.253-13.253V30.895c0-7.293 5.96-13.253 13.253-13.253h195.488c7.293 0 13.253 5.96 13.253 13.253v111.666Z" fill="currentColor"/>
+                            <path d="M47.853 203.738h52.88c4.41 0 7.987-3.577 7.987-7.987s-3.577-7.987-7.987-7.987h-52.88c-4.41 0-7.987 3.577-7.987 7.987s3.577 7.987 7.987 7.987Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#E34F26" data-name="Linux">
+                        <svg viewBox="0 0 256 307" class="skill-icon">
+                            <path d="M103.45 271.77c-7.54 0-19.29-4.58-19.29-15.64 0-7.32 5.95-10.53 12.15-12.46 7.76-2.42 16.69-3.09 24.93-3.09v4.37c0 4.12-.6 9.05-2.51 12.7-3.32 6.32-9.67 10.12-15.28 14.12Zm49.05 0c7.54 0 19.29-4.58 19.29-15.64 0-7.32-5.95-10.53-12.15-12.46-7.76-2.42-16.69-3.09-24.93-3.09v4.37c0 4.12.6 9.05 2.51 12.7 3.32 6.32 9.67 10.12 15.28 14.12ZM128 .27C57.81.27.98 57.1.98 127.29c0 34.69 13.98 66.13 36.59 88.99 2.85 2.88 5.84 5.61 8.96 8.19 1.65 1.36 3.34 2.68 5.07 3.95l1.35 1 .68.49c.23.17.46.33.69.49l.69.48.7.47c.47.31.94.62 1.41.92l.71.46.72.45c.48.3.97.59 1.45.88l.73.43.74.43c.5.28 1 .56 1.5.83l.75.41.76.4c.51.27 1.02.53 1.53.79l.77.39.78.38c.52.25 1.05.5 1.58.74l.79.36.8.36c.54.24 1.08.47 1.62.7l.81.34.82.33c.55.22 1.1.44 1.66.65l.83.32.84.3c.56.21 1.13.41 1.69.6l.85.3.86.28c.58.19 1.15.38 1.73.56l.87.27.87.26c.59.17 1.18.34 1.77.51l.88.24.89.23c.6.16 1.2.31 1.8.45l.9.22.9.2c.61.14 1.22.28 1.84.41l.91.19.92.18c.62.12 1.24.24 1.86.35l.93.17.93.15c.63.1 1.26.2 1.89.29l.94.14.94.12c.64.09 1.28.16 1.92.24l.95.1.95.09c.65.06 1.29.12 1.94.17l.96.07.96.06c.65.04 1.31.08 1.96.1l.96.04.97.02c.66.01 1.31.02 1.97.03l.97.01h.97c.66 0 1.32-.01 1.97-.03l.97-.02.97-.04c.65-.02 1.31-.06 1.96-.1l.96-.06.96-.07c.65-.05 1.29-.11 1.94-.17l.95-.09.95-.1c.64-.08 1.28-.15 1.92-.24l.94-.12.94-.14c.63-.09 1.26-.19 1.89-.29l.93-.15.93-.17c.62-.11 1.24-.23 1.86-.35l.92-.18.91-.19c.62-.13 1.23-.27 1.84-.41l.9-.2.9-.22c.6-.14 1.2-.29 1.8-.45l.89-.23.88-.24c.59-.17 1.18-.34 1.77-.51l.87-.26.87-.27c.58-.18 1.15-.37 1.73-.56l.86-.28.85-.3c.56-.19 1.13-.39 1.69-.6l.84-.3.83-.32c.56-.21 1.11-.43 1.66-.65l.82-.33.81-.34c.54-.23 1.08-.46 1.62-.7l.8-.36.79-.36c.53-.24 1.06-.49 1.58-.74l.78-.38.77-.39c.51-.26 1.02-.52 1.53-.79l.76-.4.75-.41c.5-.27 1-.55 1.5-.83l.74-.43.73-.43c.48-.29.97-.58 1.45-.88l.72-.45.71-.46c.47-.3.94-.61 1.41-.92l.7-.47.69-.48c.23-.16.46-.32.69-.49l.68-.49 1.35-1c1.73-1.27 3.42-2.59 5.07-3.95 3.12-2.58 6.11-5.31 8.96-8.19 22.61-22.86 36.59-54.3 36.59-88.99C255.02 57.1 198.19.27 128 .27Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#FF6C37" data-name="Prometheus">
+                        <svg viewBox="0 0 256 257" class="skill-icon">
+                            <path d="M128.001.667C57.311.667 0 57.971 0 128.66c0 70.69 57.311 127.994 128.001 127.994S256 199.35 256 128.66C256 57.97 198.689.667 128.001.667Zm0 239.56c-20.112 0-36.419-13.435-36.419-30.004h72.838c0 16.566-16.306 30.004-36.419 30.004Zm60.153-39.94H67.842V178.47h120.314v21.816h-.002Zm-.432-33.045H68.185c-.398-.458-.804-.91-1.188-1.375-12.315-14.954-15.216-22.76-18.032-30.716-.048-.262 14.933 3.06 25.556 5.45 0 0 5.466 1.265 13.458 2.722-7.673-8.994-12.23-20.428-12.23-32.116 0-25.658 19.68-48.079 12.58-66.201 6.91.562 14.3 14.583 14.8 36.505 7.346-10.152 10.42-28.69 10.42-40.056 0-11.769 7.755-25.44 15.512-25.907-6.915 11.396 1.79 21.165 9.53 45.4 2.902 9.103 2.532 24.423 4.772 34.138.744-20.178 4.213-49.62 17.014-59.784-5.647 12.8.836 28.818 5.27 36.518 7.154 12.424 11.49 21.836 11.49 39.638 0 11.936-4.407 23.173-11.847 31.658 8.452-1.586 14.289-3.016 14.289-3.016l27.45-5.355c.002-.002-3.987 16.401-19.314 32.197Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#F46800" data-name="Grafana">
+                        <svg viewBox="0 0 256 264" class="skill-icon">
+                            <path d="M254.481 103.093c-.771-5.725-4.571-11.063-10.028-13.923a17.953 17.953 0 0 0-2.443-1.085c-1.593-7.31-5.393-14.005-10.622-18.958a35.022 35.022 0 0 0-8.558-6.034c-1.929-12.926-9.486-24.456-20.392-30.881-7.135-4.197-15.362-5.996-23.493-5.203a31.47 31.47 0 0 0-7.374-6.738C163.266 15.103 152.024 12.31 141.26 13.93c-4.476.671-8.768 2.104-12.697 4.23C121.187 6.832 108.8.217 95.626.003c-8.754-.139-17.351 2.888-24.259 8.537a38.465 38.465 0 0 0-4.91 4.768 46.73 46.73 0 0 0-16.397 2.055c-10.84 3.585-19.864 11.24-25.3 21.475a45.106 45.106 0 0 0-3.665 10.105c-.27-.006-.54-.02-.81-.02-12.186.1-23.698 6.22-30.132 16.12-4.17 6.409-5.838 14.097-4.714 21.597a34.32 34.32 0 0 0 2.556 8.665C-9.89 104.36-3.2 118.84 4.67 131.53c1.11 10.855 5.42 21.263 12.467 29.583a48.236 48.236 0 0 0 3.69 3.903c-.403 1.756-.703 3.536-.897 5.33-1.67 15.51 3.795 30.838 14.87 41.685 7.277 7.123 16.59 11.698 26.543 13.077a35.16 35.16 0 0 0 3.155 7.028c6.418 10.88 18.06 17.556 30.57 17.556 1.686 0 3.38-.114 5.072-.344 7.75-1.058 14.933-4.568 20.554-10.04 9.296 7.56 21.218 10.836 32.99 9.024 12.054-1.856 22.823-8.742 29.51-18.87a42.393 42.393 0 0 0 4.3-9.218c4.92.33 9.91-.181 14.71-1.52 12.858-3.59 23.617-12.807 29.354-25.143a48.166 48.166 0 0 0 3.69-14.032c12.99-3.17 24.137-12.036 30.08-24.01 6.42-12.938 5.867-28.243-1.471-40.651a45.835 45.835 0 0 0-9.376-11.815Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#EE0000" data-name="OpenShift">
+                        <svg viewBox="0 0 256 237" class="skill-icon">
+                            <path d="M73.482 117.239c-.812 2.824-1.563 5.678-2.208 8.577l-34.674 12.603c.535-3.247 1.213-6.441 2.018-9.587l34.864-11.593Z" fill="currentColor"/>
+                            <path d="M256 102.816c0 6.915-.54 13.704-1.583 20.337l-41.111 14.947c.607-3.422 1.07-6.892 1.376-10.406.377-4.305.523-8.665.418-13.072l40.9-11.806Z" fill="currentColor"/>
+                            <path d="M213.19 53.448a109.706 109.706 0 0 1 15.213 24.083l-40.33 11.641c-3.47-6.233-7.622-12.008-12.354-17.238l37.47-18.486Z" fill="currentColor"/>
+                            <path d="M135.875 1.648c15.05 1.3 29.26 5.42 42.123 11.863l-36.298 17.908c-7.25-2.42-14.88-3.982-22.78-4.575L135.875 1.648ZM0 133.49l37.287-13.553c.8 6.935 2.3 13.667 4.44 20.136l-36.09 17.814a109.63 109.63 0 0 1-5.637-24.397Z" fill="currentColor"/>
+                            <path d="m122.2 236.11-18.097-23.938c7.69 1.016 15.595 1.126 23.619.245 6.313-.694 12.452-1.985 18.363-3.819l18.07 23.902a109.93 109.93 0 0 1-41.956 3.61Z" fill="currentColor"/>
+                            <path d="M19.628 178.62a109.636 109.636 0 0 1-12.776-21.44l36.316-17.926c3.54 6.39 7.801 12.3 12.68 17.644L19.628 178.62Z" fill="currentColor"/>
+                            <path d="M186.508 195.628c-8.955 8.1-19.356 14.592-30.77 19.092l-17.58-23.254a76.323 76.323 0 0 0 23.665-12.95l24.685 17.112Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#00ADD8" data-name="ArgoCD">
+                        <svg viewBox="0 0 256 256" class="skill-icon">
+                            <circle cx="128" cy="128" r="100" fill="none" stroke="currentColor" stroke-width="16"/>
+                            <path d="M128 68 L168 148 L128 128 L88 148 Z" fill="currentColor"/>
+                            <circle cx="128" cy="168" r="20" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#005571" data-name="ELK">
+                        <svg viewBox="0 0 256 256" class="skill-icon">
+                            <path d="M128 0C57.308 0 0 57.308 0 128s57.308 128 128 128 128-57.308 128-128S198.692 0 128 0Zm0 234.667c-58.88 0-106.667-47.787-106.667-106.667S69.12 21.333 128 21.333 234.667 69.12 234.667 128 186.88 234.667 128 234.667Z" fill="currentColor"/>
+                            <path d="M170.667 85.333H85.333v85.334h85.334V85.333Zm-21.334 64H106.667v-42.666h42.666v42.666Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="skill-item" data-color="#336791" data-name="SQL">
+                        <svg viewBox="0 0 256 264" class="skill-icon">
+                            <path d="M255.008 158.086c-1.535-4.649-5.556-7.887-10.756-8.664-2.452-.366-5.26-.21-8.583.475-5.792 1.195-10.089 1.65-13.225 1.738 11.837-19.985 21.462-42.775 27.003-64.228 8.96-34.689 4.172-50.492-1.423-57.64C233.217 10.847 211.614.683 185.552.372c-13.903-.17-26.108 2.575-32.475 4.549-5.928-1.046-12.302-1.63-18.99-1.738-12.537-.2-23.614 2.533-33.079 8.15-5.24-1.772-13.65-4.27-23.362-5.864-22.842-3.752-41.252-.828-54.718 8.685C6.622 25.672-.937 45.684.461 73.634c.444 8.874 5.408 35.874 13.224 61.48 4.492 14.718 9.282 26.94 14.237 36.33 7.027 13.315 14.546 21.156 22.987 23.972 4.731 1.576 13.327 2.68 22.368-4.85 1.146 1.388 2.675 2.767 4.704 4.048 2.577 1.625 5.728 2.953 8.875 3.74 11.341 2.835 21.964 2.126 31.027-1.848.056 1.612.099 3.152.135 4.482.06 2.157.12 4.272.199 6.25.537 13.374 1.447 23.773 4.143 31.049.148.4.347 1.01.557 1.657 1.345 4.118 3.594 11.012 9.316 16.411 5.925 5.593 13.092 7.308 19.656 7.308 3.292 0 6.433-.432 9.188-1.022 9.82-2.105 20.973-5.311 29.041-16.799 7.628-10.86 11.336-27.217 12.007-52.99.087-.729.167-1.425.244-2.088l.16-1.362.267.143c3.507 1.867 7.57 2.838 11.566 2.838 2.243 0 4.467-.303 6.55-.907 4.919-1.421 9.155-4.376 11.932-8.322 3.084-4.384 4.18-9.72 3.078-14.994Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="section-label">
+                <span class="label-num">03</span>
+                <span class="label-line"></span>
+                <span class="label-text">Experience</span>
+            </div>
+
+            <div class="exp-list">
+                <article class="exp-item">
+                    <div class="exp-date">2024 — Present</div>
+                    <div class="exp-info">
+                        <h3 class="exp-company">Moniepoint Group</h3>
+                        <p class="exp-role">Site Reliability Engineer</p>
+                        <p class="exp-desc">Leading incident response and ensuring reliability of critical payment services.</p>
+                        <button class="exp-toggle" onclick="toggleExp(this)">
+                            <span>View details</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <ul class="exp-details">
+                            <li>Led incident response efforts, managed war rooms, and documented Root Cause Analyses (RCAs)</li>
+                            <li>Defined and tracked SLOs/SLIs for key VAS functions with product teams</li>
+                            <li>Ensured stability of airtime, data, and bill payment services</li>
+                            <li>Built real-time dashboards for service health monitoring</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="exp-item">
+                    <div class="exp-date">2022 — 2024</div>
+                    <div class="exp-info">
+                        <h3 class="exp-company">Stanbic IBTC</h3>
+                        <p class="exp-role">DevOps Support Engineer</p>
+                        <p class="exp-desc">Orchestrating deployments across containerized environments and managing app releases.</p>
+                        <button class="exp-toggle" onclick="toggleExp(this)">
+                            <span>View details</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <ul class="exp-details">
+                            <li>Deployed applications on IIS, Docker, Kubernetes and OpenShift</li>
+                            <li>Managed mobile app releases to Google Play and Apple App Store</li>
+                            <li>Implemented centralized logging with AppDynamics and Grafana</li>
+                            <li>Provided technical support for in-house applications and APIs</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="exp-item">
+                    <div class="exp-date">2020 — 2021</div>
+                    <div class="exp-info">
+                        <h3 class="exp-company">Zenith Bank</h3>
+                        <p class="exp-role">Payments Processing Officer</p>
+                        <p class="exp-desc">Processing high-volume transactions with 99.8% accuracy.</p>
+                        <button class="exp-toggle" onclick="toggleExp(this)">
+                            <span>View details</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <ul class="exp-details">
+                            <li>Processed high-volume customer payments with 99.8% accuracy</li>
+                            <li>Resolved payment-related issues in compliance with regulations</li>
+                            <li>Collaborated with IT to troubleshoot payment system issues</li>
+                            <li>Trained new staff on procedures and compliance requirements</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Certifications inline -->
+            <div class="certs-row">
+                <h3 class="certs-title">Certifications</h3>
+                <div class="certs-list">
+                    <a href="https://www.credly.com/badges/995ba724-9e35-4d6e-b23c-da04463d8d72/public_url" target="_blank" class="cert-badge">
+                        <span class="cert-name">Terraform Associate</span>
+                        <span class="cert-org">HashiCorp</span>
+                    </a>
+                    <a href="https://www.credly.com/badges/7d3c07ee-dd93-48af-be14-94404ff2138b/public_url" target="_blank" class="cert-badge">
+                        <span class="cert-name">KCNA</span>
+                        <span class="cert-org">CNCF</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="section">
+            <div class="section-label">
+                <span class="label-num">04</span>
+                <span class="label-line"></span>
+                <span class="label-text">Work</span>
+            </div>
+
+            <div class="projects-bento">
+                <article class="project featured">
+                    <span class="project-num">01</span>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="status live">Live</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3>Cloud Resume Challenge</h3>
+                        <p>Full-stack cloud-native resume with visitor counter, serverless backend, IaC, and CI/CD pipeline on AWS.</p>
+                        <div class="project-stack">
+                            <span>AWS</span>
+                            <span>Terraform</span>
+                            <span>Lambda</span>
+                            <span>DynamoDB</span>
+                            <span>CloudFront</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ibukuntaiwo.com" target="_blank">Visit</a>
+                            <a href="https://github.com/ibuqun/cloud-resume-challenge" target="_blank">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-num">02</span>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="status wip">In Progress</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3>Incident Log Analyzer</h3>
+                        <p>Tool for analyzing incident logs and extracting insights for troubleshooting.</p>
+                        <div class="project-stack">
+                            <span>Python</span>
+                            <span>Data Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://incident-log-analyzer.vercel.app/" target="_blank">Demo</a>
+                            <a href="https://github.com/ibuqun/incident-log-analyzer" target="_blank">Source</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <span class="project-num">03</span>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <span class="status live">Live</span>
+                            <span class="year">2024</span>
+                        </div>
+                        <h3>Personal Website</h3>
+                        <p>Modern portfolio with performance optimization and exceptional UX.</p>
+                        <div class="project-stack">
+                            <span>Next.js</span>
+                            <span>TypeScript</span>
+                            <span>Tailwind</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ibukuntaiwo.com" target="_blank">Visit</a>
+                            <a href="https://github.com/ibuqun/personal-website" target="_blank">Source</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="footer-cta">
+                    <h2>Let's work together</h2>
+                    <a href="mailto:hello@ibukuntaiwoa.com" class="footer-email">hello@ibukuntaiwoa.com</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/ibuqun" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/ibukuntaiwoa" target="_blank">LinkedIn</a>
+                    <a href="mailto:hello@ibukuntaiwoa.com">Email</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; <span id="footer-year">2024</span> Ibukun Taiwo. All rights reserved.</span>
             </div>
         </footer>
-    </div>
+    </main>
 
-<script src="script.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>
-
