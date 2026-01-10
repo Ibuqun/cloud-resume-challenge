@@ -3,528 +3,527 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ibukunoluwa Taiwo A</title>
+    <title>Ibukun Taiwo — Site Reliability Engineer</title>
     <link rel="icon" type="image/png" href="images/Ice.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/brand.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="noise-overlay"></div>
     <div class="scroll-progress" id="scroll-progress"></div>
     <div class="mobile-overlay" id="mobile-overlay"></div>
-    <div class="hamburger" id="hamburger">
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span>
         <span></span>
-        <span></span>
-    </div>
-    <div class="sidebar" id="sidebar">
+    </button>
+
+    <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h1><a href="https://ibukuntaiwo.com/" target="_blank" class="side-head">IBK☁️</a></h1>
-            <button class="mobile-close" id="mobile-close">
-                <i class="fas fa-times"></i>
+            <a href="#home" class="logo">
+                <span class="logo-text">IBK</span>
+                <span class="logo-dot"></span>
+            </a>
+            <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
             </button>
         </div>
-        <nav>
+
+        <nav class="nav">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#home" data-section="01">Home</a></li>
+                <li><a href="#about" data-section="02">About</a></li>
+                <li><a href="#skills" data-section="03">Skills</a></li>
+                <li><a href="#experience" data-section="04">Experience</a></li>
+                <li><a href="#achievements" data-section="05">Credentials</a></li>
+                <li><a href="#portfolio" data-section="06">Work</a></li>
             </ul>
         </nav>
-        <div class="sidebar-bottom">
+
+        <div class="sidebar-footer">
             <div class="visitor-counter">
-                <div class="counter-container">
-                    <i class="fas fa-eye counter-icon"></i>
-                    <div class="counter-content">
-                        <span class="counter-label">Views</span>
-                        <span class="counter-value" id="visitor-count">0</span>
+                <span class="counter-label">Visitors</span>
+                <span class="counter-value" id="visitor-count">0</span>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/ibuqun" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/ibukuntaiwoa" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="mailto:hello@ibukuntaiwoa.com" aria-label="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <main class="content">
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-intro">
+                    <span class="hero-label">Site Reliability Engineer</span>
+                    <h1 class="hero-title">
+                        <span class="line">Ibukunoluwa</span>
+                        <span class="line">Taiwo</span>
+                    </h1>
+                </div>
+                <div class="hero-meta">
+                    <p class="hero-tagline">Building resilient systems.<br>Automating everything.</p>
+                    <div class="hero-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>Lagos, Nigeria</span>
                     </div>
                 </div>
             </div>
-            <div class="socials">
-                <a href="https://github.com/ibuqun" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/ibukuntaiwoa" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:hello@ibukuntaiwoa.com" target="_blank">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="content">
-        <section id="home">
-            <div class="welcome-container">
-                <h1 class="welcome-text">Welcome!</h1>
-                <div class="floating-icons">
-                    <!-- Cloud Platforms -->
-                    <i class="fab fa-aws"></i>
-                    <i class="fab fa-google cloud-icon" title="Google Cloud Platform"></i>
-                    <i class="fab fa-azure cloud-icon" title="Microsoft Azure"></i>
-                    
-                    <!-- Container & Orchestration -->
-                    <i class="fab fa-docker"></i>
-                    <i class="fab fa-kubernetes k8s-icon" title="Kubernetes"></i>
-                    
-                    <!-- Infrastructure as Code -->
-                    <i class="cib-terraform terraform-icon" title="Terraform"></i>
-                    <i class="fas fa-sync-alt argocd-icon" title="ArgoCD"></i>
-                    
-                    <!-- Programming & Databases -->
-                    <i class="fab fa-python"></i>
-                    <i class="fas fa-database sql-icon" title="SQL"></i>
-                    
-                    <!-- Monitoring & Observability -->
-                    <i class="fas fa-chart-line elastic-apm-icon" title="Elastic APM"></i>
-                    <i class="fas fa-tachometer-alt grafana-icon" title="Grafana"></i>
-                    <i class="fas fa-tachometer-alt newrelic-icon" title="New Relic"></i>
-                    <i class="fas fa-tachometer-alt appdynamics-icon" title="AppDynamics"></i>
-                    
-                    <!-- Version Control & CI/CD -->
-                    <i class="fab fa-github"></i>
-                    <i class="fab fa-gitlab"></i>
-                    <i class="fab fa-jenkins jenkins-icon" title="Jenkins"></i>
-                    
-                    <!-- General DevOps -->
-                    <i class="fas fa-terminal"></i>
-                    <i class="fas fa-code-branch"></i>
-                    <i class="fas fa-cogs"></i>
+        <section id="about">
+            <div class="section-container">
+                <header class="section-header">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">About</h2>
+                </header>
+
+                <div class="about-grid">
+                    <div class="about-intro">
+                        <p class="large-text">I'm a DevOps Engineer focused on building reliable, scalable infrastructure for high-traffic systems.</p>
+                    </div>
+
+                    <div class="about-details">
+                        <div class="focus-list">
+                            <div class="focus-item">
+                                <span class="focus-number">01</span>
+                                <span class="focus-text">Deployment Automation</span>
+                            </div>
+                            <div class="focus-item">
+                                <span class="focus-number">02</span>
+                                <span class="focus-text">System Observability</span>
+                            </div>
+                            <div class="focus-item">
+                                <span class="focus-number">03</span>
+                                <span class="focus-text">Infrastructure as Code</span>
+                            </div>
+                            <div class="focus-item">
+                                <span class="focus-number">04</span>
+                                <span class="focus-text">Container Orchestration</span>
+                            </div>
+                            <div class="focus-item">
+                                <span class="focus-number">05</span>
+                                <span class="focus-text">Incident Response</span>
+                            </div>
+                        </div>
+
+                        <a href="Ibukunoluwa_Taiwo.pdf" download class="download-btn">
+                            <span>Download Resume</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
-        
 
-        <section id="about">
-    <div class="about-container">
-        <div class="section-header">
-            <h2>ABOUT ME</h2>
-            <div class="header-underline"></div>
-        </div>
-        <div class="about-content">
-            <div class="about-text-container">
-                <div class="greeting">
-                    <h3>Hey, I'm Ibukun! <span class="wave">👋</span></h3>
+        <section id="skills">
+            <div class="section-container">
+                <header class="section-header">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">Technical Skills</h2>
+                </header>
+
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                            </svg>
+                            Cloud & Infrastructure
+                        </h3>
+                        <ul class="skill-list">
+                            <li>
+                                <img src="images/aws.png" alt="">
+                                <span>AWS</span>
+                            </li>
+                            <li>
+                                <img src="images/gcp.png" alt="">
+                                <span>GCP</span>
+                            </li>
+                            <li>
+                                <img src="images/openshift.png" alt="">
+                                <span>OpenShift</span>
+                            </li>
+                            <li>
+                                <img src="images/kubernetes.png" alt="">
+                                <span>Kubernetes</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                            DevOps Tools
+                        </h3>
+                        <ul class="skill-list">
+                            <li>
+                                <img src="images/docker.png" alt="">
+                                <span>Docker</span>
+                            </li>
+                            <li>
+                                <img src="images/terraform-colour.png" alt="">
+                                <span>Terraform</span>
+                            </li>
+                            <li>
+                                <img src="images/github.png" alt="">
+                                <span>GitHub Actions</span>
+                            </li>
+                            <li>
+                                <img src="images/ArgoCD.png" alt="">
+                                <span>ArgoCD</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                            Languages
+                        </h3>
+                        <ul class="skill-list">
+                            <li>
+                                <img src="images/python.png" alt="">
+                                <span>Python</span>
+                            </li>
+                            <li>
+                                <img src="images/bash.png" alt="">
+                                <span>Bash</span>
+                            </li>
+                            <li>
+                                <img src="images/sql.png" alt="">
+                                <span>SQL</span>
+                            </li>
+                            <li>
+                                <img src="images/yaml.png" alt="">
+                                <span>YAML</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                            Monitoring
+                        </h3>
+                        <ul class="skill-list">
+                            <li>
+                                <img src="images/prometheus.png" alt="">
+                                <span>Prometheus</span>
+                            </li>
+                            <li>
+                                <img src="images/grafana.png" alt="">
+                                <span>Grafana</span>
+                            </li>
+                            <li>
+                                <img src="images/mysql.png" alt="">
+                                <span>MySQL</span>
+                            </li>
+                            <li>
+                                <img src="images/mongodb.png" alt="">
+                                <span>MongoDB</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="about-description">
-                    <p>I'm a <span class="highlight">DevOps Engineer</span> with a strong background in cloud-native technologies.</p>
-                    <p>I focus on:</p>
-                    <ul class="focus-areas">
-                        <li>🔄 Automating deployment pipelines</li>
-                        <li>📊 Enhancing system observability</li>
-                        <li>🔧 Infrastructure as code practices</li>
-                        <li>🚀 Implementing CI/CD workflows</li>
-                        <li>🎯 Managing container orchestration</li>
-                        <li>🔧 Maintaining application stability</li>
-                    </ul>
-                    <p class="closing-text">I care about clean deployments, fast recovery, and working with teams to keep systems stable and efficient. 🚀</p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-container">
+                <header class="section-header">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">Experience</h2>
+                </header>
+
+                <div class="experience-list">
+                    <article class="experience-item">
+                        <div class="exp-timeline">
+                            <span class="exp-date">2024 — Present</span>
+                        </div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <h3 class="exp-company">Moniepoint Group</h3>
+                                <span class="exp-role">Site Reliability Engineer</span>
+                            </div>
+                            <p class="exp-summary">Leading incident response and building observability infrastructure for high-volume payment systems.</p>
+                            <button class="exp-toggle" onclick="toggleContent('exp-1', event)">
+                                <span class="toggle-text">View details</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </button>
+                            <div id="exp-1" class="exp-details experience-details">
+                                <ul>
+                                    <li>Led incident response efforts, managed war rooms, and documented Root Cause Analyses (RCAs) for high-impact issues</li>
+                                    <li>Defined and tracked SLOs/SLIs for key VAS functions in collaboration with product and development teams</li>
+                                    <li>Ensured the stability and performance of airtime, data, and bill payment vending services</li>
+                                    <li>Built and maintained dashboards and alerting systems for real-time visibility into service health</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="experience-item">
+                        <div class="exp-timeline">
+                            <span class="exp-date">2022 — 2024</span>
+                        </div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <h3 class="exp-company">Stanbic IBTC</h3>
+                                <span class="exp-role">DevOps Support Engineer</span>
+                            </div>
+                            <p class="exp-summary">Orchestrated application deployments across multi-environment infrastructure using container orchestration.</p>
+                            <button class="exp-toggle" onclick="toggleContent('exp-2', event)">
+                                <span class="toggle-text">View details</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </button>
+                            <div id="exp-2" class="exp-details experience-details">
+                                <ul>
+                                    <li>Orchestrated deployment of applications on IIS, Docker, Kubernetes and OpenShift across five environments</li>
+                                    <li>Managed mobile application releases to Google Play Store and Apple App Store</li>
+                                    <li>Implemented centralized logging and monitoring using AppDynamics and Grafana</li>
+                                    <li>Provided technical support for applications and APIs on Linux and Windows</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="experience-item">
+                        <div class="exp-timeline">
+                            <span class="exp-date">2020 — 2021</span>
+                        </div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <h3 class="exp-company">Zenith Bank</h3>
+                                <span class="exp-role">Payments Processing Officer</span>
+                            </div>
+                            <p class="exp-summary">Processed high-volume financial transactions with 99.8% accuracy in compliance with banking regulations.</p>
+                            <button class="exp-toggle" onclick="toggleContent('exp-3', event)">
+                                <span class="toggle-text">View details</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <polyline points="6 9 12 15 18 9"/>
+                                </svg>
+                            </button>
+                            <div id="exp-3" class="exp-details experience-details">
+                                <ul>
+                                    <li>Processed high-volume customer payments and cash withdrawal transactions</li>
+                                    <li>Collaborated with IT teams to troubleshoot payment system technical issues</li>
+                                    <li>Maintained detailed transaction records and conducted daily reconciliation</li>
+                                    <li>Trained new staff on payment processing procedures and compliance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-                <div class="download-button">
-                    <a href="Ibukunoluwa_Taiwo.pdf" download>
-                        <i class="fas fa-file-download"></i>
-                        Download Resume
+            </div>
+        </section>
+
+        <section id="achievements">
+            <div class="section-container">
+                <header class="section-header">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title">Credentials</h2>
+                </header>
+
+                <div class="certs-grid">
+                    <a href="https://www.credly.com/badges/995ba724-9e35-4d6e-b23c-da04463d8d72/public_url" target="_blank" rel="noopener" class="cert-card">
+                        <div class="cert-badge">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                <path d="M12 15l-2 5l2-1.5l2 1.5l-2-5"/>
+                                <circle cx="12" cy="9" r="6"/>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Terraform Associate</h3>
+                            <span class="cert-issuer">HashiCorp Certified</span>
+                        </div>
+                        <span class="cert-verify">
+                            Verify
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://www.credly.com/badges/7d3c07ee-dd93-48af-be14-94404ff2138b/public_url" target="_blank" rel="noopener" class="cert-card">
+                        <div class="cert-badge">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                <path d="M12 15l-2 5l2-1.5l2 1.5l-2-5"/>
+                                <circle cx="12" cy="9" r="6"/>
+                            </svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>KCNA</h3>
+                            <span class="cert-issuer">Kubernetes & Cloud Native Associate</span>
+                        </div>
+                        <span class="cert-verify">
+                            Verify
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </span>
                     </a>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-        
-
-        <section id="skills">
-    <div class="skills-container">
-        <div class="section-header">
-            <h2>TECHNICAL SKILLS</h2>
-            <div class="header-underline"></div>
-        </div>
-        <div class="skills-grid">
-    <div class="skill-category">
-        <h3><i class="fas fa-cloud"></i> Cloud & Infrastructure</h3>
-        <div class="skill-items">
-            <div class="skill-item">
-                <img src="images/aws.png" alt="AWS">
-                <span>AWS</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/gcp.png" alt="GCP">
-                <span>GCP</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/openshift.png" alt="Azure">
-                <span>Redhat Openshift</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/kubernetes.png" alt="Kubernetes">
-                <span>Kubernetes</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="skill-category">
-        <h3><i class="fas fa-wrench"></i> DevOps Tools</h3>
-        <div class="skill-items">
-            <div class="skill-item">
-                <img src="images/docker.png" alt="Docker">
-                <span>Docker</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/terraform-colour.png" alt="Terraform">
-                <span>Terraform</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/github.png" alt="Jenkins">
-                <span>Github Actions</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/ArgoCD.png" alt="ArgoCD">
-                <span>ArgoCD</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="skill-category">
-        <h3><i class="fas fa-code"></i> Programming & Scripting</h3>
-        <div class="skill-items">
-            <div class="skill-item">
-                <img src="images/python.png" alt="Python">
-                <span>Python</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/bash.png" alt="Bash">
-                <span>Bash</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/sql.png" alt="JavaScript">
-                <span>SQL</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/yaml.png" alt="YAML">
-                <span>YAML</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="skill-category">
-        <h3><i class="fas fa-database"></i> Database & Monitoring</h3>
-        <div class="skill-items">
-            <div class="skill-item">
-                <img src="images/mysql.png" alt="MySQL">
-                <span>MySQL</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/mongodb.png" alt="MongoDB">
-                <span>MongoDB</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/prometheus.png" alt="Prometheus">
-                <span>Prometheus</span>
-            </div>
-            <div class="skill-item">
-                <img src="images/grafana.png" alt="Grafana">
-                <span>Grafana</span>
-            </div>
-        </div>
-    </div>
-</div>
-    </div>
-</section>
-
-<section id="experience">
-    <div class="experience-container">
-        <div class="section-header">
-            <h2>Experience</h2>
-            <div class="header-underline"></div>
-        </div>
-        <div class="experience-grid">
-            <div class="experience-card">
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Moniepoint Group</h3>
-                        <span class="exp-date">Nov 2024 - Present</span>
-                    </div>
-                    <h4 class="exp-title">Site Reliability Engineer</h4>
-                </div>
-                <p class="exp-brief">Led incident response efforts, managed war rooms, and documented...</p>
-                <button class="read-more" onclick="toggleContent('experience-1-details')">
-                    <span class="read-more-text">Click to read more →</span>
-                </button>
-                
-                <div id="experience-1-details" class="experience-details">
-                    <ul>
-                        <li>Led incident response efforts, managed war rooms, and documented Root Cause Analyses (RCAs) for high-impact issuess</li>
-                        <li>Defined and tracked SLOs/SLIs for key VAS functions in collaboration with product and development teams</li>
-                        <li>Ensured the stability and performance of airtime, data, and bill payment vending services across all customer channels</li>
-                        <li>Built and maintained dashboards and alerting systems for real-time visibility into service health and transaction success rates</li>
-                        <li>Collaborated with the development team to bake observability and reliability into new VAS product features and deployments</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Stanbic IBTC</h3>
-                        <span class="exp-date">Aug 2022 - Nov 2024</span>
-                    </div>
-                    <h4 class="exp-title">Devops Support Engineer</h4>
-                </div>
-                <p class="exp-brief">Orchestrated the seamless deployment of applications on IIS, Docker, Kubernetes...</p>
-                <button class="read-more" onclick="toggleContent('experience-2-details')">
-        <span class="read-more-text">Click to read more →</span>
-    </button>
-    
-    <div id="experience-2-details" class="experience-details">
-        <ul>
-            <li>Orchestrated the seamless deployment of applications on IIS, Docker, Kubernetes and Openshift across five environments</li>
-            <li>Responsible for pushing and deploying updates of the Stanbic mobile application to both the Google Play Store and Apple iOS stores</li>
-            <li>Provided visibility into activities of applications and infrastructure as well as centralised logging using AppDynamics, Grafanaaand other tootls</li>
-            <li>Provided technical support for in-house built applications and APIs running on both Linux and Windows machines </li>
-        </ul>
-    </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="exp-header">
-                    <div class="exp-company">
-                        <h3>Zenith Bank</h3>
-                        <span class="exp-date">Jul 2020 - Nov 2021</span>
-                    </div>
-                    <h4 class="exp-title">Payments Processing Officer</h4>
-                </div>
-                <p class="exp-brief">Responsible for payments processing and customer cash withdrawals</p>
-                <button class="read-more" onclick="toggleContent('experience-3-details')">
-                    <span class="read-more-text">Click to read more →</span>
-                </button>
-                
-                <div id="experience-3-details" class="experience-details">
-                    <ul>
-                        <li>Processed high-volume customer payments and cash withdrawal transactions with 99.8% accuracy</li>
-                        <li>Managed customer inquiries and resolved payment-related issues in compliance with banking regulations</li>
-                        <li>Collaborated with IT teams to troubleshoot payment system technical issues</li>
-                        <li>Maintained detailed transaction records and conducted daily reconciliation processes</li>
-                        <li>Trained new staff on payment processing procedures and banking compliance requirements</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="achievements">
-    <div class="certifications-container">
-        <div class="section-header">
-            <h2>Certifications</h2>
-            <div class="header-underline"></div>
-        </div>
-        <div class="certifications-grid">
-            <div class="certification-card">
-                <div class="cert-icon">
-                    <!--<img src="images/terraform-colour.png" alt="HashiCorp">-->
-                </div>
-                <div class="cert-details">
-                    <h3>HashiCorp Certified: Terraform Associate</h3>
-                    <!-- <p>Credential ID: 995ba724-9e35-4d6e</p> -->
-                    <div class="cert-meta">
-                       <!-- <span><i class="far fa-calendar-alt"></i> Mar 2025</span> -->
-                        <a href="https://www.credly.com/badges/995ba724-9e35-4d6e-b23c-da04463d8d72/public_url" 
-                           target="_blank" 
-                           class="verify-btn">
-                            <i class="fas fa-external-link-alt"></i> Verify
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="certification-card">
-                <div class="cert-icon">
-                   <!-- <img src="images/terraform-colour.png" alt="HashiCorp">-->
-                </div>
-                <div class="cert-details">
-                    <h3>KCNA: Kubernetes and Cloud Native Associate</h3>
-                    <!-- <p>Credential ID: 995ba724-9e35-4d6e</p> -->
-                    <div class="cert-meta">
-                       <!-- <span><i class="far fa-calendar-alt"></i> Mar 2025</span> -->
-                        <a href="https://www.credly.com/badges/7d3c07ee-dd93-48af-be14-94404ff2138b/public_url" 
-                           target="_blank" 
-                           class="verify-btn">
-                            <i class="fas fa-external-link-alt"></i> Verify
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
         </section>
 
         <section id="portfolio">
-            <div class="portfolio-container">
-                <div class="section-header">
-                    <h2>PORTFOLIO</h2>
-                    <div class="header-underline"></div>
-                </div>
-                <div class="portfolio-grid">
-                    <!-- Incident Log Analyzer -->
-                    <div class="project-card featured-project">
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3>Incident Log Analyzer</h3>
-                                <div class="project-status">
-                                    <span class="status-badge active">Active</span>
-                                </div>
-                            </div>
-                            <div class="project-description">
-                                <p>A powerful tool for analyzing incident logs and extracting meaningful insights for troubleshooting and system monitoring. Built to help DevOps teams quickly identify patterns and root causes in large-scale systems.</p>
-                            </div>
-                            <div class="project-highlights">
-                                <div class="highlight-item">
-                                    <i class="fas fa-bolt"></i>
-                                    <span>Real-time Analysis</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-search"></i>
-                                    <span>Pattern Detection</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-chart-bar"></i>
-                                    <span>Visual Insights</span>
-                                </div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag claude-code">Claude Code</span>
-                                <span class="tech-tag react">React</span>
-                                <span class="tech-tag typescript">TypeScript</span>
-                                <span class="tech-tag vite">Vite</span>
-                                <span class="tech-tag tailwind">Tailwind CSS</span>
-                                <span class="tech-tag shadcn">shadcn/ui</span>
-                            </div>
-                        </div>
-                        <div class="project-footer">
-                            <div class="project-links">
-                                <a href="https://incident-log-analyzer.vercel.app/" target="_blank" class="project-link primary">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    <span>Live Demo</span>
-                                </a>
-                                <a href="https://github.com/ibuqun/incident-log-analyzer" target="_blank" class="project-link secondary">
-                                    <i class="fab fa-github"></i>
-                                    <span>Source</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="section-container">
+                <header class="section-header">
+                    <span class="section-number">05</span>
+                    <h2 class="section-title">Selected Work</h2>
+                </header>
 
-                    <!-- Cloud Resume Challenge -->
-                    <div class="project-card showcase-project">
-                        <div class="project-icon">
-                            <i class="fas fa-cloud"></i>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-header">
+                            <span class="project-number">01</span>
+                            <span class="project-status wip">In Progress</span>
                         </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3>Cloud Resume Challenge</h3>
-                                <div class="project-status">
-                                    <span class="status-badge live">Live</span>
-                                </div>
-                            </div>
-                            <div class="project-description">
-                                <p>A full-stack cloud-native resume website with visitor counter, demonstrating modern cloud architecture and DevOps practices. Features serverless backend, infrastructure as code, and CI/CD pipeline.</p>
-                            </div>
-                            <div class="project-highlights">
-                                <div class="highlight-item">
-                                    <i class="fas fa-server"></i>
-                                    <span>Serverless Architecture</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-rocket"></i>
-                                    <span>CI/CD Pipeline</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-eye"></i>
-                                    <span>Visitor Analytics</span>
-                                </div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag aws">AWS</span>
-                                <span class="tech-tag terraform">Terraform</span>
-                                <span class="tech-tag lambda">Lambda</span>
-                                <span class="tech-tag dynamodb">DynamoDB</span>
-                                <span class="tech-tag cloudfront">CloudFront</span>
-                                <span class="tech-tag javascript">JavaScript</span>
-                            </div>
+                        <h3 class="project-title">Incident Log Analyzer</h3>
+                        <p class="project-desc">A tool for analyzing incident logs and extracting insights for troubleshooting. Helps DevOps teams identify patterns and root causes in large-scale systems.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>TypeScript</span>
+                            <span>Tailwind</span>
                         </div>
-                        <div class="project-footer">
-                            <div class="project-links">
-                                <a href="https://ibukuntaiwo.com" target="_blank" class="project-link primary">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    <span>Live Site</span>
-                                </a>
-                                <a href="https://github.com/ibuqun/cloud-resume-challenge" target="_blank" class="project-link secondary">
-                                    <i class="fab fa-github"></i>
-                                    <span>Source</span>
-                                </a>
-                            </div>
+                        <div class="project-links">
+                            <a href="https://incident-log-analyzer.vercel.app/" target="_blank" rel="noopener">
+                                Live Demo
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/ibuqun/incident-log-analyzer" target="_blank" rel="noopener">
+                                Source
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Personal Website -->
-                    <div class="project-card development-project">
-                        <div class="project-icon">
-                            <i class="fas fa-code"></i>
+                    <article class="project-card">
+                        <div class="project-header">
+                            <span class="project-number">02</span>
+                            <span class="project-status live">Live</span>
                         </div>
-                        <div class="project-content">
-                            <div class="project-header">
-                                <h3>Personal Website</h3>
-                                <div class="project-status">
-                                    <span class="status-badge in-progress">In Progress</span>
-                                </div>
-                            </div>
-                            <div class="project-description">
-                                <p>Modern, responsive personal website showcasing projects, skills, and professional experience. Building with cutting-edge technologies and focusing on performance, accessibility, and user experience.</p>
-                            </div>
-                            <div class="project-highlights">
-                                <div class="highlight-item">
-                                    <i class="fas fa-mobile-alt"></i>
-                                    <span>Mobile-First Design</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-rocket"></i>
-                                    <span>Performance Optimized</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <i class="fas fa-paint-brush"></i>
-                                    <span>Modern UI/UX</span>
-                                </div>
-                            </div>
-                            <div class="tech-stack">
-                                <span class="tech-tag react">React</span>
-                                <span class="tech-tag nextjs">Next.js</span>
-                                <span class="tech-tag typescript">TypeScript</span>
-                                <span class="tech-tag tailwind">Tailwind CSS</span>
-                                <span class="tech-tag vercel">Vercel</span>
-                            </div>
+                        <h3 class="project-title">Cloud Resume Challenge</h3>
+                        <p class="project-desc">Full-stack cloud-native resume with serverless backend, infrastructure as code, and automated CI/CD pipeline. Demonstrates modern cloud architecture.</p>
+                        <div class="project-tech">
+                            <span>AWS</span>
+                            <span>Terraform</span>
+                            <span>Lambda</span>
+                            <span>DynamoDB</span>
                         </div>
-                        <div class="project-footer">
-                            <div class="project-links">
-                                <a href="https://github.com/ibuqun/personal-website" target="_blank" class="project-link primary">
-                                    <i class="fab fa-github"></i>
-                                    <span>View Code</span>
-                                </a>
-                            </div>
+                        <div class="project-links">
+                            <a href="https://resume.ibukuntaiwo.com" target="_blank" rel="noopener">
+                                Live Site
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/ibuqun/cloud-resume-challenge" target="_blank" rel="noopener">
+                                Source
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
                         </div>
-                    </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-header">
+                            <span class="project-number">03</span>
+                            <span class="project-status live">Live</span>
+                        </div>
+                        <h3 class="project-title">Personal Website</h3>
+                        <p class="project-desc">Modern, responsive portfolio focusing on performance, accessibility, and exceptional user experience. Built with cutting-edge technologies.</p>
+                        <div class="project-tech">
+                            <span>Next.js</span>
+                            <span>TypeScript</span>
+                            <span>Tailwind</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ibukuntaiwo.com" target="_blank" rel="noopener">
+                                Live Site
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/ibuqun/personal-website" target="_blank" rel="noopener">
+                                Source
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-    </div>
+        <footer class="site-footer">
+            <div class="footer-content">
+                <span class="footer-name">Ibukun Taiwo</span>
+                <span class="footer-year" id="footer-year">2024</span>
+            </div>
+        </footer>
+    </main>
 
-<script src="script.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>
-
