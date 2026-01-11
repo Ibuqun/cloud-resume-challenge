@@ -91,22 +91,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
+    function toggleMenu(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (mobileMenu.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+
     if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('active')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        });
+        menuBtn.addEventListener('click', toggleMenu);
+        menuBtn.addEventListener('touchend', toggleMenu);
     }
 
     if (menuClose) {
-        menuClose.addEventListener('click', closeMenu);
+        menuClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMenu();
+        });
+        menuClose.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            closeMenu();
+        });
     }
 
     menuItems.forEach(item => {
         item.addEventListener('click', closeMenu);
+        item.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            closeMenu();
+            // Navigate after closing
+            const href = item.getAttribute('href');
+            if (href) {
+                setTimeout(() => {
+                    window.location.hash = href;
+                }, 100);
+            }
+        });
     });
 
     document.addEventListener('keydown', (e) => {
@@ -248,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ===== Experience Toggle (Outside DOMContentLoaded for onclick) =====
+// ===== Experience Toggle =====
 function toggleExp(button) {
     const details = button.nextElementSibling;
     const isOpen = details.classList.contains('show');
@@ -264,6 +287,21 @@ function toggleExp(button) {
         button.classList.add('active');
     }
 }
+
+// Attach touch events to toggle buttons after DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.entry-toggle').forEach(btn => {
+        btn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleExp(btn);
+        });
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleExp(btn);
+        });
+    });
+});
 
 // ===== Visitor Counter =====
 const API_ENDPOINT = 'https://vthy0avz3m.execute-api.us-east-1.amazonaws.com/prod/visitors';
