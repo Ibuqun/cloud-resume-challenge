@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image - Ibukun Taiwo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1200px;
+            height: 630px;
+            background: #050505;
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Grid background */
+        .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(212, 168, 83, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 168, 83, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Glow effect */
+        .glow {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            width: 800px;
+            height: 800px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(ellipse at center, rgba(212, 168, 83, 0.15) 0%, transparent 60%);
+        }
+
+        /* Corner decorations */
+        .corner {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #d4a853;
+        }
+        .corner.tl { top: 40px; left: 40px; border-right: none; border-bottom: none; }
+        .corner.tr { top: 40px; right: 40px; border-left: none; border-bottom: none; }
+        .corner.bl { bottom: 40px; left: 40px; border-right: none; border-top: none; }
+        .corner.br { bottom: 40px; right: 40px; border-left: none; border-top: none; }
+
+        /* Main content */
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            padding: 60px 80px;
+        }
+
+        .left-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .status-line {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding: 8px 16px;
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            border-radius: 100px;
+            width: fit-content;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+        }
+
+        .status-text {
+            font-size: 12px;
+            letter-spacing: 0.15em;
+            color: #d4a853;
+            text-transform: uppercase;
+        }
+
+        .name {
+            font-size: 96px;
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .name span {
+            color: #d4a853;
+        }
+
+        .role {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'SF Mono', 'Consolas', monospace;
+            font-size: 20px;
+            color: #d4a853;
+            margin-bottom: 24px;
+        }
+
+        .role-prefix {
+            color: #d4a853;
+        }
+
+        .tagline {
+            font-size: 22px;
+            color: #999999;
+            line-height: 1.5;
+            max-width: 500px;
+        }
+
+        .tagline strong {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Right panel - metrics */
+        .right-panel {
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: rgba(15, 15, 15, 0.9);
+            border: 1px solid rgba(212, 168, 83, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .metric-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a853;
+        }
+
+        .metric-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .metric-data {
+            flex: 1;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .metric-value span {
+            font-size: 18px;
+            font-weight: 400;
+            color: #999999;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            color: #555555;
+            text-transform: uppercase;
+        }
+
+        .metric-bar {
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .metric-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4a3f2f, #d4a853);
+            border-radius: 2px;
+        }
+
+        /* Domain badge */
+        .domain-badge {
+            position: absolute;
+            bottom: 60px;
+            left: 80px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(212, 168, 83, 0.3);
+            border-radius: 8px;
+        }
+
+        .domain-text {
+            font-family: 'SF Mono', 'Consolas', monospace;
+            font-size: 16px;
+            color: #d4a853;
+            letter-spacing: 0.05em;
+        }
+
+        .domain-arrow {
+            font-size: 18px;
+            color: #d4a853;
+        }
+
+        /* Scanline effect */
+        .scanline {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.03) 50%);
+            background-size: 100% 4px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="glow"></div>
+
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+    <div class="content">
+        <div class="left-panel">
+            <div class="status-line">
+                <div class="status-dot"></div>
+                <span class="status-text">Available for Hire</span>
+            </div>
+
+            <h1 class="name">IBUKUN<br>TAIWO<span>.</span></h1>
+
+            <div class="role">
+                <span class="role-prefix">&gt;</span>
+                <span>Site Reliability Engineer</span>
+            </div>
+
+            <p class="tagline">
+                Building <strong>resilient systems</strong>. Automating everything.
+                Keeping production stable at scale.
+            </p>
+        </div>
+
+        <div class="right-panel">
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                    </svg>
+                </div>
+                <div class="metric-data">
+                    <div class="metric-value">99.99<span>%</span></div>
+                    <div class="metric-label">Uptime</div>
+                    <div class="metric-bar"><div class="metric-bar-fill" style="width: 99%"></div></div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <div class="metric-data">
+                    <div class="metric-value">500<span>+</span></div>
+                    <div class="metric-label">Deployments</div>
+                    <div class="metric-bar"><div class="metric-bar-fill" style="width: 85%"></div></div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <div class="metric-data">
+                    <div class="metric-value">150<span>+</span></div>
+                    <div class="metric-label">Incidents Resolved</div>
+                    <div class="metric-bar"><div class="metric-bar-fill" style="width: 75%"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="domain-badge">
+        <span class="domain-text">ibukuntaiwo.com</span>
+        <span class="domain-arrow">&rarr;</span>
+    </div>
+
+    <div class="scanline"></div>
+</body>
+</html>
