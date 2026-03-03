@@ -4,7 +4,9 @@
   "description": "A serverless API project using AWS Lambda and API Gateway to manage visitor counts.",
   "main": "src/lambda/getVisitorCount.js",
   "scripts": {
-    "test": "jest"
+    "pretest": "cp -r src/utils src/lambda/utils",
+    "test": "jest",
+    "posttest": "rm -rf src/lambda/utils"
   },
   "dependencies": {
     "aws-sdk": "^2.1000.0"
