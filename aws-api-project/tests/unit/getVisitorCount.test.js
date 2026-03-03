@@ -13,10 +13,11 @@ describe('getVisitorCount', () => {
 
         const response = await handler(event, context);
 
-        expect(response).toEqual({
+        expect(response).toMatchObject({
             statusCode: 200,
             body: JSON.stringify({ count: mockCount }),
         });
+        expect(response.headers['Access-Control-Allow-Origin']).toBe('https://resume.ibukuntaiwo.com');
     });
 
     it('should return an error if the count retrieval fails', async () => {
@@ -27,7 +28,7 @@ describe('getVisitorCount', () => {
 
         const response = await handler(event, context);
 
-        expect(response).toEqual({
+        expect(response).toMatchObject({
             statusCode: 500,
             body: JSON.stringify({ error: 'Could not retrieve visitor count' }),
         });

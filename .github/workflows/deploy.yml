@@ -35,10 +35,17 @@ jobs:
       working-directory: ./aws-api-project
       run: npm install
 
+    - name: Secret Scan
+      uses: trufflesecurity/trufflehog@main
+      with:
+        path: ./
+        base: ${{ github.event.repository.default_branch }}
+        head: HEAD
+        extra_args: --only-verified
+
     - name: Test Lambda Functions
       working-directory: ./aws-api-project
       run: npm test
-      continue-on-error: true
 
     - name: Package Lambda Functions
       working-directory: ./aws-api-project/src/lambda

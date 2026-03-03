@@ -1,18 +1,25 @@
-const { getVisitorCount, updateVisitorCount } = require('./utils/dynamodb');
+const { updateVisitorCount } = require('./utils/dynamodb');
+
+const ALLOWED_ORIGINS = new Set([
+    'https://resume.ibukuntaiwo.com',
+    'https://ibukuntaiwo.com',
+    'https://www.ibukuntaiwo.com'
+]);
+
+function getAllowedOrigin(event) {
+    const origin = (event.headers && (event.headers.origin || event.headers.Origin)) || '';
+    return ALLOWED_ORIGINS.has(origin) ? origin : 'https://resume.ibukuntaiwo.com';
+}
 
 exports.handler = async (event) => {
+    const allowedOrigin = getAllowedOrigin(event);
     try {
-        // Get current count and increment by 1
-        const currentCount = await getVisitorCount();
-        const newCount = currentCount + 1;
-        
-        // Update the count
-        await updateVisitorCount(newCount);
-        
+        const newCount = await updateVisitorCount();
+
         return {
             statusCode: 200,
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": allowedOrigin,
                 "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
                 "Access-Control-Allow-Methods": "GET,POST,OPTIONS"
             },
@@ -23,7 +30,7 @@ exports.handler = async (event) => {
         return {
             statusCode: 500,
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": allowedOrigin,
                 "Access-Control-Allow-Headers": "Content-Type",
                 "Access-Control-Allow-Methods": "GET,POST,OPTIONS"
             },

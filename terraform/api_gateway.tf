@@ -52,7 +52,7 @@ resource "aws_api_gateway_integration_response" "options_integration_response" {
   response_parameters = {
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'",
     "method.response.header.Access-Control-Allow-Methods" = "'GET,POST,OPTIONS'",
-    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'https://resume.ibukuntaiwo.com'"
   }
 }
 
@@ -62,7 +62,7 @@ resource "aws_api_gateway_integration" "get_integration" {
   http_method             = aws_api_gateway_method.get_method.http_method
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:590183801390:function:getVisitorCount/invocations"
+  uri                     = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/${aws_lambda_function.get_count.arn}/invocations"
 }
 
 resource "aws_api_gateway_integration" "post_integration" {
@@ -133,6 +133,17 @@ resource "aws_api_gateway_domain_name" "api_domain" {
   }
 }
 
+resource "aws_api_gateway_method_settings" "api_settings" {
+  rest_api_id = aws_api_gateway_rest_api.visitor_api.id
+  stage_name  = aws_api_gateway_stage.api_stage.stage_name
+  method_path = "*/*"
+
+  settings {
+    throttling_burst_limit = 10
+    throttling_rate_limit  = 5
+  }
+}
+
 resource "aws_api_gateway_base_path_mapping" "api_mapping" {
   api_id      = aws_api_gateway_rest_api.visitor_api.id
   stage_name  = aws_api_gateway_stage.api_stage.stage_name
@@ -175,7 +186,7 @@ resource "aws_api_gateway_integration_response" "get_integration_response" {
   status_code = aws_api_gateway_method_response.get_200.status_code
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'https://resume.ibukuntaiwo.com'"
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
     "method.response.header.Access-Control-Allow-Methods" = "'GET,POST,OPTIONS'"
   }
@@ -194,7 +205,7 @@ resource "aws_api_gateway_integration_response" "post_integration_response" {
   status_code = aws_api_gateway_method_response.post_200.status_code
 
   response_parameters = {
-    "method.response.header.Access-Control-Allow-Origin"  = "'*'"
+    "method.response.header.Access-Control-Allow-Origin"  = "'https://resume.ibukuntaiwo.com'"
     "method.response.header.Access-Control-Allow-Headers" = "'Content-Type,X-Amz-Date,Authorization,X-Api-Key'"
     "method.response.header.Access-Control-Allow-Methods" = "'GET,POST,OPTIONS'"
   }

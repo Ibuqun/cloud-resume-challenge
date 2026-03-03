@@ -20,24 +20,25 @@ const getVisitorCount = async () => {
     }
 };
 
-const updateVisitorCount = async (newCount) => {
+const updateVisitorCount = async () => {
     const params = {
         TableName: TABLE_NAME,
         Key: {
             id: 'visitorCount'
         },
-        UpdateExpression: 'SET #count = :count',
+        UpdateExpression: 'ADD #count :increment',
         ExpressionAttributeNames: {
             '#count': 'count'
         },
         ExpressionAttributeValues: {
-            ':count': newCount
-        }
+            ':increment': 1
+        },
+        ReturnValues: 'UPDATED_NEW'
     };
 
     try {
-        await dynamoDB.update(params).promise();
-        return newCount;
+        const result = await dynamoDB.update(params).promise();
+        return result.Attributes.count;
     } catch (error) {
         console.error('Error updating visitor count:', error);
         throw new Error('Could not update visitor count');

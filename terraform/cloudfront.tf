@@ -1,3 +1,36 @@
+resource "aws_cloudfront_response_headers_policy" "security_headers" {
+  name = "security-headers-policy"
+
+  security_headers_config {
+    content_security_policy {
+      content_security_policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://vthy0avz3m.execute-api.us-east-1.amazonaws.com https://api.ibukuntaiwo.com; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'"
+      override                = true
+    }
+    content_type_options {
+      override = true
+    }
+    frame_options {
+      frame_option = "DENY"
+      override     = true
+    }
+    referrer_policy {
+      referrer_policy = "strict-origin-when-cross-origin"
+      override        = true
+    }
+    strict_transport_security {
+      access_control_max_age_sec = 31536000
+      include_subdomains         = true
+      preload                    = true
+      override                   = true
+    }
+    xss_protection {
+      mode_block = true
+      protection = true
+      override   = true
+    }
+  }
+}
+
 # Origin Access Control for S3
 resource "aws_cloudfront_origin_access_control" "website_oac" {
   name                              = "www.ibukuntaiwo.com-oac"
@@ -32,6 +65,8 @@ resource "aws_cloudfront_distribution" "website" {
         forward = "none"
       }
     }
+
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers.id
   }
 
   restrictions {
