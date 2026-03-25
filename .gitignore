@@ -1,1 +1,5 @@
 terraform/.terraform/
+
+# macOS
+.DS_Store
+**/.DS_Store
